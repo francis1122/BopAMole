@@ -10,7 +10,7 @@
 
 #import "AppDelegate.h"
 #import "GameConfig.h"
-#import "HelloWorldLayer.h"
+#import "MenuLayer.h"
 #import "RootViewController.h"
 
 @implementation AppDelegate
@@ -65,14 +65,19 @@
 								   pixelFormat:kEAGLColorFormatRGB565	// kEAGLColorFormatRGBA8
 								   depthFormat:0						// GL_DEPTH_COMPONENT16_OES
 						];
+    
+
+    
+	[glView setMultipleTouchEnabled:YES];
 	
 	// attach the openglView to the director
 	[director setOpenGLView:glView];
 	
-//	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
-//	if( ! [director enableRetinaDisplay:YES] )
-//		CCLOG(@"Retina Display Not supported");
-	
+    //	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
+	if( ! [director enableRetinaDisplay:YES] ){
+        if(DEBUG)CCLOG(@"Retina Display Not supported");
+	}
+    
 	//
 	// VERY IMPORTANT:
 	// If the rotation is going to be controlled by a UIViewController
@@ -91,6 +96,7 @@
 	[director setAnimationInterval:1.0/60];
 	[director setDisplayFPS:YES];
 	
+    
 	
 	// make the OpenGLView a child of the view controller
 	[viewController setView:glView];
@@ -104,13 +110,14 @@
 	// It can be RGBA8888, RGBA4444, RGB5_A1, RGB565
 	// You can change anytime.
 	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
+    
 
 	
 	// Removes the startup flicker
 	[self removeStartupFlicker];
 	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [HelloWorldLayer scene]];
+	[[CCDirector sharedDirector] runWithScene: [MenuLayer node]];
 }
 
 
