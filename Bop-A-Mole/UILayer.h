@@ -14,12 +14,14 @@
 @interface UILayer : CCLayer {
     CCLabelTTF *scoreLabel;
     CCLabelTTF *comboLabel;
+    CCLabelTTF *lifeLabel;
     
     CCMenu *pauseButton;
 }
 @property (nonatomic, retain) CCMenu *pauseButton;
 @property (nonatomic, retain) CCLabelTTF *scoreLabel;
 @property (nonatomic, retain) CCLabelTTF *comboLabel;
+@property (nonatomic, retain) CCLabelTTF *lifeLabel;
 
 -(void)pauseButtonTouched:(CCMenuItem*)sender;
 

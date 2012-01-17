@@ -11,9 +11,18 @@
 
 @interface MoleBaseClass : CCSprite {
     float lifeTime;  //how long the mole has been alive
+    float lifeSpan;  //how long a mole stays above ground
+    
+    BOOL gotAway; // did the mole escape
+    
+    float criticalTime; //when the critical time starts
+    float criticalSpan; //how long the critical time lasts for
+    BOOL isCritical; //the mole is in the critical timing window
 }
 
 @property (nonatomic) float lifeTime;
+@property (nonatomic) float lifeSpan, criticalTime, criticalSpan;
+@property (nonatomic) BOOL gotAway, isCritical;
 
 -(void)gameLoop:(ccTime)dt;
 

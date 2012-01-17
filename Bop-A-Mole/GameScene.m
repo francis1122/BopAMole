@@ -15,7 +15,7 @@ static GameScene *sharedScene = nil;
 
 @implementation GameScene
 
-@synthesize uiLayer, gameLayer, combo, score, isGamePaused, gameTime;
+@synthesize uiLayer, gameLayer, combo, score, isGamePaused, gameTime, playerLife;
 
 +(GameScene*) sharedScene{
     NSAssert(sharedScene != nil, @"sharedScene not available!");
@@ -29,6 +29,7 @@ static GameScene *sharedScene = nil;
         self.score = 0;
         self.combo = 1;
         self.gameTime = 0.0f;
+        self.playerLife = 3;
         
         //setup layers of the game
         self.gameLayer = [GameLayer node];
@@ -56,7 +57,6 @@ static GameScene *sharedScene = nil;
             [self.gameLayer gameLoop:dt];
         }
     }
-    
 }
 
 -(void) setScore:(NSInteger)_score{
@@ -74,11 +74,21 @@ static GameScene *sharedScene = nil;
 }
 
 -(void) addToScore:(NSInteger)points{
-    self.score += points;
+    self.score += points * combo;
 }
 
 -(void) addToCombo:(NSInteger)points{
     self.combo += points;
+}
+
+-(void) playerGotHurt{
+    self.playerLife--;
+    if(self.uiLayer){
+        [self.uiLayer.lifeLabel setString:[NSString stringWithFormat:@"Lives:%d", self.playerLife]];
+    }
+    self.combo = 1;
+    
+    
 }
 
 #pragma mark - Transitions

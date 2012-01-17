@@ -13,7 +13,7 @@
 
 @implementation UILayer
 
-@synthesize pauseButton, scoreLabel, comboLabel;
+@synthesize pauseButton, scoreLabel, comboLabel, lifeLabel;
 
 -(id)init{
     if( (self=[super init])) {
@@ -32,6 +32,10 @@
         self.comboLabel.position = ccp(400, 270);
         [self.comboLabel setColor:yellow];
         [self addChild:self.comboLabel];
+        
+        self.lifeLabel = [CCLabelTTF labelWithString:@"Lives:3" fontName:kFont1 fontSize:20];
+        self.lifeLabel.position = ccp(39,30);
+        [self addChild:self.lifeLabel];
         
         //pause button
         CCSprite *sprite10 = [CCSprite spriteWithFile:@"PauseButton.png"];

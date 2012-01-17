@@ -41,6 +41,10 @@
     
     for(MoleBaseClass* moleObject in self.moleArray){
         [moleObject gameLoop:dt];
+        if(moleObject.gotAway){
+            [self.deadMolesArray addObject:moleObject];
+            [[GameScene sharedScene] playerGotHurt];
+        }
     }
     
     [self spawnMoles];
@@ -78,11 +82,19 @@
 #pragma touch
 
 -(void)checkTapCollision:(CGPoint) touch{
+    GameScene *gameScene = [GameScene sharedScene];
     for(MoleBaseClass* moleObject in self.moleArray){
         CGRect boundingBox = [moleObject boundingBox];
         if(CGRectContainsPoint( boundingBox, touch)){
             [self removeMoleObject:moleObject];
-            [[GameScene sharedScene] addToScore:100];
+            //first add points
+            [gameScene addToScore:100];
+            //second update combo score
+            if(moleObject.isCritical){
+                [gameScene addToCombo:1];
+            }else{
+                [gameScene setCombo:1];
+            }
             break;
         }
     }
