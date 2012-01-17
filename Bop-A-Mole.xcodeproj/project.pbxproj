@@ -129,6 +129,7 @@
 		DE128C3814C25E29005FE868 /* whackamoleBG.png in Resources */ = {isa = PBXBuildFile; fileRef = DE128C3714C25E29005FE868 /* whackamoleBG.png */; };
 		DE128C3F14C261D8005FE868 /* whackamoleBG-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DE128C3E14C261D8005FE868 /* whackamoleBG-hd.png */; };
 		DE128C4814C2669C005FE868 /* Icon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DE128C4714C2669C005FE868 /* Icon-hd.png */; };
+		DE74B1A914C515AC0037BFAD /* MultiTapMole.m in Sources */ = {isa = PBXBuildFile; fileRef = DE74B1A814C515AC0037BFAD /* MultiTapMole.m */; };
 		DE9BC1AF14C26C950034C615 /* mole-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DE9BC1AD14C26C950034C615 /* mole-hd.png */; };
 		DE9BC1B314C26CB00034C615 /* mole.png in Resources */ = {isa = PBXBuildFile; fileRef = DE9BC1B214C26CB00034C615 /* mole.png */; };
 		DEC75A6514C20D8800A9D451 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC75A6414C20D8800A9D451 /* Constants.m */; };
@@ -384,6 +385,8 @@
 		DE128C3714C25E29005FE868 /* whackamoleBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whackamoleBG.png; sourceTree = "<group>"; };
 		DE128C3E14C261D8005FE868 /* whackamoleBG-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackamoleBG-hd.png"; sourceTree = "<group>"; };
 		DE128C4714C2669C005FE868 /* Icon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-hd.png"; sourceTree = "<group>"; };
+		DE74B1A714C515AC0037BFAD /* MultiTapMole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiTapMole.h; sourceTree = "<group>"; };
+		DE74B1A814C515AC0037BFAD /* MultiTapMole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiTapMole.m; sourceTree = "<group>"; };
 		DE9BC1AD14C26C950034C615 /* mole-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mole-hd.png"; sourceTree = "<group>"; };
 		DE9BC1B214C26CB00034C615 /* mole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mole.png; sourceTree = "<group>"; };
 		DEC75A6314C20D8800A9D451 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -832,6 +835,8 @@
 				DE128C3214C22C75005FE868 /* MoleBaseClass.m */,
 				DE128C3414C22CF5005FE868 /* SingleTapMole.h */,
 				DE128C3514C22CF5005FE868 /* SingleTapMole.m */,
+				DE74B1A714C515AC0037BFAD /* MultiTapMole.h */,
+				DE74B1A814C515AC0037BFAD /* MultiTapMole.m */,
 			);
 			name = Moles;
 			sourceTree = "<group>";
@@ -1059,6 +1064,7 @@
 				DEC75A7F14C215F700A9D451 /* UILayer.m in Sources */,
 				DE128C3314C22C75005FE868 /* MoleBaseClass.m in Sources */,
 				DE128C3614C22CF5005FE868 /* SingleTapMole.m in Sources */,
+				DE74B1A914C515AC0037BFAD /* MultiTapMole.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

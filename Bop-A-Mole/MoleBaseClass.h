@@ -14,6 +14,7 @@
     float lifeSpan;  //how long a mole stays above ground
     
     BOOL gotAway; // did the mole escape
+    BOOL isDead; //has the mole been destroyed
     
     float criticalTime; //when the critical time starts
     float criticalSpan; //how long the critical time lasts for
@@ -22,8 +23,10 @@
 
 @property (nonatomic) float lifeTime;
 @property (nonatomic) float lifeSpan, criticalTime, criticalSpan;
-@property (nonatomic) BOOL gotAway, isCritical;
+@property (nonatomic) BOOL gotAway, isCritical, isDead;
 
 -(void)gameLoop:(ccTime)dt;
+
+-(void)tapped;
 
 @end

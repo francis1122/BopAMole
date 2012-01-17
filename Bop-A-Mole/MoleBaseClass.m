@@ -11,17 +11,18 @@
 
 @implementation MoleBaseClass
 
-@synthesize lifeTime, lifeSpan, gotAway, criticalSpan, criticalTime, isCritical;
+@synthesize lifeTime, lifeSpan, gotAway, criticalSpan, criticalTime, isCritical, isDead;
 
 
 -(id) initWithFile:(NSString*)spriteName{
     if(self = [super initWithFile:spriteName]){
         self.lifeTime = 0.0;
         self.lifeSpan = 2.0;
-        self.criticalTime = 1.4;
-        self.criticalSpan = 0.3;
+        self.criticalTime = 1.1;
+        self.criticalSpan = 0.6;
         self.gotAway = NO;
         self.isCritical = NO;
+        self.isDead = NO;
         
     }
     
@@ -44,6 +45,10 @@
         self.color = white;
         self.isCritical = NO;
     }
+}
+
+-(void)tapped{
+    
 }
 
 @end

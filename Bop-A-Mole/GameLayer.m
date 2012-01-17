@@ -8,8 +8,10 @@
 
 #import "GameLayer.h"
 #import "GameScene.h"
+
 #import "MoleBaseClass.h"
 #import "SingleTapMole.h"
+#import "MultiTapMole.h"
 
 
 @implementation GameLayer
@@ -45,6 +47,9 @@
             [self.deadMolesArray addObject:moleObject];
             [[GameScene sharedScene] playerGotHurt];
         }
+        if(moleObject.isDead){
+            [self.deadMolesArray addObject:moleObject];
+        }
     }
     
     [self spawnMoles];
@@ -57,10 +62,17 @@
 -(void)spawnMoles{
 //    float gameTime = [GameScene sharedScene].gameTime;
     if(rand()%60 == 0){
-        SingleTapMole *newMole = [[[SingleTapMole alloc] initSingleTapMole] autorelease];
-        newMole.position = ccp( (rand()%440) + 20, (rand()%200) + 20 );
-        [self.moleArray addObject:newMole];
-        [self addChild:newMole];
+        if(rand()%4 == 0){
+            MultiTapMole *newMole = [[[MultiTapMole alloc] initMultiTapMole] autorelease];
+            newMole.position = ccp( (rand()%440) + 20, (rand()%200) + 20 );
+            [self.moleArray addObject:newMole];
+            [self addChild:newMole];
+        }else{
+            SingleTapMole *newMole = [[[SingleTapMole alloc] initSingleTapMole] autorelease];
+            newMole.position = ccp( (rand()%440) + 20, (rand()%200) + 20 );
+            [self.moleArray addObject:newMole];
+            [self addChild:newMole];
+        }
     }
     
 }
@@ -86,15 +98,7 @@
     for(MoleBaseClass* moleObject in self.moleArray){
         CGRect boundingBox = [moleObject boundingBox];
         if(CGRectContainsPoint( boundingBox, touch)){
-            [self removeMoleObject:moleObject];
-            //first add points
-            [gameScene addToScore:100];
-            //second update combo score
-            if(moleObject.isCritical){
-                [gameScene addToCombo:1];
-            }else{
-                [gameScene setCombo:1];
-            }
+            [moleObject tapped];
             break;
         }
     }
