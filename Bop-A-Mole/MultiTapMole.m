@@ -16,12 +16,12 @@
 -(id) initMultiTapMole{
     if(self = [super initWithFile:@"mole.png"]){
         self.lifeTime = 0.0;
-        self.lifeSpan = 4.0;
-        self.criticalTime = 2.0;
-        self.criticalSpan = 1.4;
+        self.lifeSpan = 3.0;
+        self.criticalTime = 1.0;
+        self.criticalSpan = 1.0;
         self.scale = 2;
 
-        self.startingLife = 4;
+        self.startingLife = 2;
         self.life = self.startingLife;
         
     }

@@ -20,6 +20,7 @@
     NSInteger playerLife;
     
     float gameTime;
+    BOOL isGameOver;
     BOOL isGamePaused;
 }
 
@@ -29,6 +30,7 @@
 @property (nonatomic) NSInteger score;
 @property (nonatomic) NSInteger playerLife;
 @property (nonatomic) BOOL isGamePaused;
+@property (nonatomic) BOOL isGameOver;
 @property (nonatomic) float gameTime;
 
 +(GameScene*) sharedScene;
@@ -41,5 +43,7 @@
     
 -(void) pauseGame;
 -(void) unPauseGame;
+
+-(void) transitionToMainMenu;
 
 @end
