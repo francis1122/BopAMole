@@ -10,6 +10,7 @@
 #import "GameLayer.h"
 #import "UILayer.h"
 #import "MenuLayer.h"
+#import "GameOverLayer.h"
 
 static GameScene *sharedScene = nil;
 
@@ -53,7 +54,7 @@ static GameScene *sharedScene = nil;
 
 -(void) gameLoop:(ccTime) dt{
     if(isGameOver){
-        [self transitionToMainMenu];
+        [self transitionToGameOverLayer];
     }
     if(!self.isGamePaused){
         self.gameTime += dt;
@@ -101,6 +102,10 @@ static GameScene *sharedScene = nil;
 }
 
 #pragma mark - Transitions
+
+-(void) transitionToGameOverLayer{
+    [[CCDirector sharedDirector] replaceScene: [[[GameOverLayer alloc] initWithScore:self.score] autorelease] ];
+}
 
 -(void) transitionToMainMenu{
     [[CCDirector sharedDirector] replaceScene:[MenuLayer node]];
