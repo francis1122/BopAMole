@@ -28,9 +28,9 @@
         //create button that takes you to the game
         CCSprite *sprite = [CCSprite spriteWithFile:@"PlayButton.png"];
         CCSprite *sprite2 = [CCSprite spriteWithFile:@"PlayButton.png"];
-        CCSprite *sprite3 = [CCSprite spriteWithFile:@"PlayButton.png"];
+		sprite2.color = ccc3(155, 155, 155);
         
-        CCMenuItemSprite *spriteTimeTrailButton = [CCMenuItemSprite itemFromNormalSprite:sprite selectedSprite:sprite2 disabledSprite:sprite3 target:self selector:@selector(playButtonTouched:)];
+        CCMenuItemSprite *spriteTimeTrailButton = [CCMenuItemSprite itemFromNormalSprite:sprite selectedSprite:sprite2 target:self selector:@selector(playButtonTouched:)];
         spriteTimeTrailButton.position = ccp(220, 140);
         
         CCMenu *menu = [CCMenu menuWithItems:spriteTimeTrailButton, nil];
