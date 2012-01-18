@@ -498,8 +498,6 @@
 				DE128C3714C25E29005FE868 /* whackamoleBG.png */,
 				DE128C3E14C261D8005FE868 /* whackamoleBG-hd.png */,
 				DE128C2814C21A84005FE868 /* PauseButton-hd.png */,
-				DE945E7614C6403B00554678 /* PauseButton.png */,
-				DE945E7714C6403B00554678 /* PlayButton.png */,
 				DE128C2914C21A84005FE868 /* PlayButton-hd.png */,
 				DE945E9314C6862800554678 /* Resume-hd.png */,
 				DE128C2A14C21A84005FE868 /* RetryButton.png */,
