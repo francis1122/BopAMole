@@ -130,6 +130,8 @@
 		DE128C3F14C261D8005FE868 /* whackamoleBG-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DE128C3E14C261D8005FE868 /* whackamoleBG-hd.png */; };
 		DE128C4814C2669C005FE868 /* Icon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DE128C4714C2669C005FE868 /* Icon-hd.png */; };
 		DE74B1A914C515AC0037BFAD /* MultiTapMole.m in Sources */ = {isa = PBXBuildFile; fileRef = DE74B1A814C515AC0037BFAD /* MultiTapMole.m */; };
+		DE90E9C714C643A40029EE54 /* mole icon57.png in Resources */ = {isa = PBXBuildFile; fileRef = DE90E9C614C643A40029EE54 /* mole icon57.png */; };
+		DE90E9CA14C643A80029EE54 /* mole icon114.png in Resources */ = {isa = PBXBuildFile; fileRef = DE90E9C914C643A80029EE54 /* mole icon114.png */; };
 		DE945E7814C6403B00554678 /* PauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DE945E7614C6403B00554678 /* PauseButton.png */; };
 		DE945E7914C6403B00554678 /* PlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DE945E7714C6403B00554678 /* PlayButton.png */; };
 		DE9BC1AF14C26C950034C615 /* mole-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DE9BC1AD14C26C950034C615 /* mole-hd.png */; };
@@ -389,6 +391,8 @@
 		DE128C4714C2669C005FE868 /* Icon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-hd.png"; sourceTree = "<group>"; };
 		DE74B1A714C515AC0037BFAD /* MultiTapMole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiTapMole.h; sourceTree = "<group>"; };
 		DE74B1A814C515AC0037BFAD /* MultiTapMole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiTapMole.m; sourceTree = "<group>"; };
+		DE90E9C614C643A40029EE54 /* mole icon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mole icon57.png"; sourceTree = "<group>"; };
+		DE90E9C914C643A80029EE54 /* mole icon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mole icon114.png"; sourceTree = "<group>"; };
 		DE945E7614C6403B00554678 /* PauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseButton.png; sourceTree = "<group>"; };
 		DE945E7714C6403B00554678 /* PlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayButton.png; sourceTree = "<group>"; };
 		DE9BC1AD14C26C950034C615 /* mole-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mole-hd.png"; sourceTree = "<group>"; };
@@ -430,6 +434,8 @@
 		DE10E42814C16F400084F3A2 = {
 			isa = PBXGroup;
 			children = (
+				DE90E9C914C643A80029EE54 /* mole icon114.png */,
+				DE90E9C614C643A40029EE54 /* mole icon57.png */,
 				DE10E44714C16F410084F3A2 /* Bop-A-Mole */,
 				DE10E43614C16F410084F3A2 /* Frameworks */,
 				DE10E43414C16F410084F3A2 /* Products */,
@@ -957,6 +963,8 @@
 				DE9BC1B314C26CB00034C615 /* mole.png in Resources */,
 				DE945E7814C6403B00554678 /* PauseButton.png in Resources */,
 				DE945E7914C6403B00554678 /* PlayButton.png in Resources */,
+				DE90E9C714C643A40029EE54 /* mole icon57.png in Resources */,
+				DE90E9CA14C643A80029EE54 /* mole icon114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
