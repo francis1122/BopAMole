@@ -17,4 +17,6 @@
 
 -(id) initWithScore:(NSInteger) score;
 
+-(void)retryButtonTouched:(CCMenuItem*)sender;
+
 @end

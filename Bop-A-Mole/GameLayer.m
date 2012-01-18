@@ -52,17 +52,31 @@
         }
     }
     
+
+    
     [self spawnMoles];
     
     [self removeMoles];
+    
+    if( [[GameScene sharedScene] timeOnCurrentLevel] > 10.0){
+        
+        //remove moles while level changes
+            for(MoleBaseClass* moleObject in self.moleArray){
+                [self.deadMolesArray addObject:moleObject];
+            }
+        [self removeMoles];
+        [[GameScene sharedScene] moveToNextLevel];
+    }
     
 }
 
 
 -(void)spawnMoles{
 //    float gameTime = [GameScene sharedScene].gameTime;
-    if(rand()%60 == 0){
-        if(rand()%4 == 0){
+    int level = [[GameScene sharedScene] level];
+    
+    if(rand()%120 - 10*level == 0){
+        if(rand()%6 == 0){
             MultiTapMole *newMole = [[[MultiTapMole alloc] initMultiTapMole] autorelease];
             newMole.position = ccp( (rand()%440) + 20, (rand()%200) + 20 );
             [self.moleArray addObject:newMole];
