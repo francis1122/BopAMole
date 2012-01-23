@@ -41,8 +41,7 @@
         self.color = yellow;
         self.isCritical = YES;
     }else{
-        ccColor3B white = {255, 255, 255};
-        self.color = white;
+        self.color = ccWHITE;
         self.isCritical = NO;
     }
 }
