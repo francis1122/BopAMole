@@ -7,12 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface MasterDataModelController : NSObject{
-    
+#import <GameKit/GameKit.h>
+#import "GameCenterManager.h"
+@interface MasterDataModelController : NSObject <GKLeaderboardViewControllerDelegate, GameCenterManagerDelegate>{
+    GameCenterManager *gameCenterManager;
+    UIViewController *overlayViewController;
 }
 
 +(MasterDataModelController*) sharedInstance;
-
-
+-(void) connectToGameCenter;
+-(void)showLeaderboard;
+- (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController;
+-(void)submitScore:(long)score;
+    
 @end
