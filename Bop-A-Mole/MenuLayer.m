@@ -9,6 +9,7 @@
 #import "MenuLayer.h"
 #import "Constants.h"
 #import "GameScene.h"
+#import "MasterDataModelController.h"
 
 @implementation MenuLayer
     
@@ -30,10 +31,17 @@
         CCSprite *sprite2 = [CCSprite spriteWithFile:@"PlayButton.png"];
         CCSprite *sprite3 = [CCSprite spriteWithFile:@"PlayButton.png"];
         
+        CCSprite *sprite4 = [CCSprite spriteWithFile:@"Icon-72.png"];
+        CCSprite *sprite5 = [CCSprite spriteWithFile:@"Icon-72.png"];
+        CCSprite *sprite6 = [CCSprite spriteWithFile:@"Icon-72.png"];
+        
         CCMenuItemSprite *spriteTimeTrailButton = [CCMenuItemSprite itemFromNormalSprite:sprite selectedSprite:sprite2 disabledSprite:sprite3 target:self selector:@selector(playButtonTouched:)];
         spriteTimeTrailButton.position = ccp(220, 140);
         
-        CCMenu *menu = [CCMenu menuWithItems:spriteTimeTrailButton, nil];
+        CCMenuItemSprite *leaderboardButton = [CCMenuItemSprite itemFromNormalSprite:sprite4 selectedSprite:sprite5 disabledSprite:sprite6 target:self selector:@selector(leaderboardButtonTouched:)];
+        leaderboardButton.position = ccp(220, 200);
+        
+        CCMenu *menu = [CCMenu menuWithItems:spriteTimeTrailButton, leaderboardButton, nil];
         menu.position = CGPointZero;
         [self addChild:menu];
         
@@ -47,6 +55,10 @@
 
 -(void)playButtonTouched:(CCMenuItem*)sender{
     [[CCDirector sharedDirector] replaceScene:[GameScene node]];
+}
+
+-(void)leaderboardButtonTouched:(CCMenuItem*)sender{
+    [[MasterDataModelController sharedInstance] showLeaderboard];
 }
 
 

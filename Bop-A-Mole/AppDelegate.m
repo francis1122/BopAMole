@@ -12,6 +12,7 @@
 #import "GameConfig.h"
 #import "MenuLayer.h"
 #import "RootViewController.h"
+#import "MasterDataModelController.h"
 
 @implementation AppDelegate
 
@@ -73,6 +74,8 @@
 	// attach the openglView to the director
 	[director setOpenGLView:glView];
 	
+    [[MasterDataModelController sharedInstance] connectToGameCenter];
+    
     //	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
 	if( ! [director enableRetinaDisplay:YES] ){
         if(DEBUG)CCLOG(@"Retina Display Not supported");

@@ -9,6 +9,7 @@
 #import "GameOverLayer.h"
 #import "GameScene.h"
 #import "Constants.h"
+#import "MasterDataModelController.h"
 
 @implementation GameOverLayer
 
@@ -37,7 +38,13 @@
         CCMenuItemSprite *retryButtin = [CCMenuItemSprite itemFromNormalSprite:sprite selectedSprite:nil disabledSprite:nil target:self selector:@selector(retryButtonTouched:)];
         retryButtin.position = ccp(220, 100);
         
-        CCMenu *menu = [CCMenu menuWithItems:retryButtin, nil];
+        CCSprite *sprite4 = [CCSprite spriteWithFile:@"Icon-72.png"];
+        CCSprite *sprite5 = [CCSprite spriteWithFile:@"Icon-72.png"];
+        CCSprite *sprite6 = [CCSprite spriteWithFile:@"Icon-72.png"];
+        CCMenuItemSprite *leaderboardButton = [CCMenuItemSprite itemFromNormalSprite:sprite4 selectedSprite:sprite5 disabledSprite:sprite6 target:self selector:@selector(leaderboardButtonTouched:)];
+        leaderboardButton.position = ccp(220, 200);
+        
+        CCMenu *menu = [CCMenu menuWithItems:retryButtin, leaderboardButton, nil];
         menu.position = CGPointZero;
         [self addChild:menu];
     }
@@ -46,6 +53,10 @@
 
 -(void)retryButtonTouched:(CCMenuItem*)sender{
     [[CCDirector sharedDirector] replaceScene:[GameScene node]];
+}
+
+-(void)leaderboardButtonTouched:(CCMenuItem*)sender{
+    [[MasterDataModelController sharedInstance] showLeaderboard];
 }
 
 @end
