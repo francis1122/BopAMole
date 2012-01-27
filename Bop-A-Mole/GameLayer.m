@@ -55,7 +55,7 @@
 
     
     [self spawnMoles];
-    
+
     [self removeMoles];
     
     if( [[GameScene sharedScene] timeOnCurrentLevel] > 10.0){
@@ -88,7 +88,6 @@
             [self addChild:newMole];
         }
     }
-    
 }
 
 -(void)removeMoles{

@@ -13,6 +13,7 @@
 
 
 -(id) initSingleTapMole{
+
     if(self = [super initWithFile:@"mole.png"]){
         self.lifeTime = 0.0;
         self.lifeSpan = 1.8;
