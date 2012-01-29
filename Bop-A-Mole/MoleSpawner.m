@@ -27,35 +27,89 @@ static MoleSpawner *sharedInstance = nil;
 {
     self = [super init];
     if (self) {
+        
+        NSString * molePlistPath = [[NSBundle mainBundle] pathForResource:@"Moles" ofType:@"plist"];
+        moleData = [NSDictionary dictionaryWithContentsOfFile:molePlistPath];
+
+        NSString * levelPlistPath = [[NSBundle mainBundle] pathForResource:@"Levels" ofType:@"plist"];
+        levelData = [NSDictionary dictionaryWithContentsOfFile:levelPlistPath];
+                    
         lastSpawn = 0.0; // Initialization code here.
-        levelData = [[NSDictionary alloc] initWithContentsOfFile:@"Levels.plist"];        
     }
     
     return self;
 }
 
-// For now: linearly interpolate between begin/end spawnrate values for a level
--(float)getSpawnIntervalForLevel:(int)level elapsedTime:(float)elapsedTime {
-    NSDictionary* currentLevelData = [levelData objectForKey:[NSString stringWithFormat:@"%d", level]];
-        
-    float levelBeginValue = [[currentLevelData valueForKey:@"spawnRateBegin"] floatValue];
-    float levelEndValue = [[currentLevelData valueForKey:@"spawnRateEnd"] floatValue];
-    float levelLength = [[currentLevelData valueForKey:@"levelLength"] floatValue];
+- (NSDictionary*)rollBetweenItems:(NSArray*)items {
+    int roll = arc4random() % 100;
+    int totalProbability = 0;
     
-    return elapsedTime/levelLength * (levelEndValue - levelBeginValue) + levelBeginValue;
+    for(NSDictionary* item in items) {
+        totalProbability += [[item valueForKey:@"Chance"] intValue];
+    }        
+    roll /= totalProbability;
+    
+    int totalChance = 0;
+    for(NSDictionary* item in items) {
+        totalChance += [[item valueForKey:@"Chance"] intValue];
+        if(roll <= totalChance) {
+            return item;
+        }
+    }        
+    return [items objectAtIndex:0];
+    
 }
 
--(id)spawnMoleWithLevel:(int)level elapsedTime:(float)elapsedTime {
-    float spawnDt = elapsedTime - lastSpawn;    
-    float frequency = [self getSpawnIntervalForLevel:level elapsedTime:elapsedTime];
-    
-    if(frequency <= spawnDt) { // Enough time has elapsed: A mole should spawn
-        int type = MOLE_TAP;
-        
-    }
-    
-    return nil; // No mole is spawning this tick
-}
+-(NSArray*)generateLevel:(NSString*)levelNum withBPM:(int)BPM {
+    NSDictionary* level = [levelData objectForKey:levelNum];
 
+    NSMutableArray* beatTimings = [NSMutableArray new];
+    NSMutableArray* moles = [NSMutableArray new];
+
+    float beatInterval = 60.0/BPM;
+    float elapsedTime = 0.0;
+    float levelLength = [[level valueForKey:@"Length"] floatValue];
+    NSDictionary* currentStage = [[level objectForKey:@"Stages"] objectAtIndex:0];
+
+    do {
+        float percentComplete = 100 * (elapsedTime / levelLength);
+
+        // Go to next stage, if needed
+        if (percentComplete >= [[currentStage valueForKey:@"Percent"] intValue]) {
+            for (NSDictionary* stage in [level objectForKey:@"Stages"]) {
+                if(percentComplete < [[stage valueForKey:@"Percent"] intValue]) {
+                    currentStage = stage;
+                    break;
+                }
+            }
+        }
+        
+        // Choose beat interval
+        NSArray* beatIntervals = [currentStage objectForKey:@"When"];        
+        NSDictionary* chosenBeatInterval = [self rollBetweenItems:beatIntervals];
+        float beat = [[chosenBeatInterval valueForKey:@"Beat"] floatValue];
+        elapsedTime += beatInterval * beat;
+        
+        // Choose mole pattern to spawn
+        NSArray* molePatterns = [currentStage objectForKey:@"What"]; 
+        NSDictionary* chosenMolePattern = [self rollBetweenItems:molePatterns];
+        NSArray* molePattern = [moleData objectForKey:[chosenMolePattern valueForKey:@"Mole Type"]];
+
+        // Setup and add mole
+        for(NSDictionary* mole in molePattern) {
+            NSArray* positionArray = [[mole valueForKey:@"Position"] componentsSeparatedByString:@","];
+            CGPoint position = CGPointMake([[positionArray objectAtIndex:0] floatValue],[[positionArray objectAtIndex:1] floatValue]);
+            float time = elapsedTime + [[mole valueForKey:@"Time"] floatValue];
+            id moleObj = [MoleHelper createMole:[mole valueForKey:@"Mole Type"]];
+            [moleObj setPosition:position];    
+            
+            [beatTimings addObject:[NSNumber numberWithFloat:time]];
+            [moles addObject:moleObj];
+        }
+        
+    } while(elapsedTime < levelLength);
+    
+    return [NSArray arrayWithObjects:beatTimings, moles, nil];
+}
 
 @end

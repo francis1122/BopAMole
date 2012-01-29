@@ -10,6 +10,6 @@
 
 @interface MoleHelper : NSObject
 
-+(id)createMole:(int)type;
++(id)createMole:(NSString*)type;
 
 @end

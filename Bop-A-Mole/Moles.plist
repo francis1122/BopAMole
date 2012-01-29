@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Single Mole</key>
+	<key>Triple Mole</key>
 	<array>
 		<dict>
 			<key>Position</key>
@@ -29,7 +29,18 @@
 			<string>Tap Mole</string>
 		</dict>
 	</array>
-	<key>Triple Mole</key>
+	<key>Single Mole</key>
+	<array>
+		<dict>
+			<key>Position</key>
+			<string>0,0</string>
+			<key>Time</key>
+			<integer>0</integer>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+	</array>
+	<key>Skip</key>
 	<array/>
 </dict>
 </plist>

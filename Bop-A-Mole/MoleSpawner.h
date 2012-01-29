@@ -11,9 +11,13 @@
 @interface MoleSpawner : NSObject {
     float lastSpawn;
     NSDictionary* levelData;
+    NSDictionary* moleData;
 }
 
 +(MoleSpawner*)sharedInstance;
--(id)spawnMoleWithLevel:(int)level elapsedTime:(float)elapsedTime;
+-(NSArray*)generateLevel:(NSString*)levelNum withBPM:(int)BPM;
+- (NSDictionary*)rollBetweenItems:(NSArray*)items;
+
+
 
 @end

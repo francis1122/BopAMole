@@ -11,14 +11,18 @@
 
 @implementation MoleHelper
 
-+(id)createMole:(int)type {
-    switch(type) {
-        case MOLE_TAP: return [[SingleTapMole alloc] initSingleTapMole];
-            break;
-        case MOLE_DOUBLE_TAP: return [[MultiTapMole alloc] initMultiTapMole];
-            break;
-        default: return [[SingleTapMole alloc] initSingleTapMole];
-            break;
++(id)createMole:(NSString*)type {
+    if([type isEqualToString:@"Tap Mole"]) {
+        return [[SingleTapMole alloc] initSingleTapMole];
+    }
+    else if([type isEqualToString:@"Multi Tap Mole"]) {
+        return [[MultiTapMole alloc] initMultiTapMole];
+    }
+    else if([type isEqualToString:@"Slash Mole"]) {
+        return [[SlashMole alloc] initSlashMole];
+    }
+    else {
+        return nil;
     }
 }
 

@@ -16,6 +16,7 @@
 #import "SlashMole.h"
 #import "TouchPoint.h"
 #import "MathLib.h"
+#import "MoleSpawner.h"
 
 
 @implementation GameLayer
@@ -39,6 +40,8 @@
         self.slashHandler = [[[SlashHandler alloc] init] autorelease];
         self.moleArray = [[[NSMutableArray alloc] init] autorelease];
         self.deadMolesArray = [[[NSMutableArray alloc] init] autorelease];
+        
+        NSArray* level = [[MoleSpawner sharedInstance] generateLevel:@"1" withBPM:120];
     }
     return self;
 }
