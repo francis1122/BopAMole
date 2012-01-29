@@ -13,6 +13,7 @@
 #import "GameOverLayer.h"
 #import "PauseLayer.h"
 #import "LevelTransitionLayer.h"
+#import "MasterDataModelController.h"
 
 static GameScene *sharedScene = nil;
 
@@ -62,6 +63,8 @@ static GameScene *sharedScene = nil;
 -(void) gameLoop:(ccTime) dt{
     if(isGameOver){
         [self transitionToGameOverLayer];
+        [[MasterDataModelController sharedInstance] trackScore:score];
+        [[MasterDataModelController sharedInstance] submitScore:score];
     }
     if(!self.isGamePaused && !self.isBetweenLevels){
         

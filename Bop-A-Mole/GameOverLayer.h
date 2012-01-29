@@ -12,6 +12,7 @@
 @interface GameOverLayer : CCLayer {
     CCLabelTTF *gameOverLabel;
     CCLabelTTF *scoreLabel;
+    CCLabelTTF *highScoreLabel;
 
 }
 

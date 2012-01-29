@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2094AC5B14CD4A840083191C /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2094AC5A14CD4A840083191C /* GameCenterManager.m */; };
+		2094AC5D14CD4AA90083191C /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2094AC5C14CD4AA80083191C /* GameKit.framework */; };
 		3E7DE3F214CCF746006E159F /* MoleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DE3F114CCF746006E159F /* MoleHelper.m */; };
 		3E7DE3F814CCF85D006E159F /* MoleSpawner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DE3F714CCF85D006E159F /* MoleSpawner.m */; };
 		3E7DE3FA14CCFA34006E159F /* Levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E7DE3F914CCFA34006E159F /* Levels.plist */; };
@@ -153,6 +155,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2094AC5914CD4A840083191C /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
+		2094AC5A14CD4A840083191C /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
+		2094AC5C14CD4AA80083191C /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		3E7DE3F014CCF746006E159F /* MoleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoleHelper.h; sourceTree = "<group>"; };
 		3E7DE3F114CCF746006E159F /* MoleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoleHelper.m; sourceTree = "<group>"; };
 		3E7DE3F314CCF790006E159F /* Moles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Moles.h; sourceTree = "<group>"; };
@@ -437,6 +442,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2094AC5D14CD4AA90083191C /* GameKit.framework in Frameworks */,
 				DE10E43814C16F410084F3A2 /* QuartzCore.framework in Frameworks */,
 				DE10E43A14C16F410084F3A2 /* OpenGLES.framework in Frameworks */,
 				DE10E43C14C16F410084F3A2 /* OpenAL.framework in Frameworks */,
@@ -451,6 +457,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2094AC5214CD43ED0083191C /* Game Center */ = {
+			isa = PBXGroup;
+			children = (
+				2094AC5914CD4A840083191C /* GameCenterManager.h */,
+				2094AC5A14CD4A840083191C /* GameCenterManager.m */,
+			);
+			name = "Game Center";
+			sourceTree = "<group>";
+		};
 		3E7DE3EE14CCF725006E159F /* Mole Spawner */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,6 +495,7 @@
 		DE10E43614C16F410084F3A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2094AC5C14CD4AA80083191C /* GameKit.framework */,
 				DE10E43714C16F410084F3A2 /* QuartzCore.framework */,
 				DE10E43914C16F410084F3A2 /* OpenGLES.framework */,
 				DE10E43B14C16F410084F3A2 /* OpenAL.framework */,
@@ -495,6 +511,7 @@
 		DE10E44714C16F410084F3A2 /* Bop-A-Mole */ = {
 			isa = PBXGroup;
 			children = (
+				2094AC5214CD43ED0083191C /* Game Center */,
 				DEC75A6F14C20E9600A9D451 /* DataManagment */,
 				DEC75A6314C20D8800A9D451 /* Constants.h */,
 				DEC75A6414C20D8800A9D451 /* Constants.m */,
@@ -1129,6 +1146,7 @@
 				DE945E9714C68BD700554678 /* LevelTransitionLayer.m in Sources */,
 				3E7DE3F214CCF746006E159F /* MoleHelper.m in Sources */,
 				3E7DE3F814CCF85D006E159F /* MoleSpawner.m in Sources */,
+				2094AC5B14CD4A840083191C /* GameCenterManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
