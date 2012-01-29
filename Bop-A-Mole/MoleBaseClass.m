@@ -25,9 +25,7 @@
         self.isDead = NO;
         
     }
-    
     return self;
-
 }
 
 
@@ -36,6 +34,8 @@
     if(self.lifeTime > self.lifeSpan){
         self.gotAway = YES;
     }
+    
+    //use for changing cri
     if(self.criticalTime < self.lifeTime && (self.criticalTime + self.criticalSpan) > self.lifeTime){
         ccColor3B yellow = {224, 225, 0};
         self.color = yellow;
@@ -47,6 +47,10 @@
 }
 
 -(void)tapped{
+    
+}
+
+-(void)slashed{
     
 }
 

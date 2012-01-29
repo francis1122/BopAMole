@@ -1,25 +1,27 @@
 //
-//  SingleTapMole.m
+//  SlashMole.m
 //  Bop-A-Mole
 //
-//  Created by John Wilson on 1/14/12.
+//  Created by John Wilson on 1/28/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SingleTapMole.h"
+#import "SlashMole.h"
 #import "GameScene.h"
 
-@implementation SingleTapMole
 
+@implementation SlashMole
 
--(id) initSingleTapMole{
-
+-(id) initSlashMole{
     if(self = [super initWithFile:@"mole.png"]){
+        ccColor3B green = {0, 0, 255};
+        self.color = green;
         self.lifeTime = 0.0;
-        self.lifeSpan = 1.8;
-        self.criticalTime = 0.6;
-        self.criticalSpan = 0.6;
-        self.scale = 1.2;
+        self.lifeSpan = 3.0;
+        self.criticalTime = 1.0;
+        self.criticalSpan = 1.0;
+        self.scale = 1.5;
+        
     }
     return self;
 }
@@ -29,8 +31,9 @@
     [super gameLoop:dt];
 }
 
--(void)tapped{
+-(void)slashed{
     GameScene *gameScene = [GameScene sharedScene];
+
     self.isDead = YES;
     //first add points
     [gameScene addToScore:100];

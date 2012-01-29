@@ -11,13 +11,15 @@
 
 //gameplay and player interaction with gameworld takes place on this layer
 
-@class MoleBaseClass;
+@class MoleBaseClass, SlashHandler;
 @interface GameLayer : CCLayer {
     NSMutableArray *moleArray;
     NSMutableArray *deadMolesArray;
+    SlashHandler *slashHandler;
 }
 
 @property (nonatomic, retain) NSMutableArray *moleArray, *deadMolesArray;
+@property (nonatomic, retain) SlashHandler *slashHandler;
 
 
 -(void)gameLoop:(ccTime)dt;
@@ -29,5 +31,7 @@
 -(void)removeMoleObject:(MoleBaseClass*) deadMole;
 
 -(void)checkTapCollision:(CGPoint) touch;
+
+-(void)checkSlashCollision:(CGPoint) touch;
 
 @end

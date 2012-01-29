@@ -46,7 +46,7 @@
         raceBeginButton.tag = 0;
         
         
-        
+
         self.pauseButton = [CCMenu menuWithItems:raceBeginButton,  nil];
         self.pauseButton.position = CGPointZero;
         

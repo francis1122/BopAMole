@@ -135,6 +135,10 @@
 		DE128C3814C25E29005FE868 /* whackamoleBG.png in Resources */ = {isa = PBXBuildFile; fileRef = DE128C3714C25E29005FE868 /* whackamoleBG.png */; };
 		DE128C3F14C261D8005FE868 /* whackamoleBG-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DE128C3E14C261D8005FE868 /* whackamoleBG-hd.png */; };
 		DE128C4814C2669C005FE868 /* Icon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DE128C4714C2669C005FE868 /* Icon-hd.png */; };
+		DE1B051214D27A72004613AF /* MathLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B051114D27A72004613AF /* MathLib.m */; };
+		DE1B051614D28904004613AF /* SlashHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B051514D28904004613AF /* SlashHandler.m */; };
+		DE1B051914D2898B004613AF /* TouchPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B051814D2898B004613AF /* TouchPoint.m */; };
+		DE67C27114D48A7000493C92 /* SlashMole.m in Sources */ = {isa = PBXBuildFile; fileRef = DE67C27014D48A7000493C92 /* SlashMole.m */; };
 		DE74B1A914C515AC0037BFAD /* MultiTapMole.m in Sources */ = {isa = PBXBuildFile; fileRef = DE74B1A814C515AC0037BFAD /* MultiTapMole.m */; };
 		DE945E8514C67B7F00554678 /* GameOverLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DE945E8414C67B7F00554678 /* GameOverLayer.m */; };
 		DE945E8D14C6844500554678 /* PauseLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DE945E8C14C6844500554678 /* PauseLayer.m */; };
@@ -408,6 +412,14 @@
 		DE128C3714C25E29005FE868 /* whackamoleBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whackamoleBG.png; sourceTree = "<group>"; };
 		DE128C3E14C261D8005FE868 /* whackamoleBG-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackamoleBG-hd.png"; sourceTree = "<group>"; };
 		DE128C4714C2669C005FE868 /* Icon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-hd.png"; sourceTree = "<group>"; };
+		DE1B051014D27A72004613AF /* MathLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathLib.h; sourceTree = "<group>"; };
+		DE1B051114D27A72004613AF /* MathLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathLib.m; sourceTree = "<group>"; };
+		DE1B051414D28904004613AF /* SlashHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlashHandler.h; sourceTree = "<group>"; };
+		DE1B051514D28904004613AF /* SlashHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlashHandler.m; sourceTree = "<group>"; };
+		DE1B051714D2898B004613AF /* TouchPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchPoint.h; sourceTree = "<group>"; };
+		DE1B051814D2898B004613AF /* TouchPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchPoint.m; sourceTree = "<group>"; };
+		DE67C26F14D48A7000493C92 /* SlashMole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlashMole.h; sourceTree = "<group>"; };
+		DE67C27014D48A7000493C92 /* SlashMole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlashMole.m; sourceTree = "<group>"; };
 		DE74B1A714C515AC0037BFAD /* MultiTapMole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiTapMole.h; sourceTree = "<group>"; };
 		DE74B1A814C515AC0037BFAD /* MultiTapMole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiTapMole.m; sourceTree = "<group>"; };
 		DE945E8314C67B7F00554678 /* GameOverLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverLayer.h; sourceTree = "<group>"; };
@@ -515,6 +527,8 @@
 				DEC75A6F14C20E9600A9D451 /* DataManagment */,
 				DEC75A6314C20D8800A9D451 /* Constants.h */,
 				DEC75A6414C20D8800A9D451 /* Constants.m */,
+				DE1B051014D27A72004613AF /* MathLib.h */,
+				DE1B051114D27A72004613AF /* MathLib.m */,
 				DE10E59914C16F440084F3A2 /* AppDelegate.h */,
 				DE10E59A14C16F440084F3A2 /* AppDelegate.m */,
 				DE10E59C14C16F440084F3A2 /* RootViewController.h */,
@@ -877,6 +891,10 @@
 			children = (
 				DE128C3014C22BD2005FE868 /* Moles */,
 				DE128C2F14C22BCD005FE868 /* PowerUps */,
+				DE1B051414D28904004613AF /* SlashHandler.h */,
+				DE1B051514D28904004613AF /* SlashHandler.m */,
+				DE1B051714D2898B004613AF /* TouchPoint.h */,
+				DE1B051814D2898B004613AF /* TouchPoint.m */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
@@ -900,6 +918,8 @@
 				DE128C3514C22CF5005FE868 /* SingleTapMole.m */,
 				DE74B1A714C515AC0037BFAD /* MultiTapMole.h */,
 				DE74B1A814C515AC0037BFAD /* MultiTapMole.m */,
+				DE67C26F14D48A7000493C92 /* SlashMole.h */,
+				DE67C27014D48A7000493C92 /* SlashMole.m */,
 			);
 			name = Moles;
 			sourceTree = "<group>";
@@ -1147,6 +1167,10 @@
 				3E7DE3F214CCF746006E159F /* MoleHelper.m in Sources */,
 				3E7DE3F814CCF85D006E159F /* MoleSpawner.m in Sources */,
 				2094AC5B14CD4A840083191C /* GameCenterManager.m in Sources */,
+				DE1B051214D27A72004613AF /* MathLib.m in Sources */,
+				DE1B051614D28904004613AF /* SlashHandler.m in Sources */,
+				DE1B051914D2898B004613AF /* TouchPoint.m in Sources */,
+				DE67C27114D48A7000493C92 /* SlashMole.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

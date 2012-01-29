@@ -29,4 +29,6 @@
 
 -(void)tapped;
 
+-(void)slashed;
+
 @end
