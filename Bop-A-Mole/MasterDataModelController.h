@@ -12,12 +12,16 @@
 @interface MasterDataModelController : NSObject <GKLeaderboardViewControllerDelegate, GameCenterManagerDelegate>{
     GameCenterManager *gameCenterManager;
     UIViewController *overlayViewController;
+    NSInteger highScore;
 }
 
 +(MasterDataModelController*) sharedInstance;
 -(void) connectToGameCenter;
 -(void)showLeaderboard;
 - (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController;
--(void)submitScore:(long)score;
+-(void)submitScore:(int)score;
+-(void)trackScore:(int)score;
+
+@property (assign) NSInteger highScore;
     
 @end

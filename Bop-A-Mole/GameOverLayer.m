@@ -24,11 +24,17 @@
         [self addChild:greatest];
         
         
-        scoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"score:%d",score] fontName:kFont1 fontSize:16];
-        scoreLabel.position = ccp(280, 160);
+        scoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Score:%d",score] fontName:kFont1 fontSize:16];
+        scoreLabel.position = ccp(380, 160);
         ccColor3B yellow = {255, 255, 0};
         [scoreLabel setColor:yellow];
         [self addChild:scoreLabel];
+        
+        highScoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"High Score:%d",[[MasterDataModelController sharedInstance] highScore]] fontName:kFont1 fontSize:16];
+        highScoreLabel.position = ccp(120, 160);
+        ccColor3B red = {255, 0, 0};
+        [highScoreLabel setColor:red];
+        [self addChild:highScoreLabel];
         
         
         //create button that takes you to the game

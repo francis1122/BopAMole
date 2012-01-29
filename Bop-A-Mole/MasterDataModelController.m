@@ -13,6 +13,7 @@
 static MasterDataModelController *sharedInstance = nil;
 
 @implementation MasterDataModelController
+@synthesize highScore;
 
 +(MasterDataModelController*) sharedInstance{
     @synchronized(self){
@@ -28,6 +29,8 @@ static MasterDataModelController *sharedInstance = nil;
     if (self) {
         // Initialization code here.
         overlayViewController = [[UIViewController alloc] init];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        highScore = [userDefaults integerForKey:@"highScore"];
     }
     
     return self;
@@ -75,11 +78,11 @@ static MasterDataModelController *sharedInstance = nil;
 	[overlayViewController.view.superview removeFromSuperview];
 }
 
--(void)submitScore:(long)score{
+-(void)submitScore:(int)score{
     GKScore *scoreReporter = [[[GKScore alloc] initWithCategory:@"bopamole1122"] autorelease];
 
 	
-	scoreReporter.value = [[NSNumber numberWithLong:score] longValue];
+	scoreReporter.value = [[NSNumber numberWithInt:score] intValue];
 	
 	[scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
 		if (error != nil)
@@ -90,6 +93,16 @@ static MasterDataModelController *sharedInstance = nil;
 			NSLog(@"Submitting Succeeded");	
 		}
 	}];
+
+}
+
+-(void)trackScore:(int)score{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if(highScore < score){
+        [userDefaults setInteger:score forKey:@"highScore"];  
+        highScore = score;
+        [userDefaults synchronize];
+    }
 
 }
 

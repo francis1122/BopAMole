@@ -63,6 +63,7 @@ static GameScene *sharedScene = nil;
 -(void) gameLoop:(ccTime) dt{
     if(isGameOver){
         [self transitionToGameOverLayer];
+        [[MasterDataModelController sharedInstance] trackScore:score];
         [[MasterDataModelController sharedInstance] submitScore:score];
     }
     if(!self.isGamePaused && !self.isBetweenLevels){
