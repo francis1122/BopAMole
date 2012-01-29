@@ -50,4 +50,8 @@
     
 }
 
+-(void)slashed{
+    
+}
+
 @end
