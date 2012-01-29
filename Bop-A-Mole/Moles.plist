@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Single Mole</key>
+	<array>
+		<dict>
+			<key>Position</key>
+			<string>0,0</string>
+			<key>Time</key>
+			<integer>0</integer>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+		<dict>
+			<key>Position</key>
+			<string>1,1</string>
+			<key>Time</key>
+			<integer>3</integer>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+		<dict>
+			<key>Position</key>
+			<string>2,2</string>
+			<key>Time</key>
+			<integer>5</integer>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+	</array>
+	<key>Triple Mole</key>
+	<array/>
+</dict>
+</plist>

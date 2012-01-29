@@ -10,6 +10,7 @@
 		3E7DE3F214CCF746006E159F /* MoleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DE3F114CCF746006E159F /* MoleHelper.m */; };
 		3E7DE3F814CCF85D006E159F /* MoleSpawner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DE3F714CCF85D006E159F /* MoleSpawner.m */; };
 		3E7DE3FA14CCFA34006E159F /* Levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E7DE3F914CCFA34006E159F /* Levels.plist */; };
+		C20F318214CD220700433B57 /* Moles.plist in Resources */ = {isa = PBXBuildFile; fileRef = C20F318114CD220700433B57 /* Moles.plist */; };
 		DE10E43814C16F410084F3A2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10E43714C16F410084F3A2 /* QuartzCore.framework */; };
 		DE10E43A14C16F410084F3A2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10E43914C16F410084F3A2 /* OpenGLES.framework */; };
 		DE10E43C14C16F410084F3A2 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10E43B14C16F410084F3A2 /* OpenAL.framework */; };
@@ -158,6 +159,7 @@
 		3E7DE3F614CCF85D006E159F /* MoleSpawner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoleSpawner.h; sourceTree = "<group>"; };
 		3E7DE3F714CCF85D006E159F /* MoleSpawner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoleSpawner.m; sourceTree = "<group>"; };
 		3E7DE3F914CCFA34006E159F /* Levels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Levels.plist; sourceTree = "<group>"; };
+		C20F318114CD220700433B57 /* Moles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Moles.plist; sourceTree = "<group>"; };
 		DE10E43314C16F410084F3A2 /* Bop-A-Mole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bop-A-Mole.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE10E43714C16F410084F3A2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DE10E43914C16F410084F3A2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -537,6 +539,7 @@
 				DE10E45914C16F410084F3A2 /* Info.plist */,
 				DE10E45A14C16F410084F3A2 /* iTunesArtwork */,
 				3E7DE3F914CCFA34006E159F /* Levels.plist */,
+				C20F318114CD220700433B57 /* Moles.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1004,6 +1007,7 @@
 				DE945EA614C78D8B00554678 /* PauseButton.png in Resources */,
 				DE945EA714C78D8B00554678 /* PlayButton.png in Resources */,
 				3E7DE3FA14CCFA34006E159F /* Levels.plist in Resources */,
+				C20F318214CD220700433B57 /* Moles.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1171,6 +1175,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1179,6 +1184,7 @@
 				INFOPLIST_FILE = "Bop-A-Mole/Resources/Info.plist";
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1187,6 +1193,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bop-A-Mole/Prefix.pch";
@@ -1194,6 +1201,7 @@
 				INFOPLIST_FILE = "Bop-A-Mole/Resources/Info.plist";
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
