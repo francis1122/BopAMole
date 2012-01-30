@@ -74,9 +74,13 @@ static GameScene *sharedScene = nil;
         if(self.gameLayer){
             [self.gameLayer gameLoop:dt];
         }
+
     }
     if(self.isBetweenLevels){
         [self.levelTransitionLayer gameLoop:dt];
+    }
+    if(self.uiLayer){
+        [self.uiLayer gameLoop:dt];
     }
 }
 

@@ -223,14 +223,22 @@
     
     [self checkSlashCollision:location];
     //temporary code, check for collisions
+}
+
+
+-(void)ccTouchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView: [touch view]];
+    location = [[CCDirector sharedDirector] convertToGL: location];
     
-    
+    [self.slashHandler clearAllTouches];
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView: [touch view]];
+    location = [[CCDirector sharedDirector] convertToGL: location];    
     [self.slashHandler clearAllTouches];
 }
 @end

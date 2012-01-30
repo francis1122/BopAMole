@@ -17,12 +17,18 @@
     CCLabelTTF *lifeLabel;
     
     CCMenu *pauseButton;
+    
+    CCRibbon *ribbon;
 }
+
+@property (nonatomic, retain) CCRibbon *ribbon;
 @property (nonatomic, retain) CCMenu *pauseButton;
 @property (nonatomic, retain) CCLabelTTF *scoreLabel;
 @property (nonatomic, retain) CCLabelTTF *comboLabel;
 @property (nonatomic, retain) CCLabelTTF *lifeLabel;
 
 -(void)pauseButtonTouched:(CCMenuItem*)sender;
+
+-(void)gameLoop:(ccTime) dt;
 
 @end
