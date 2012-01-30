@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		105F331914D6488600916528 /* GameUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 105F331814D6488600916528 /* GameUtils.m */; };
 		2094AC5B14CD4A840083191C /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2094AC5A14CD4A840083191C /* GameCenterManager.m */; };
 		2094AC5D14CD4AA90083191C /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2094AC5C14CD4AA80083191C /* GameKit.framework */; };
 		3E7DE3F214CCF746006E159F /* MoleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DE3F114CCF746006E159F /* MoleHelper.m */; };
@@ -164,6 +165,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		105F331714D6488600916528 /* GameUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameUtils.h; sourceTree = "<group>"; };
+		105F331814D6488600916528 /* GameUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameUtils.m; sourceTree = "<group>"; };
 		2094AC5914CD4A840083191C /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
 		2094AC5A14CD4A840083191C /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
 		2094AC5C14CD4AA80083191C /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -554,6 +557,8 @@
 				DE1B051114D27A72004613AF /* MathLib.m */,
 				DE10E59914C16F440084F3A2 /* AppDelegate.h */,
 				DE10E59A14C16F440084F3A2 /* AppDelegate.m */,
+				105F331714D6488600916528 /* GameUtils.h */,
+				105F331814D6488600916528 /* GameUtils.m */,
 				DE10E59C14C16F440084F3A2 /* RootViewController.h */,
 				DE10E59D14C16F440084F3A2 /* RootViewController.m */,
 				DEC75A6714C20D9700A9D451 /* Menu Layers */,
