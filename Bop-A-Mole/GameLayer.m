@@ -80,7 +80,7 @@
     //    float gameTime = [GameScene sharedScene].gameTime;
     int level = [[GameScene sharedScene] level];
     
-    if(rand()%(100 - 5*level) == 0){
+    if(rand()%(70 - 5*level) == 0){
         if(rand()%6 == 0){
             MultiTapMole *newMole = [[[MultiTapMole alloc] initMultiTapMole] autorelease];
             newMole.position = ccp( (rand()%440) + 20, (rand()%200) + 20 );
@@ -201,14 +201,22 @@
 
     [self checkSlashCollision:location];
     //temporary code, check for collisions
+}
+
+
+-(void)ccTouchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView: [touch view]];
+    location = [[CCDirector sharedDirector] convertToGL: location];
     
-    
+    [self.slashHandler clearAllTouches];
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView: [touch view]];
+    location = [[CCDirector sharedDirector] convertToGL: location];    
     [self.slashHandler clearAllTouches];
 }
 @end

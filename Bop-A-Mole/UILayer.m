@@ -13,7 +13,7 @@
 
 @implementation UILayer
 
-@synthesize pauseButton, scoreLabel, comboLabel, lifeLabel;
+@synthesize pauseButton, scoreLabel, comboLabel, lifeLabel, ribbon;
 
 -(id)init{
     if( (self=[super init])) {
@@ -45,13 +45,18 @@
         raceBeginButton.position = ccp(20, 300);
         raceBeginButton.tag = 0;
         
-        
+        self.isTouchEnabled = YES;
 
         self.pauseButton = [CCMenu menuWithItems:raceBeginButton,  nil];
         self.pauseButton.position = CGPointZero;
         
         
         [self addChild:self.pauseButton];
+        
+        ccColor4B black = ccc4(200, 200, 35, 255);
+        self.ribbon = [[CCRibbon alloc] initWithWidth:30.0f image:@"Icon.png" length:30.0f color:black fade:0.2];
+        
+        [self addChild:ribbon];
         
         
         
@@ -68,6 +73,52 @@
     }else{
         [scene pauseGame];
     }
+}
+
+-(void)gameLoop:(ccTime) dt{
+    [self.ribbon update:dt];
+}
+
+-(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for(UITouch* touch in touches){
+        
+        //        UITouch *touch = [touches anyObject];
+        //        CGPoint location = [touch locationInView: [touch view]];
+        //        CGPoint location = [[CCDirector sharedDirector] convertToGL: [touch locationInView:[touch view]]];
+		CGPoint location = [touch locationInView: [touch view]];
+		location = [[CCDirector sharedDirector] convertToGL: location];
+        
+
+        
+    }
+}
+
+-(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView: [touch view]];
+    location = [[CCDirector sharedDirector] convertToGL: location];    
+    
+    [self.ribbon addPointAt:location width:30.0];
+    //temporary code, check for collisions
+}
+
+
+-(void)ccTouchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView: [touch view]];
+    location = [[CCDirector sharedDirector] convertToGL: location];
+    
+
+}
+
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView: [touch view]];
+    location = [[CCDirector sharedDirector] convertToGL: location];    
+    
 }
 
 @end
