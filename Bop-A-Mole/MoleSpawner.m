@@ -94,9 +94,7 @@ static MoleSpawner *sharedInstance = nil;
         
         // Spawn any following moles that might exist in the pattern
         MoleSpawn* nextSpawn = spawn.nextMole;
-        while(nextSpawn && success) {
-            CGPoint nextSpawnRelativePosition = [nextSpawn.mole position];
-            
+        while(nextSpawn && success) {            
             int relativeX = [nextSpawn.mole relativeX];
             int relativeY = [nextSpawn.mole relativeY];
         
@@ -262,8 +260,6 @@ static MoleSpawner *sharedInstance = nil;
                 [moles addObject:spawn];
             }
             
-            
-            //[boardState setObject:moleObj forKey:[NSString stringWithFormat:@"%d,%d",(int)position.x,(int)position.y]];
             [moleObj setRelativeX:(int)position.x];    
             [moleObj setRelativeY:(int)position.y];
             prevSpawn = spawn;

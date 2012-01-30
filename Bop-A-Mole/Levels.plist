@@ -19,6 +19,12 @@
 						<key>Chance</key>
 						<integer>5</integer>
 						<key>Mole Type</key>
+						<string>Square Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>5</integer>
+						<key>Mole Type</key>
 						<string>Single Mole</string>
 					</dict>
 					<dict>

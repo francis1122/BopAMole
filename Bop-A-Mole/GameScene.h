@@ -56,6 +56,10 @@
 //add points to current score
 -(void) addToScore:(NSInteger)points;
 
+//add points to current score, do a pop-up
+-(void) addToScore:(NSInteger)points withDisplayPoint:(CGPoint)displayPt;
+
+
 //add points to current score
 -(void) addToCombo:(NSInteger)points;
 

@@ -110,6 +110,41 @@
 			<string>Tap Mole</string>
 		</dict>
 	</array>
+	<key>Square Mole</key>
+	<array>
+		<dict>
+			<key>Position</key>
+			<string>0,0</string>
+			<key>Time</key>
+			<integer>0</integer>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+		<dict>
+			<key>Position</key>
+			<string>4,4</string>
+			<key>Time</key>
+			<real>1</real>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+		<dict>
+			<key>Position</key>
+			<string>0,4</string>
+			<key>Time</key>
+			<real>2</real>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+		<dict>
+			<key>Position</key>
+			<string>4,0</string>
+			<key>Time</key>
+			<real>3</real>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+	</array>
 	<key>Single Mole</key>
 	<array>
 		<dict>

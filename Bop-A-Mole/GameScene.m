@@ -14,6 +14,8 @@
 #import "PauseLayer.h"
 #import "LevelTransitionLayer.h"
 #import "MasterDataModelController.h"
+#import "SimpleAudioEngine.h"
+#import "ScoreFloatyText.h"
 
 static GameScene *sharedScene = nil;
 
@@ -102,6 +104,33 @@ static GameScene *sharedScene = nil;
     self.score += points * combo;
 }
 
+-(void) addToScore:(NSInteger)points withDisplayPoint:(CGPoint)displayPt {
+    [self addToScore:points];
+    int totalPoints = points*combo;
+    int fontSizeIncrease = 2*(totalPoints/500);
+
+    ccColor3B color = ccWHITE;
+    
+    if(totalPoints > 500) {
+        color = ccYELLOW;
+    }
+    else if(totalPoints > 1000) {
+        color = ccRED;
+    }
+    else if(totalPoints > 2000) {
+        color = ccMAGENTA;
+    }
+    
+    ScoreFloatyText* label = [ScoreFloatyText labelWithString:[NSString stringWithFormat:@"+%d",points*combo] fontName:@"Nonstopitalic.ttf" fontSize:20.0 + fontSizeIncrease];
+    [label setColor:color];
+    [self addChild:label z:100];
+    label.position = CGPointMake(displayPt.x, displayPt.y);
+    [label startFloat];
+    
+    
+    
+}
+
 -(void) addToCombo:(NSInteger)points{
     self.combo += points;
 }
@@ -139,7 +168,7 @@ static GameScene *sharedScene = nil;
 #pragma mark - Transitions
 
 -(void) transitionToGameOverLayer{
-    [[CCDirector sharedDirector] replaceScene: [[[GameOverLayer alloc] initWithScore:self.score] autorelease] ];
+    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[[GameOverLayer alloc] initWithScore:self.score] autorelease] ];
 }
 
 -(void) transitionToMainMenu{
@@ -151,12 +180,15 @@ static GameScene *sharedScene = nil;
 -(void) pauseGame{
     self.isGamePaused = YES;
     self.gameLayer.isTouchEnabled = NO;
+    [[SimpleAudioEngine sharedEngine] pauseBackgroundMusic];
     [self addChild: self.pauseLayer];
 }
 
 -(void) unPauseGame{
     self.isGamePaused = NO;
     self.gameLayer.isTouchEnabled = YES;
+    [[SimpleAudioEngine sharedEngine] resumeBackgroundMusic];
+    
     [self removeChild:self.pauseLayer cleanup:NO];
 }
 

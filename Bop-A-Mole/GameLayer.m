@@ -18,7 +18,7 @@
 #import "MathLib.h"
 #import "MoleSpawner.h"
 #import "MoleSpawn.h"
-
+#import "SimpleAudioEngine.h"
 
 @implementation GameLayer
 
@@ -41,7 +41,9 @@
         self.slashHandler = [[[SlashHandler alloc] init] autorelease];
         self.moleArray = [[[NSMutableArray alloc] init] autorelease];
         self.deadMolesArray = [[[NSMutableArray alloc] init] autorelease];
-        level = [[NSMutableArray alloc] initWithArray:[[MoleSpawner sharedInstance] generateLevel:@"1" withBPM:120]];
+        level = [[NSMutableArray alloc] initWithArray:[[MoleSpawner sharedInstance] generateLevel:@"1" withBPM:130]];
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"CRevell_Mole_Game.mp3"];
+        
     }
     return self;
 }
@@ -90,7 +92,7 @@
         MoleSpawn* spawn = [level objectAtIndex:0];
         float spawnTime = spawn.dt;
         if(spawnTime <= elapsedTime) {
-            CGPoint pixelPos = [[MoleSpawner sharedInstance] getPixelForParititionPosition:[[spawn mole] position]];
+            CGPoint pixelPos = [[MoleSpawner sharedInstance] getPixelForParititionPosition:[spawn.mole position]];
             [spawn.mole setPosition:CGPointMake(pixelPos.x, pixelPos.y)];
             [self.moleArray addObject:spawn.mole];
             [self addChild:spawn.mole];

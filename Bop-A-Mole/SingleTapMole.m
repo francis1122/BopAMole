@@ -33,7 +33,7 @@
     GameScene *gameScene = [GameScene sharedScene];
     self.isDead = YES;
     //first add points
-    [gameScene addToScore:100];
+    [gameScene addToScore:100 withDisplayPoint:self.position];
     //second update combo score
     if(self.isCritical){
         [gameScene addToCombo:1];

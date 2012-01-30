@@ -14,6 +14,10 @@
 		3E7DE3FA14CCFA34006E159F /* Levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E7DE3F914CCFA34006E159F /* Levels.plist */; };
 		C20F318214CD220700433B57 /* Moles.plist in Resources */ = {isa = PBXBuildFile; fileRef = C20F318114CD220700433B57 /* Moles.plist */; };
 		C2795C1D14D5F831006D5422 /* MoleSpawn.m in Sources */ = {isa = PBXBuildFile; fileRef = C2795C1C14D5F831006D5422 /* MoleSpawn.m */; };
+		C27DDFC114D65D16009B2386 /* CRevell_Mole_Game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C27DDFC014D65D16009B2386 /* CRevell_Mole_Game.mp3 */; };
+		C2DA8EAD14D731D40049CFAE /* CASPER.TTF in Resources */ = {isa = PBXBuildFile; fileRef = C2DA8EAC14D731D40049CFAE /* CASPER.TTF */; };
+		C2DA8EB114D732500049CFAE /* ScoreFloatyText.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DA8EB014D732500049CFAE /* ScoreFloatyText.m */; };
+		C2DA8EB314D736B80049CFAE /* Nonstopitalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DA8EB214D736B80049CFAE /* Nonstopitalic.ttf */; };
 		DE10E43814C16F410084F3A2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10E43714C16F410084F3A2 /* QuartzCore.framework */; };
 		DE10E43A14C16F410084F3A2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10E43914C16F410084F3A2 /* OpenGLES.framework */; };
 		DE10E43C14C16F410084F3A2 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10E43B14C16F410084F3A2 /* OpenAL.framework */; };
@@ -172,6 +176,11 @@
 		C20F318114CD220700433B57 /* Moles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Moles.plist; sourceTree = "<group>"; };
 		C2795C1B14D5F831006D5422 /* MoleSpawn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoleSpawn.h; sourceTree = "<group>"; };
 		C2795C1C14D5F831006D5422 /* MoleSpawn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoleSpawn.m; sourceTree = "<group>"; };
+		C27DDFC014D65D16009B2386 /* CRevell_Mole_Game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CRevell_Mole_Game.mp3; sourceTree = "<group>"; };
+		C2DA8EAC14D731D40049CFAE /* CASPER.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = CASPER.TTF; sourceTree = "<group>"; };
+		C2DA8EAF14D732500049CFAE /* ScoreFloatyText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreFloatyText.h; path = ../ScoreFloatyText.h; sourceTree = "<group>"; };
+		C2DA8EB014D732500049CFAE /* ScoreFloatyText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreFloatyText.m; path = ../ScoreFloatyText.m; sourceTree = "<group>"; };
+		C2DA8EB214D736B80049CFAE /* Nonstopitalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nonstopitalic.ttf; sourceTree = "<group>"; };
 		DE10E43314C16F410084F3A2 /* Bop-A-Mole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bop-A-Mole.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE10E43714C16F410084F3A2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DE10E43914C16F410084F3A2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -492,6 +501,15 @@
 			name = "Mole Spawner";
 			sourceTree = "<group>";
 		};
+		C2DA8EB414D7384C0049CFAE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C2DA8EAF14D732500049CFAE /* ScoreFloatyText.h */,
+				C2DA8EB014D732500049CFAE /* ScoreFloatyText.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		DE10E42814C16F400084F3A2 = {
 			isa = PBXGroup;
 			children = (
@@ -551,6 +569,9 @@
 		DE10E44814C16F410084F3A2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C2DA8EB214D736B80049CFAE /* Nonstopitalic.ttf */,
+				C2DA8EAC14D731D40049CFAE /* CASPER.TTF */,
+				C27DDFC014D65D16009B2386 /* CRevell_Mole_Game.mp3 */,
 				DE128C3714C25E29005FE868 /* whackamoleBG.png */,
 				DE128C3E14C261D8005FE868 /* whackamoleBG-hd.png */,
 				DE128C2814C21A84005FE868 /* PauseButton-hd.png */,
@@ -943,6 +964,7 @@
 		DEC75A6814C20DAC00A9D451 /* Game Layers */ = {
 			isa = PBXGroup;
 			children = (
+				C2DA8EB414D7384C0049CFAE /* UI */,
 				3E7DE3EE14CCF725006E159F /* Mole Spawner */,
 				DE128C2E14C22BC2005FE868 /* GameObjects */,
 				DEC75A7714C212BA00A9D451 /* GameScene.h */,
@@ -1050,6 +1072,9 @@
 				DE945EA714C78D8B00554678 /* PlayButton.png in Resources */,
 				3E7DE3FA14CCFA34006E159F /* Levels.plist in Resources */,
 				C20F318214CD220700433B57 /* Moles.plist in Resources */,
+				C27DDFC114D65D16009B2386 /* CRevell_Mole_Game.mp3 in Resources */,
+				C2DA8EAD14D731D40049CFAE /* CASPER.TTF in Resources */,
+				C2DA8EB314D736B80049CFAE /* Nonstopitalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1177,6 +1202,7 @@
 				DE1B051914D2898B004613AF /* TouchPoint.m in Sources */,
 				DE67C27114D48A7000493C92 /* SlashMole.m in Sources */,
 				C2795C1D14D5F831006D5422 /* MoleSpawn.m in Sources */,
+				C2DA8EB114D732500049CFAE /* ScoreFloatyText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
