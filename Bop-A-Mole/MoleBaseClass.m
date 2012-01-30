@@ -12,6 +12,7 @@
 @implementation MoleBaseClass
 
 @synthesize lifeTime, lifeSpan, gotAway, criticalSpan, criticalTime, isCritical, isDead;
+@synthesize relativeX, relativeY;
 
 
 -(id) initWithFile:(NSString*)spriteName{
@@ -52,6 +53,12 @@
 
 -(void)slashed{
     
+}
+
+-(void)setPosition:(CGPoint)position {
+    [super setPosition:position];
+    
+
 }
 
 @end

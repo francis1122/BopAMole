@@ -7,12 +7,12 @@
 		<key>BPM</key>
 		<integer>120</integer>
 		<key>Length</key>
-		<integer>30</integer>
+		<integer>120</integer>
 		<key>Stages</key>
 		<array>
 			<dict>
 				<key>Percent</key>
-				<integer>50</integer>
+				<integer>99</integer>
 				<key>What</key>
 				<array>
 					<dict>
@@ -23,36 +23,30 @@
 					</dict>
 					<dict>
 						<key>Chance</key>
-						<integer>2</integer>
+						<integer>7</integer>
 						<key>Mole Type</key>
-						<string>Triple Mole</string>
-					</dict>
-					<dict>
-						<key>Chance</key>
-						<integer>3</integer>
-						<key>Mole Type</key>
-						<string>Skip</string>
+						<string>Triangle Mole</string>
 					</dict>
 				</array>
 				<key>When</key>
 				<array>
 					<dict>
 						<key>Beat</key>
-						<real>0.25</real>
+						<integer>4</integer>
 						<key>Chance</key>
 						<string>5</string>
 					</dict>
 					<dict>
 						<key>Beat</key>
-						<real>0.5</real>
+						<integer>0</integer>
 						<key>Chance</key>
 						<string>3</string>
 					</dict>
 					<dict>
 						<key>Beat</key>
-						<real>0.33</real>
+						<integer>2</integer>
 						<key>Chance</key>
-						<string>2</string>
+						<string>10</string>
 					</dict>
 				</array>
 			</dict>
@@ -63,40 +57,40 @@
 				<array>
 					<dict>
 						<key>Chance</key>
-						<integer>5</integer>
+						<integer>2</integer>
 						<key>Mole Type</key>
-						<string>Single Mole</string>
+						<string>Triple Mole Diagonal</string>
 					</dict>
 					<dict>
 						<key>Chance</key>
 						<integer>2</integer>
 						<key>Mole Type</key>
-						<string>Triple Mole</string>
+						<string>Triple Mole Horizontal</string>
 					</dict>
 					<dict>
 						<key>Chance</key>
-						<integer>3</integer>
+						<integer>2</integer>
 						<key>Mole Type</key>
-						<string>Skip</string>
+						<string>Triple Mole Vertical</string>
 					</dict>
 				</array>
 				<key>When</key>
 				<array>
 					<dict>
 						<key>Beat</key>
-						<real>0.25</real>
+						<integer>4</integer>
 						<key>Chance</key>
 						<string>5</string>
 					</dict>
 					<dict>
 						<key>Beat</key>
-						<real>0.5</real>
+						<integer>8</integer>
 						<key>Chance</key>
 						<string>3</string>
 					</dict>
 					<dict>
 						<key>Beat</key>
-						<real>0.33</real>
+						<integer>12</integer>
 						<key>Chance</key>
 						<string>2</string>
 					</dict>

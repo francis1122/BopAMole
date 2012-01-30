@@ -19,11 +19,17 @@
     float criticalTime; //when the critical time starts
     float criticalSpan; //how long the critical time lasts for
     BOOL isCritical; //the mole is in the critical timing window
+    
+    int relativeX;
+    int relativeY;
 }
 
 @property (nonatomic) float lifeTime;
 @property (nonatomic) float lifeSpan, criticalTime, criticalSpan;
 @property (nonatomic) BOOL gotAway, isCritical, isDead;
+
+@property (nonatomic) int relativeX;
+@property (nonatomic) int relativeY;
 
 -(void)gameLoop:(ccTime)dt;
 

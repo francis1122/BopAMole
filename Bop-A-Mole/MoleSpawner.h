@@ -8,16 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
+@class MoleSpawn;
+
 @interface MoleSpawner : NSObject {
     float lastSpawn;
     NSDictionary* levelData;
     NSDictionary* moleData;
+    NSMutableDictionary* boardState;
+    NSMutableArray* spotCheck;
+    NSMutableArray* finalizedMoles;
 }
+
+@property (nonatomic, retain) NSDictionary* levelData;
+@property (nonatomic, retain) NSDictionary* moleData;
 
 +(MoleSpawner*)sharedInstance;
 -(NSArray*)generateLevel:(NSString*)levelNum withBPM:(int)BPM;
-- (NSDictionary*)rollBetweenItems:(NSArray*)items;
+-(CGSize)partitionSize;
+-(CGPoint)getPixelForParititionPosition:(CGPoint)position;
+-(NSDictionary*)rollBetweenItems:(NSArray*)items;
 
+// Mole positioning
+- (CGPoint)locationForMoleSpawn:(MoleSpawn*)spawn;
+- (BOOL)attemptMoleSpawn:(MoleSpawn*)spawn inStack:(NSMutableArray*)stack;
 
 
 @end

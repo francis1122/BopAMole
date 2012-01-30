@@ -17,6 +17,7 @@
 #import "TouchPoint.h"
 #import "MathLib.h"
 #import "MoleSpawner.h"
+#import "MoleSpawn.h"
 
 
 @implementation GameLayer
@@ -40,8 +41,7 @@
         self.slashHandler = [[[SlashHandler alloc] init] autorelease];
         self.moleArray = [[[NSMutableArray alloc] init] autorelease];
         self.deadMolesArray = [[[NSMutableArray alloc] init] autorelease];
-        
-        NSArray* level = [[MoleSpawner sharedInstance] generateLevel:@"1" withBPM:120];
+        level = [[NSMutableArray alloc] initWithArray:[[MoleSpawner sharedInstance] generateLevel:@"1" withBPM:120]];
     }
     return self;
 }
@@ -66,43 +66,62 @@
     
     [self removeMoles];
     
-    if( [[GameScene sharedScene] timeOnCurrentLevel] > 15.0){
-        
-        //remove moles while level changes
-        for(MoleBaseClass* moleObject in self.moleArray){
-            [self.deadMolesArray addObject:moleObject];
-        }
-        [self removeMoles];
-        [[GameScene sharedScene] moveToNextLevel];
-    }
+    //    if( [[GameScene sharedScene] timeOnCurrentLevel] > 15.0){
+    //        
+    //        //remove moles while level changes
+    //        for(MoleBaseClass* moleObject in self.moleArray){
+    //            [self.deadMolesArray addObject:moleObject];
+    //        }
+    //        [self removeMoles];
+    //        [[GameScene sharedScene] moveToNextLevel];
+    //    }
     
 }
 
 
 -(void)spawnMoles{
     //    float gameTime = [GameScene sharedScene].gameTime;
-    int level = [[GameScene sharedScene] level];
+    int levelNum = [[GameScene sharedScene] level];
     
-    if(rand()%(100 - 5*level) == 0){
-        if(rand()%6 == 0){
-            MultiTapMole *newMole = [[[MultiTapMole alloc] initMultiTapMole] autorelease];
-            newMole.position = ccp( (rand()%440) + 20, (rand()%200) + 20 );
-            [self.moleArray addObject:newMole];
-            [self addChild:newMole];
-        }else{
-/*            SingleTapMole *newMole = [[[SingleTapMole alloc] initSingleTapMole] autorelease];
-            newMole.position = ccp( (rand()%440) + 20, (rand()%200) + 20 );
-            [self.moleArray addObject:newMole];
-            [self addChild:newMole];
- */
-            
-            SlashMole *newMole = [[[SlashMole alloc] initSlashMole] autorelease];
-            newMole.position = ccp( (rand()%440) + 20, (rand()%200) + 20 );
-            [self.moleArray addObject:newMole];
-            [self addChild:newMole];
-            
+    
+    float elapsedTime = [[GameScene sharedScene] timeOnCurrentLevel];
+    BOOL objectsLeftToSpawnThisTick = YES;
+    while([level count] > 0 && objectsLeftToSpawnThisTick) {
+        MoleSpawn* spawn = [level objectAtIndex:0];
+        float spawnTime = spawn.dt;
+        if(spawnTime <= elapsedTime) {
+            CGPoint pixelPos = [[MoleSpawner sharedInstance] getPixelForParititionPosition:[[spawn mole] position]];
+            [spawn.mole setPosition:CGPointMake(pixelPos.x, pixelPos.y)];
+            [self.moleArray addObject:spawn.mole];
+            [self addChild:spawn.mole];
+            [level removeObjectAtIndex:0];
         }
-    }
+        else {
+            objectsLeftToSpawnThisTick = NO;
+        }
+    }    
+    //    
+    //    if(rand()%(100 - 5*level) == 0){
+    //        if(rand()%6 == 0){
+    //            MultiTapMole *newMole = [[[MultiTapMole alloc] initMultiTapMole] autorelease];
+    //            newMole.position = ccp( (rand()%440) + 20, (rand()%200) + 20 );
+    //            [self.moleArray addObject:newMole];
+    //            [self addChild:newMole];
+    //        }else{
+    ///*            SingleTapMole *newMole = [[[SingleTapMole alloc] initSingleTapMole] autorelease];
+    //            newMole.position = ccp( (rand()%440) + 20, (rand()%200) + 20 );
+    //            [self.moleArray addObject:newMole];
+    //            [self addChild:newMole];
+    // */
+    //            
+    //            SlashMole *newMole = [[[SlashMole alloc] initSlashMole] autorelease];
+    //            newMole.position = ccp( (rand()%440) + 20, (rand()%200) + 20 );
+    //            [self.moleArray addObject:newMole];
+    //            [self addChild:newMole];
+    //            
+    //        }
+    //    }
+    
 }
 
 -(void)removeMoles{
@@ -159,7 +178,7 @@
 }
 
 -(void)checkSlashCollision:(CGPoint) touch{
-
+    
     GameScene *gameScene = [GameScene sharedScene];
     [self.slashHandler addPoint:touch];
     if(self.slashHandler.touchArray.count < 2){
@@ -169,12 +188,12 @@
         for(int i = 1; i < self.slashHandler.touchArray.count; i++){
             CGPoint a = ((TouchPoint*)[self.slashHandler.touchArray objectAtIndex:i-1]).position;
             CGPoint b = ((TouchPoint*)[self.slashHandler.touchArray objectAtIndex:i]).position;
-//            NSLog(@" a: %f, %f", a.x, a.y);
-  //          NSLog(@" b: %f, %f", b.x, b.y);
+            //            NSLog(@" a: %f, %f", a.x, a.y);
+            //          NSLog(@" b: %f, %f", b.x, b.y);
             
             if([MathLib intersectionStartLinePoint:a endLinePoint:b WithRect:moleObject.boundingBox]){
                 [moleObject slashed];
-              }
+            }
         }
         
     } 
@@ -192,7 +211,7 @@
         
         [self checkTapCollision:location];
         [self checkSlashCollision:location];
-
+        
     }
 }
 
@@ -201,7 +220,7 @@
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView: [touch view]];
     location = [[CCDirector sharedDirector] convertToGL: location];    
-
+    
     [self checkSlashCollision:location];
     //temporary code, check for collisions
     

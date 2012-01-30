@@ -13,6 +13,7 @@
 		3E7DE3F814CCF85D006E159F /* MoleSpawner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DE3F714CCF85D006E159F /* MoleSpawner.m */; };
 		3E7DE3FA14CCFA34006E159F /* Levels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E7DE3F914CCFA34006E159F /* Levels.plist */; };
 		C20F318214CD220700433B57 /* Moles.plist in Resources */ = {isa = PBXBuildFile; fileRef = C20F318114CD220700433B57 /* Moles.plist */; };
+		C2795C1D14D5F831006D5422 /* MoleSpawn.m in Sources */ = {isa = PBXBuildFile; fileRef = C2795C1C14D5F831006D5422 /* MoleSpawn.m */; };
 		DE10E43814C16F410084F3A2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10E43714C16F410084F3A2 /* QuartzCore.framework */; };
 		DE10E43A14C16F410084F3A2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10E43914C16F410084F3A2 /* OpenGLES.framework */; };
 		DE10E43C14C16F410084F3A2 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10E43B14C16F410084F3A2 /* OpenAL.framework */; };
@@ -169,6 +170,8 @@
 		3E7DE3F714CCF85D006E159F /* MoleSpawner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoleSpawner.m; sourceTree = "<group>"; };
 		3E7DE3F914CCFA34006E159F /* Levels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Levels.plist; sourceTree = "<group>"; };
 		C20F318114CD220700433B57 /* Moles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Moles.plist; sourceTree = "<group>"; };
+		C2795C1B14D5F831006D5422 /* MoleSpawn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoleSpawn.h; sourceTree = "<group>"; };
+		C2795C1C14D5F831006D5422 /* MoleSpawn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoleSpawn.m; sourceTree = "<group>"; };
 		DE10E43314C16F410084F3A2 /* Bop-A-Mole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bop-A-Mole.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE10E43714C16F410084F3A2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DE10E43914C16F410084F3A2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -483,6 +486,8 @@
 			children = (
 				3E7DE3F614CCF85D006E159F /* MoleSpawner.h */,
 				3E7DE3F714CCF85D006E159F /* MoleSpawner.m */,
+				C2795C1B14D5F831006D5422 /* MoleSpawn.h */,
+				C2795C1C14D5F831006D5422 /* MoleSpawn.m */,
 			);
 			name = "Mole Spawner";
 			sourceTree = "<group>";
@@ -1171,6 +1176,7 @@
 				DE1B051614D28904004613AF /* SlashHandler.m in Sources */,
 				DE1B051914D2898B004613AF /* TouchPoint.m in Sources */,
 				DE67C27114D48A7000493C92 /* SlashMole.m in Sources */,
+				C2795C1D14D5F831006D5422 /* MoleSpawn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Triple Mole</key>
+	<key>Triple Mole Diagonal</key>
 	<array>
 		<dict>
 			<key>Position</key>
@@ -14,17 +14,98 @@
 		</dict>
 		<dict>
 			<key>Position</key>
-			<string>1,1</string>
+			<string>3,3</string>
 			<key>Time</key>
-			<integer>3</integer>
+			<real>0.5</real>
 			<key>Mole Type</key>
 			<string>Tap Mole</string>
 		</dict>
 		<dict>
 			<key>Position</key>
-			<string>2,2</string>
+			<string>6,6</string>
 			<key>Time</key>
-			<integer>5</integer>
+			<real>1</real>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+	</array>
+	<key>Triple Mole Horizontal</key>
+	<array>
+		<dict>
+			<key>Position</key>
+			<string>0,0</string>
+			<key>Time</key>
+			<integer>0</integer>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+		<dict>
+			<key>Position</key>
+			<string>3,0</string>
+			<key>Time</key>
+			<real>0.5</real>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+		<dict>
+			<key>Position</key>
+			<string>6,0</string>
+			<key>Time</key>
+			<integer>1</integer>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+	</array>
+	<key>Triple Mole Vertical</key>
+	<array>
+		<dict>
+			<key>Position</key>
+			<string>0,0</string>
+			<key>Time</key>
+			<integer>0</integer>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+		<dict>
+			<key>Position</key>
+			<string>0,3</string>
+			<key>Time</key>
+			<real>0.5</real>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+		<dict>
+			<key>Position</key>
+			<string>0,6</string>
+			<key>Time</key>
+			<integer>1</integer>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+	</array>
+	<key>Triangle Mole</key>
+	<array>
+		<dict>
+			<key>Position</key>
+			<string>0,0</string>
+			<key>Time</key>
+			<integer>0</integer>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+		<dict>
+			<key>Position</key>
+			<string>1,2</string>
+			<key>Time</key>
+			<integer>0</integer>
+			<key>Mole Type</key>
+			<string>Tap Mole</string>
+		</dict>
+		<dict>
+			<key>Position</key>
+			<string>2,0</string>
+			<key>Time</key>
+			<integer>0</integer>
 			<key>Mole Type</key>
 			<string>Tap Mole</string>
 		</dict>
