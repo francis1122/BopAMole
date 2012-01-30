@@ -95,7 +95,7 @@
 		</dict>
 		<dict>
 			<key>Position</key>
-			<string>1,2</string>
+			<string>2,4</string>
 			<key>Time</key>
 			<integer>0</integer>
 			<key>Mole Type</key>
@@ -103,7 +103,7 @@
 		</dict>
 		<dict>
 			<key>Position</key>
-			<string>2,0</string>
+			<string>4,0</string>
 			<key>Time</key>
 			<integer>0</integer>
 			<key>Mole Type</key>
