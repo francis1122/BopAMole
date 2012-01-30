@@ -1,5 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<dict>
+	<key>1</key>
+	<dict>
+		<key>BPM</key>
+		<integer>120</integer>
+		<key>Length</key>
+		<integer>30</integer>
+		<key>Stages</key>
+		<array>
+			<dict>
+				<key>Percent</key>
+				<integer>50</integer>
+				<key>What</key>
+				<array>
+					<dict>
+						<key>Chance</key>
+						<integer>5</integer>
+						<key>Mole Type</key>
+						<string>Single Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>2</integer>
+						<key>Mole Type</key>
+						<string>Triple Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>3</integer>
+						<key>Mole Type</key>
+						<string>Skip</string>
+					</dict>
+				</array>
+				<key>When</key>
+				<array>
+					<dict>
+						<key>Beat</key>
+						<real>0.25</real>
+						<key>Chance</key>
+						<string>5</string>
+					</dict>
+					<dict>
+						<key>Beat</key>
+						<real>0.5</real>
+						<key>Chance</key>
+						<string>3</string>
+					</dict>
+					<dict>
+						<key>Beat</key>
+						<real>0.33</real>
+						<key>Chance</key>
+						<string>2</string>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>Percent</key>
+				<integer>100</integer>
+				<key>What</key>
+				<array>
+					<dict>
+						<key>Chance</key>
+						<integer>5</integer>
+						<key>Mole Type</key>
+						<string>Single Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>2</integer>
+						<key>Mole Type</key>
+						<string>Triple Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>3</integer>
+						<key>Mole Type</key>
+						<string>Skip</string>
+					</dict>
+				</array>
+				<key>When</key>
+				<array>
+					<dict>
+						<key>Beat</key>
+						<real>0.25</real>
+						<key>Chance</key>
+						<string>5</string>
+					</dict>
+					<dict>
+						<key>Beat</key>
+						<real>0.5</real>
+						<key>Chance</key>
+						<string>3</string>
+					</dict>
+					<dict>
+						<key>Beat</key>
+						<real>0.33</real>
+						<key>Chance</key>
+						<string>2</string>
+					</dict>
+				</array>
+			</dict>
+		</array>
+	</dict>
+</dict>
 </plist>

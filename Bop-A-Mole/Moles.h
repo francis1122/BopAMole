@@ -8,6 +8,5 @@
 
 #import "SingleTapMole.h"
 #import "MultiTapMole.h"
+#import "SlashMole.h"
 
-#define MOLE_TAP 1
-#define MOLE_DOUBLE_TAP 2
