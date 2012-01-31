@@ -21,7 +21,7 @@
 - (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController;
 -(void)submitScore:(int)score;
 -(void)trackScore:(int)score;
-
+-(void)trackRandomSeed:(int)seed;
 @property (assign) NSInteger highScore;
     
 @end

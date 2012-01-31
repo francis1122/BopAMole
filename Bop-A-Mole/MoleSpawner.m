@@ -11,6 +11,7 @@
 #import "Moles.h"
 
 #import "MoleSpawn.h"
+#import "MasterDataModelController.h"
 
 #define BOARD_X_PARTITIONS 15
 #define BOARD_Y_PARTITIONS 8
@@ -71,12 +72,12 @@ static MoleSpawner *sharedInstance = nil;
     
     NSMutableArray* remainingSpots = [[NSMutableArray alloc] initWithArray:spotCheck];
     
-    CGPoint directionalModifiers = CGPointMake(arc4random() % 100 < 50 ? 1 : -1, arc4random() % 100 < 50 ? 1 : -1);
+    CGPoint directionalModifiers = CGPointMake(rand() % 100 < 50 ? 1 : -1, rand() % 100 < 50 ? 1 : -1);
     
     
     // TODO: Handle impossible situation
     while(!success && [remainingSpots count] > 0) {
-        int randomSpot = arc4random() % [remainingSpots count];
+        int randomSpot = rand() % [remainingSpots count];
         NSString* key = [remainingSpots objectAtIndex:randomSpot];
         
         NSArray* locComponents = [key componentsSeparatedByString:@","];
@@ -174,7 +175,7 @@ static MoleSpawner *sharedInstance = nil;
 }
 
 -(NSDictionary*)rollBetweenItems:(NSArray*)items {
-    int roll = arc4random() % 100;
+    int roll = rand() % 100;
     int totalProbability = 0;
     
     for(NSDictionary* item in items) {
@@ -198,6 +199,15 @@ static MoleSpawner *sharedInstance = nil;
 
 -(NSArray*)generateLevel:(NSString*)levelNum withBPM:(int)BPM {
     NSDictionary* level = [levelData objectForKey:levelNum];
+    
+    // Get player's current seed
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    int seed = [userDefaults integerForKey:@"randSeed"];
+    srand(seed);
+    
+    // Change the stored seed
+    [[MasterDataModelController sharedInstance] trackRandomSeed:seed+1];
+
     if(level) {
         // Reset state
         boardState = [NSMutableDictionary new];

@@ -10,6 +10,8 @@
 #import "cocos2d.h"
 #import "AppDelegate.h"
 
+#define SEED_EXPIRATION_THRESHOLD 0
+
 static MasterDataModelController *sharedInstance = nil;
 
 @implementation MasterDataModelController
@@ -37,7 +39,7 @@ static MasterDataModelController *sharedInstance = nil;
 }
 
 -(void)connectToGameCenter{
-
+    
 	
 	//load the specific leadeboard for this game, or well for a type of game, this could be for EASY/MED/HARD but for now we are just going to post 1 leaderboard
 	
@@ -80,7 +82,7 @@ static MasterDataModelController *sharedInstance = nil;
 
 -(void)submitScore:(int)score{
     GKScore *scoreReporter = [[[GKScore alloc] initWithCategory:@"bopamole1122"] autorelease];
-
+    
 	
 	scoreReporter.value = [[NSNumber numberWithInt:score] intValue];
 	
@@ -93,7 +95,7 @@ static MasterDataModelController *sharedInstance = nil;
 			NSLog(@"Submitting Succeeded");	
 		}
 	}];
-
+    
 }
 
 -(void)trackScore:(int)score{
@@ -103,10 +105,37 @@ static MasterDataModelController *sharedInstance = nil;
         highScore = score;
         [userDefaults synchronize];
     }
+    
+}
 
+-(void)trackRandomSeed:(int)seed {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDate* lastSeedDate = [userDefaults objectForKey:@"seedDate"];
+    
+    // Initial case
+    if(lastSeedDate == nil) {
+        lastSeedDate = [[NSDate alloc] init];
+        [userDefaults setObject:lastSeedDate forKey:@"seedDate"];
+        [userDefaults setInteger:seed forKey:@"randSeed"];          
+    }
+    else {
+        
+        NSDate *now = [[NSDate alloc] init];
+        
+        // If enough time has elapsed, generate a new seed
+        if([now timeIntervalSince1970] - [lastSeedDate timeIntervalSince1970] 
+           > SEED_EXPIRATION_THRESHOLD) {
+            
+            [userDefaults setInteger:seed forKey:@"randSeed"];  
+            [userDefaults setObject:lastSeedDate forKey:@"seedDate"];
+        }
+    }
+    [userDefaults synchronize];    
+    
 }
 
 -(void)dealloc{
+    [super dealloc];
     [overlayViewController release];
 }
 
