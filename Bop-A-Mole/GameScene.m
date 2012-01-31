@@ -23,7 +23,7 @@ static GameScene *sharedScene = nil;
 
 @implementation GameScene
 
-@synthesize uiLayer, gameLayer, combo, score, isGamePaused, gameTime, playerLife, isGameOver, pauseLayer, level, isBetweenLevels, timeOnCurrentLevel, levelTransitionLayer;
+@synthesize uiLayer, gameLayer, combo, score, isGamePaused, gameTime, playerLife, isGameOver, pauseLayer, level, levelLength, isBetweenLevels, timeOnCurrentLevel, levelTransitionLayer;
 
 +(GameScene*) sharedScene{
     NSAssert(sharedScene != nil, @"sharedScene not available!");
@@ -37,10 +37,12 @@ static GameScene *sharedScene = nil;
         self.score = 0;
         self.combo = 1;
         self.level = 1;
+        realLevel = 1;
         self.isBetweenLevels = NO;
         self.timeOnCurrentLevel = 0.0f;
         self.gameTime = 0.0f;
         self.playerLife = 3;
+        self.levelLength = -1.0f;
         self.isGameOver = NO;
         
         //setup layers of the game
@@ -86,6 +88,15 @@ static GameScene *sharedScene = nil;
     if(self.uiLayer){
         [self.uiLayer gameLoop:dt];
     }
+}
+
+-(float)levelLength {
+    if(levelLength == -1.0) { // Level length hasn't been set yet
+        levelLength = [[[[[MoleSpawner sharedInstance] levelData] objectForKey:
+                         [NSString stringWithFormat:@"%d",realLevel]] 
+                        valueForKey:@"Length"] floatValue];
+    }
+    return levelLength;
 }
 
 -(void) setScore:(NSInteger)_score{
@@ -173,6 +184,9 @@ static GameScene *sharedScene = nil;
     while(levelData == nil) {
         levelData = [[MoleSpawner sharedInstance] generateLevel:[NSString stringWithFormat:@"%d",levelToGrab--] withBPM:130];
     }
+    
+    realLevel = levelToGrab;
+    levelLength = -1.0f;
     self.gameLayer.level = [[NSMutableArray alloc] initWithArray:levelData];
 }
 

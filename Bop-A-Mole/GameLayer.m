@@ -101,7 +101,7 @@
     }  
     
     // If level is finished, start next level
-    if([level count] == 0){
+    if(elapsedTime > [[GameScene sharedScene] levelLength]){
         for(MoleBaseClass* moleObject in self.moleArray){
             [self.deadMolesArray addObject:moleObject];
         }
