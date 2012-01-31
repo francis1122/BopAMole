@@ -190,7 +190,11 @@ static GameScene *sharedScene = nil;
     }
     
     realLevel = levelToGrab;
-    levelLength = -1.0f;
+    
+    self.levelLength = [[[[[MoleSpawner sharedInstance] levelData] objectForKey:
+                     [NSString stringWithFormat:@"%d",realLevel]] 
+                    valueForKey:@"Length"] floatValue];
+
     self.gameLayer.level = [[NSMutableArray alloc] initWithArray:levelData];
 }
 
