@@ -22,7 +22,7 @@
 
 @implementation GameLayer
 
-@synthesize moleArray, deadMolesArray, slashHandler;
+@synthesize moleArray, deadMolesArray, slashHandler, level;
 
 -(id)init{
     if(self = [super init]){
@@ -33,7 +33,6 @@
         [backgroundSprite setPosition:ccp(s.width/2, s.height/2)];
         
         
-        //        backgroundSprite.position = ccp(0,0);
         [self addChild:backgroundSprite];
         
         
@@ -81,13 +80,11 @@
 }
 
 
--(void)spawnMoles{
-    //    float gameTime = [GameScene sharedScene].gameTime;
-    int levelNum = [[GameScene sharedScene] level];
-    
-    
+-(void)spawnMoles{    
     float elapsedTime = [[GameScene sharedScene] timeOnCurrentLevel];
     BOOL objectsLeftToSpawnThisTick = YES;
+    
+    // Spawn all moles that should have by now
     while([level count] > 0 && objectsLeftToSpawnThisTick) {
         MoleSpawn* spawn = [level objectAtIndex:0];
         float spawnTime = spawn.dt;
@@ -101,29 +98,17 @@
         else {
             objectsLeftToSpawnThisTick = NO;
         }
-    }    
-    //    
-    //    if(rand()%(100 - 5*level) == 0){
-    //        if(rand()%6 == 0){
-    //            MultiTapMole *newMole = [[[MultiTapMole alloc] initMultiTapMole] autorelease];
-    //            newMole.position = ccp( (rand()%440) + 20, (rand()%200) + 20 );
-    //            [self.moleArray addObject:newMole];
-    //            [self addChild:newMole];
-    //        }else{
-    ///*            SingleTapMole *newMole = [[[SingleTapMole alloc] initSingleTapMole] autorelease];
-    //            newMole.position = ccp( (rand()%440) + 20, (rand()%200) + 20 );
-    //            [self.moleArray addObject:newMole];
-    //            [self addChild:newMole];
-    // */
-    //            
-    //            SlashMole *newMole = [[[SlashMole alloc] initSlashMole] autorelease];
-    //            newMole.position = ccp( (rand()%440) + 20, (rand()%200) + 20 );
-    //            [self.moleArray addObject:newMole];
-    //            [self addChild:newMole];
-    //            
-    //        }
-    //    }
+    }  
     
+    // If level is finished, start next level
+    if(elapsedTime > [[GameScene sharedScene] levelLength]){
+        for(MoleBaseClass* moleObject in self.moleArray){
+            [self.deadMolesArray addObject:moleObject];
+        }
+        [self removeMoles];
+        [[GameScene sharedScene] moveToNextLevel];
+        
+    }
 }
 
 -(void)removeMoles{

@@ -97,7 +97,7 @@ static MoleSpawner *sharedInstance = nil;
         while(nextSpawn && success) {            
             int relativeX = [nextSpawn.mole relativeX];
             int relativeY = [nextSpawn.mole relativeY];
-        
+            
             relativeX *= directionalModifiers.x;
             relativeY *= directionalModifiers.y;
             
@@ -198,95 +198,97 @@ static MoleSpawner *sharedInstance = nil;
 
 -(NSArray*)generateLevel:(NSString*)levelNum withBPM:(int)BPM {
     NSDictionary* level = [levelData objectForKey:levelNum];
-    
-    // Reset state
-    boardState = [NSMutableDictionary new];
-    finalizedMoles = [NSMutableArray new];
-    
-    NSMutableArray* moles = [NSMutableArray new];
-    
-    float beatInterval = 60.0/BPM;
-    float elapsedTime = 0.0;
-    float levelLength = [[level valueForKey:@"Length"] floatValue];
-    NSDictionary* currentStage = [[level objectForKey:@"Stages"] objectAtIndex:0];
-    
-    do {
-        float percentComplete = 100 * (elapsedTime / levelLength);
+    if(level) {
+        // Reset state
+        boardState = [NSMutableDictionary new];
+        finalizedMoles = [NSMutableArray new];
         
-        // Go to next stage, if needed
-        if (percentComplete >= [[currentStage valueForKey:@"Percent"] intValue]) {
-            for (NSDictionary* stage in [level objectForKey:@"Stages"]) {
-                if(percentComplete < [[stage valueForKey:@"Percent"] intValue]) {
-                    currentStage = stage;
-                    break;
+        NSMutableArray* moles = [NSMutableArray new];
+        
+        float beatInterval = 60.0/BPM;
+        float elapsedTime = 0.0;
+        float levelLength = [[level valueForKey:@"Length"] floatValue];
+        NSDictionary* currentStage = [[level objectForKey:@"Stages"] objectAtIndex:0];
+        
+        do {
+            float percentComplete = 100 * (elapsedTime / levelLength);
+            
+            // Go to next stage, if needed
+            if (percentComplete >= [[currentStage valueForKey:@"Percent"] intValue]) {
+                for (NSDictionary* stage in [level objectForKey:@"Stages"]) {
+                    if(percentComplete < [[stage valueForKey:@"Percent"] intValue]) {
+                        currentStage = stage;
+                        break;
+                    }
                 }
             }
-        }
-        
-        // Choose beat interval
-        NSArray* beatIntervals = [currentStage objectForKey:@"When"];        
-        NSDictionary* chosenBeatInterval = [self rollBetweenItems:beatIntervals];
-        float beat = [[chosenBeatInterval valueForKey:@"Beat"] floatValue];
-        if(beat == 0) {
-            NSLog(@"Zero beat!");
-        }
-        elapsedTime += beatInterval * beat;
-        
-        // Choose mole pattern to spawn
-        NSArray* molePatterns = [currentStage objectForKey:@"What"]; 
-        NSDictionary* chosenMolePattern = [self rollBetweenItems:molePatterns];
-        NSArray* molePattern = [moleData objectForKey:[chosenMolePattern valueForKey:@"Mole Type"]];
-        
-        // Setup and add mole
-        MoleSpawn* prevSpawn = nil;
-        
-        for(int i = 0; i < [molePattern count]; ++i) {
-            NSDictionary* mole = [molePattern objectAtIndex:i];
-            NSArray* positionArray = [[mole valueForKey:@"Position"] componentsSeparatedByString:@","];
-            CGPoint position = CGPointMake([[positionArray objectAtIndex:0] intValue],[[positionArray objectAtIndex:1] intValue]);
-            float time = elapsedTime + beatInterval * [[mole valueForKey:@"Time"] floatValue];
-            id moleObj = [MoleHelper createMole:[mole valueForKey:@"Mole Type"]];
             
-            MoleSpawn* spawn = [[MoleSpawn alloc] init];
-            spawn.mole = moleObj;
-            spawn.dt = time;
-            spawn.death_dt = time + (float)[moleObj lifeSpan];
-            spawn.pattern = [chosenMolePattern valueForKey:@"Mole Type"];
-            
-            if(prevSpawn) {
-                prevSpawn.nextMole = spawn;
+            // Choose beat interval
+            NSArray* beatIntervals = [currentStage objectForKey:@"When"];        
+            NSDictionary* chosenBeatInterval = [self rollBetweenItems:beatIntervals];
+            float beat = [[chosenBeatInterval valueForKey:@"Beat"] floatValue];
+            if(beat == 0) {
+                NSLog(@"Zero beat!");
             }
-            else {
-                [moles addObject:spawn];
-            }
+            elapsedTime += beatInterval * beat;
             
-            [moleObj setRelativeX:(int)position.x];    
-            [moleObj setRelativeY:(int)position.y];
-            prevSpawn = spawn;
-        }
-        
-    } while(elapsedTime < levelLength);
-    
-    // Position the moles
-    for(int i = 0; i < [moles count]; ++i) {
-        MoleSpawn* spawn = [moles objectAtIndex:i];
-        CGPoint spawnPosition = [self locationForMoleSpawn:spawn];
-        
-        // Only add moles if valid position was found
-        if(spawnPosition.x >= 0 && spawnPosition.y >= 0) {
-            [finalizedMoles addObject:spawn];
-            MoleSpawn* nextSpawn = [spawn nextMole];
-            while (nextSpawn) {                
-                [finalizedMoles addObject:nextSpawn];
-                nextSpawn = [nextSpawn nextMole];
+            // Choose mole pattern to spawn
+            NSArray* molePatterns = [currentStage objectForKey:@"What"]; 
+            NSDictionary* chosenMolePattern = [self rollBetweenItems:molePatterns];
+            NSArray* molePattern = [moleData objectForKey:[chosenMolePattern valueForKey:@"Mole Type"]];
+            
+            // Setup and add mole
+            MoleSpawn* prevSpawn = nil;
+            
+            for(int i = 0; i < [molePattern count]; ++i) {
+                NSDictionary* mole = [molePattern objectAtIndex:i];
+                NSArray* positionArray = [[mole valueForKey:@"Position"] componentsSeparatedByString:@","];
+                CGPoint position = CGPointMake([[positionArray objectAtIndex:0] intValue],[[positionArray objectAtIndex:1] intValue]);
+                float time = elapsedTime + beatInterval * [[mole valueForKey:@"Time"] floatValue];
+                id moleObj = [MoleHelper createMole:[mole valueForKey:@"Mole Type"]];
+                
+                MoleSpawn* spawn = [[MoleSpawn alloc] init];
+                spawn.mole = moleObj;
+                spawn.dt = time;
+                spawn.death_dt = time + (float)[moleObj lifeSpan];
+                spawn.pattern = [chosenMolePattern valueForKey:@"Mole Type"];
+                
+                if(prevSpawn) {
+                    prevSpawn.nextMole = spawn;
+                }
+                else {
+                    [moles addObject:spawn];
+                }
+                
+                [moleObj setRelativeX:(int)position.x];    
+                [moleObj setRelativeY:(int)position.y];
+                prevSpawn = spawn;
             }
             
-            [[spawn mole] setPosition:spawnPosition];
-        }
+        } while(elapsedTime < levelLength);
         
-    }    
-    
-    return finalizedMoles;
+        // Position the moles
+        for(int i = 0; i < [moles count]; ++i) {
+            MoleSpawn* spawn = [moles objectAtIndex:i];
+            CGPoint spawnPosition = [self locationForMoleSpawn:spawn];
+            
+            // Only add moles if valid position was found
+            if(spawnPosition.x >= 0 && spawnPosition.y >= 0) {
+                [finalizedMoles addObject:spawn];
+                MoleSpawn* nextSpawn = [spawn nextMole];
+                while (nextSpawn) {                
+                    [finalizedMoles addObject:nextSpawn];
+                    nextSpawn = [nextSpawn nextMole];
+                }
+                
+                [[spawn mole] setPosition:spawnPosition];
+            }
+            
+        }    
+        
+        return finalizedMoles;
+    }
+    return nil;
 }
 
 @end

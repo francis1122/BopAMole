@@ -22,7 +22,9 @@
     NSInteger playerLife;   
     
     NSInteger level;
+    NSInteger realLevel;
     float timeOnCurrentLevel;
+    float levelLength;
     
     
     float gameTime;
@@ -46,7 +48,7 @@
 @property (nonatomic) BOOL isBetweenLevels; //is the gamestate between levels
 @property (nonatomic) NSInteger level; //what level the player is on
 @property (nonatomic) float timeOnCurrentLevel; //how long the game has been on current level
-
+@property (nonatomic) float levelLength; //how long the level is
 
 
 +(GameScene*) sharedScene;

@@ -32,14 +32,16 @@
 -(void)tapped{
     GameScene *gameScene = [GameScene sharedScene];
     self.isDead = YES;
-    //first add points
-    [gameScene addToScore:100 withDisplayPoint:self.position];
-    //second update combo score
+    
+    //first update combo score
     if(self.isCritical){
         [gameScene addToCombo:1 withDisplayPoint:self.position];
     }else{
         [gameScene setCombo:1];
     }
+    //second update score
+    [gameScene addToScore:100 withDisplayPoint:self.position];
+
 }
 
 @end
