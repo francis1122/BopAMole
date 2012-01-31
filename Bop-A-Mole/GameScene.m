@@ -17,6 +17,7 @@
 #import "SimpleAudioEngine.h"
 #import "ScoreFloatyText.h"
 #import "ComboStar.h"
+#import "MoleSpawner.h"
 
 static GameScene *sharedScene = nil;
 
@@ -167,13 +168,19 @@ static GameScene *sharedScene = nil;
     self.timeOnCurrentLevel = 0.0f;
     [self.levelTransitionLayer.transitionLabel setString:[NSString stringWithFormat:@"level:%d", level]];
     [self addChild: self.levelTransitionLayer];
-    
+    NSArray* levelData = [[MoleSpawner sharedInstance] generateLevel:[NSString stringWithFormat:@"%d",level] withBPM:130];
+    int levelToGrab = self.level;
+    while(levelData == nil) {
+        levelData = [[MoleSpawner sharedInstance] generateLevel:[NSString stringWithFormat:@"%d",levelToGrab--] withBPM:130];
+    }
+    self.gameLayer.level = [[NSMutableArray alloc] initWithArray:levelData];
 }
 
 -(void) startNextLevel{
     self.isBetweenLevels = NO;
     self.timeOnCurrentLevel = 0.0f;
-    [self removeChild:self.levelTransitionLayer cleanup:NO];
+    [self removeChild:self.levelTransitionLayer cleanup:NO];    
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"CRevell_Mole_Game.mp3"];    
 }
 
 #pragma mark - Transitions

@@ -4,23 +4,15 @@
 <dict>
 	<key>1</key>
 	<dict>
-		<key>BPM</key>
-		<integer>120</integer>
 		<key>Length</key>
-		<integer>120</integer>
+		<integer>10</integer>
 		<key>Stages</key>
 		<array>
 			<dict>
 				<key>Percent</key>
-				<integer>99</integer>
+				<integer>100</integer>
 				<key>What</key>
 				<array>
-					<dict>
-						<key>Chance</key>
-						<integer>5</integer>
-						<key>Mole Type</key>
-						<string>Square Mole</string>
-					</dict>
 					<dict>
 						<key>Chance</key>
 						<integer>5</integer>
@@ -74,6 +66,14 @@
 					</dict>
 				</array>
 			</dict>
+		</array>
+	</dict>
+	<key>2</key>
+	<dict>
+		<key>Length</key>
+		<integer>30</integer>
+		<key>Stages</key>
+		<array>
 			<dict>
 				<key>Percent</key>
 				<integer>100</integer>
@@ -81,21 +81,9 @@
 				<array>
 					<dict>
 						<key>Chance</key>
-						<integer>2</integer>
+						<integer>5</integer>
 						<key>Mole Type</key>
-						<string>Triple Mole Diagonal</string>
-					</dict>
-					<dict>
-						<key>Chance</key>
-						<integer>2</integer>
-						<key>Mole Type</key>
-						<string>Triple Mole Horizontal</string>
-					</dict>
-					<dict>
-						<key>Chance</key>
-						<integer>2</integer>
-						<key>Mole Type</key>
-						<string>Triple Mole Vertical</string>
+						<string>Square Mole</string>
 					</dict>
 				</array>
 				<key>When</key>
@@ -108,15 +96,15 @@
 					</dict>
 					<dict>
 						<key>Beat</key>
-						<integer>8</integer>
+						<integer>0</integer>
 						<key>Chance</key>
-						<string>3</string>
+						<string>1</string>
 					</dict>
 					<dict>
 						<key>Beat</key>
-						<integer>12</integer>
+						<integer>8</integer>
 						<key>Chance</key>
-						<string>2</string>
+						<string>10</string>
 					</dict>
 				</array>
 			</dict>

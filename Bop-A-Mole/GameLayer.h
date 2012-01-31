@@ -19,7 +19,7 @@
     NSMutableArray* level;
 }
 
-@property (nonatomic, retain) NSMutableArray *moleArray, *deadMolesArray;
+@property (nonatomic, retain) NSMutableArray *moleArray, *deadMolesArray, *level;
 @property (nonatomic, retain) SlashHandler *slashHandler;
 
 
