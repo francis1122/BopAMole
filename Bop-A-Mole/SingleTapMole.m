@@ -36,7 +36,7 @@
     [gameScene addToScore:100 withDisplayPoint:self.position];
     //second update combo score
     if(self.isCritical){
-        [gameScene addToCombo:1];
+        [gameScene addToCombo:1 withDisplayPoint:self.position];
     }else{
         [gameScene setCombo:1];
     }

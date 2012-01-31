@@ -16,6 +16,7 @@
 #import "MasterDataModelController.h"
 #import "SimpleAudioEngine.h"
 #import "ScoreFloatyText.h"
+#import "ComboStar.h"
 
 static GameScene *sharedScene = nil;
 
@@ -91,6 +92,16 @@ static GameScene *sharedScene = nil;
          [self.uiLayer.scoreLabel setString:[NSString stringWithFormat:@"%d", _score]];
     }
     score = _score;
+}
+
+-(void) addToCombo:(NSInteger)points withDisplayPoint:(CGPoint)displayPt {
+    [self addToCombo:points];
+    
+    // draw star
+        ComboStar* comboStar = [[ComboStar alloc] initWithFile:@"Star.png"];
+        [comboStar setupComboStar];
+        comboStar.position = displayPt;
+        [self addChild:comboStar z:100];
 }
 
 -(void) setCombo:(NSInteger)_combo{

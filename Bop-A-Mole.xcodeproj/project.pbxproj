@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		105F331914D6488600916528 /* GameUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 105F331814D6488600916528 /* GameUtils.m */; };
 		2094AC5B14CD4A840083191C /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2094AC5A14CD4A840083191C /* GameCenterManager.m */; };
 		2094AC5D14CD4AA90083191C /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2094AC5C14CD4AA80083191C /* GameKit.framework */; };
 		3E7DE3F214CCF746006E159F /* MoleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DE3F114CCF746006E159F /* MoleHelper.m */; };
@@ -19,6 +18,8 @@
 		C2DA8EAD14D731D40049CFAE /* CASPER.TTF in Resources */ = {isa = PBXBuildFile; fileRef = C2DA8EAC14D731D40049CFAE /* CASPER.TTF */; };
 		C2DA8EB114D732500049CFAE /* ScoreFloatyText.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DA8EB014D732500049CFAE /* ScoreFloatyText.m */; };
 		C2DA8EB314D736B80049CFAE /* Nonstopitalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DA8EB214D736B80049CFAE /* Nonstopitalic.ttf */; };
+		C2DA8EBA14D76BF10049CFAE /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DA8EB914D76BF10049CFAE /* Star.png */; };
+		C2DA8EBE14D76C140049CFAE /* ComboStar.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DA8EBD14D76C140049CFAE /* ComboStar.m */; };
 		DE10E43814C16F410084F3A2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10E43714C16F410084F3A2 /* QuartzCore.framework */; };
 		DE10E43A14C16F410084F3A2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10E43914C16F410084F3A2 /* OpenGLES.framework */; };
 		DE10E43C14C16F410084F3A2 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10E43B14C16F410084F3A2 /* OpenAL.framework */; };
@@ -184,6 +185,9 @@
 		C2DA8EAF14D732500049CFAE /* ScoreFloatyText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreFloatyText.h; path = ../ScoreFloatyText.h; sourceTree = "<group>"; };
 		C2DA8EB014D732500049CFAE /* ScoreFloatyText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreFloatyText.m; path = ../ScoreFloatyText.m; sourceTree = "<group>"; };
 		C2DA8EB214D736B80049CFAE /* Nonstopitalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nonstopitalic.ttf; sourceTree = "<group>"; };
+		C2DA8EB914D76BF10049CFAE /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
+		C2DA8EBC14D76C140049CFAE /* ComboStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComboStar.h; sourceTree = "<group>"; };
+		C2DA8EBD14D76C140049CFAE /* ComboStar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComboStar.m; sourceTree = "<group>"; };
 		DE10E43314C16F410084F3A2 /* Bop-A-Mole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bop-A-Mole.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE10E43714C16F410084F3A2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DE10E43914C16F410084F3A2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -509,6 +513,8 @@
 			children = (
 				C2DA8EAF14D732500049CFAE /* ScoreFloatyText.h */,
 				C2DA8EB014D732500049CFAE /* ScoreFloatyText.m */,
+				C2DA8EBC14D76C140049CFAE /* ComboStar.h */,
+				C2DA8EBD14D76C140049CFAE /* ComboStar.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -574,6 +580,7 @@
 		DE10E44814C16F410084F3A2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C2DA8EB914D76BF10049CFAE /* Star.png */,
 				C2DA8EB214D736B80049CFAE /* Nonstopitalic.ttf */,
 				C2DA8EAC14D731D40049CFAE /* CASPER.TTF */,
 				C27DDFC014D65D16009B2386 /* CRevell_Mole_Game.mp3 */,
@@ -1080,6 +1087,7 @@
 				C27DDFC114D65D16009B2386 /* CRevell_Mole_Game.mp3 in Resources */,
 				C2DA8EAD14D731D40049CFAE /* CASPER.TTF in Resources */,
 				C2DA8EB314D736B80049CFAE /* Nonstopitalic.ttf in Resources */,
+				C2DA8EBA14D76BF10049CFAE /* Star.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1208,6 +1216,7 @@
 				DE67C27114D48A7000493C92 /* SlashMole.m in Sources */,
 				C2795C1D14D5F831006D5422 /* MoleSpawn.m in Sources */,
 				C2DA8EB114D732500049CFAE /* ScoreFloatyText.m in Sources */,
+				C2DA8EBE14D76C140049CFAE /* ComboStar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

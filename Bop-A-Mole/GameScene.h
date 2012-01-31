@@ -60,8 +60,11 @@
 -(void) addToScore:(NSInteger)points withDisplayPoint:(CGPoint)displayPt;
 
 
-//add points to current score
+//add combo
 -(void) addToCombo:(NSInteger)points;
+
+//add combo, do a pop-up
+-(void) addToCombo:(NSInteger)points withDisplayPoint:(CGPoint)displayPt;
 
 //player was damaged by a mole and will lose 1 life and any combo they have going
 -(void) playerGotHurt;
