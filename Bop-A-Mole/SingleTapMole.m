@@ -16,9 +16,9 @@
 
     if(self = [super initWithFile:@"mole.png"]){
         self.lifeTime = 0.0;
-        self.lifeSpan = 1.8;
-        self.criticalTime = 0.6;
-        self.criticalSpan = 0.6;
+        self.lifeSpan = 1.0;
+        self.criticalTime = 0.25;
+        self.criticalSpan = 0.25;
         self.scale = 1.2;
     }
     return self;

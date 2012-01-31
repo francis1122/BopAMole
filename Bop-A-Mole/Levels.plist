@@ -21,46 +21,16 @@
 					</dict>
 					<dict>
 						<key>Chance</key>
-						<integer>7</integer>
+						<integer>2</integer>
 						<key>Mole Type</key>
-						<string>Triangle Mole</string>
-					</dict>
-					<dict>
-						<key>Chance</key>
-						<integer>3</integer>
-						<key>Mole Type</key>
-						<string>Triple Mole Vertical</string>
-					</dict>
-					<dict>
-						<key>Chance</key>
-						<integer>3</integer>
-						<key>Mole Type</key>
-						<string>Triple Mole Horizontal</string>
-					</dict>
-					<dict>
-						<key>Chance</key>
-						<integer>3</integer>
-						<key>Mole Type</key>
-						<string>Triple Mole Diagonal</string>
+						<string>3x3 Sequence Mole</string>
 					</dict>
 				</array>
 				<key>When</key>
 				<array>
 					<dict>
 						<key>Beat</key>
-						<integer>4</integer>
-						<key>Chance</key>
-						<string>5</string>
-					</dict>
-					<dict>
-						<key>Beat</key>
-						<integer>0</integer>
-						<key>Chance</key>
-						<string>1</string>
-					</dict>
-					<dict>
-						<key>Beat</key>
-						<integer>8</integer>
+						<integer>2</integer>
 						<key>Chance</key>
 						<string>10</string>
 					</dict>

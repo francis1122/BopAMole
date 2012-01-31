@@ -7,6 +7,7 @@
 //
 
 #import "MoleBaseClass.h"
+#import "GameScene.h"
 
 
 @implementation MoleBaseClass
@@ -31,7 +32,7 @@
 
 
 -(void)gameLoop:(ccTime)dt{
-    self.lifeTime += dt;
+    self.lifeTime += dt * (60.0/[[GameScene sharedScene] BPM]);
     if(self.lifeTime > self.lifeSpan){
         self.gotAway = YES;
     }

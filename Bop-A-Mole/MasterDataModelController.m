@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "AppDelegate.h"
 
-#define SEED_EXPIRATION_THRESHOLD 0
+#define SEED_EXPIRATION_THRESHOLD 300
 
 static MasterDataModelController *sharedInstance = nil;
 

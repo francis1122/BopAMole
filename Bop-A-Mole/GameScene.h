@@ -25,7 +25,7 @@
     NSInteger realLevel;
     float timeOnCurrentLevel;
     float levelLength;
-    
+    float BPM;
     
     float gameTime;
     BOOL isGameOver;        
@@ -49,6 +49,7 @@
 @property (nonatomic) NSInteger level; //what level the player is on
 @property (nonatomic) float timeOnCurrentLevel; //how long the game has been on current level
 @property (nonatomic) float levelLength; //how long the level is
+@property (nonatomic) float BPM; //the level's BPM
 
 
 +(GameScene*) sharedScene;

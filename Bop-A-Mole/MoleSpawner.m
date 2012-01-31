@@ -240,16 +240,20 @@ static MoleSpawner *sharedInstance = nil;
             if(beat == 0) {
                 NSLog(@"Zero beat!");
             }
-            elapsedTime += beatInterval * beat;
             
             // Choose mole pattern to spawn
             NSArray* molePatterns = [currentStage objectForKey:@"What"]; 
             NSDictionary* chosenMolePattern = [self rollBetweenItems:molePatterns];
-            NSArray* molePattern = [moleData objectForKey:[chosenMolePattern valueForKey:@"Mole Type"]];
+            NSArray* molePattern = [[moleData objectForKey:[chosenMolePattern valueForKey:@"Mole Type"]] objectForKey:@"Moles"];
+            
+            bool exclusive = [[moleData objectForKey:[chosenMolePattern valueForKey:@"Mole Type"]] valueForKey:@"Exclusive"];
             
             // Setup and add mole
             MoleSpawn* prevSpawn = nil;
             
+            // Increment elapsed time
+            elapsedTime += beatInterval * beat;                
+                        
             for(int i = 0; i < [molePattern count]; ++i) {
                 NSDictionary* mole = [molePattern objectAtIndex:i];
                 NSArray* positionArray = [[mole valueForKey:@"Position"] componentsSeparatedByString:@","];
@@ -275,6 +279,12 @@ static MoleSpawner *sharedInstance = nil;
                 prevSpawn = spawn;
             }
             
+            // This pattern was exclusive, don't allow other patterns to spawn
+            // till this one is done
+            if(exclusive) {
+                elapsedTime += beatInterval * [[[molePattern lastObject] valueForKey:@"Time"] floatValue];
+            }
+            
         } while(elapsedTime < levelLength);
         
         // Position the moles
@@ -296,7 +306,14 @@ static MoleSpawner *sharedInstance = nil;
             
         }    
         
-        return finalizedMoles;
+        NSArray *sortedMoles;
+        sortedMoles = [finalizedMoles sortedArrayUsingComparator:^(id a, id b) {
+            NSNumber* dt1 = [NSNumber numberWithFloat:[(MoleSpawn*)a dt]];
+            NSNumber* dt2 = [NSNumber numberWithFloat:[(MoleSpawn*)b dt]];
+            return [dt1 compare:dt2];
+        }];
+        
+        return sortedMoles;
     }
     return nil;
 }

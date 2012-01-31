@@ -99,6 +99,10 @@ static GameScene *sharedScene = nil;
     return levelLength;
 }
 
+- (float)BPM {
+    return 130.0;
+}
+
 -(void) setScore:(NSInteger)_score{
     if(self.uiLayer){
          [self.uiLayer.scoreLabel setString:[NSString stringWithFormat:@"%d", _score]];
