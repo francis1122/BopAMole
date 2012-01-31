@@ -9,3 +9,6 @@
 #import "Constants.h"
 
 NSString *const kFont1 = @"Amiga Forever";
+
+//level transition time
+float const kLevelTransitionTime = 5.5;

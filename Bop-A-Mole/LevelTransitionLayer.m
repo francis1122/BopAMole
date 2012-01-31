@@ -35,7 +35,7 @@
 -(void)gameLoop:(ccTime)dt{
     transitionTime += dt;
 
-    if(transitionTime > 5.5){
+    if(transitionTime > kLevelTransitionTime){
         transitionTime = 0.0f;
         [[GameScene sharedScene] startNextLevel];
     }

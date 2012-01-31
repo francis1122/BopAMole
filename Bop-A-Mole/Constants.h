@@ -11,3 +11,6 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *const kFont1;
+
+//level transition time
+extern float const kLevelTransitionTime;
