@@ -11,6 +11,8 @@
 
 @implementation ComboStar
 
+@synthesize velocity;
+
 - (id)init
 {
     self = [super init];

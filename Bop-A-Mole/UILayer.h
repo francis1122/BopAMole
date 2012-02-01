@@ -11,10 +11,13 @@
 
 //contains elements of the games interface such as pause button and score labels
 
+@class LifeContainer;
+
 @interface UILayer : CCLayer {
     CCLabelTTF *scoreLabel;
     CCLabelTTF *comboLabel;
-    CCLabelTTF *lifeLabel;
+    
+    LifeContainer* life;
     
     CCMenu *pauseButton;
     
@@ -25,7 +28,7 @@
 @property (nonatomic, retain) CCMenu *pauseButton;
 @property (nonatomic, retain) CCLabelTTF *scoreLabel;
 @property (nonatomic, retain) CCLabelTTF *comboLabel;
-@property (nonatomic, retain) CCLabelTTF *lifeLabel;
+@property (nonatomic, retain) LifeContainer* life;
 
 -(void)pauseButtonTouched:(CCMenuItem*)sender;
 

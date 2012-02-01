@@ -20,6 +20,10 @@
 		C2DA8EB314D736B80049CFAE /* Nonstopitalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DA8EB214D736B80049CFAE /* Nonstopitalic.ttf */; };
 		C2DA8EBA14D76BF10049CFAE /* Star.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DA8EB914D76BF10049CFAE /* Star.png */; };
 		C2DA8EBE14D76C140049CFAE /* ComboStar.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DA8EBD14D76C140049CFAE /* ComboStar.m */; };
+		C2DC67F614D8BC3B0023D56E /* HeartFlattened.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DC67F514D8BC3B0023D56E /* HeartFlattened.png */; };
+		C2DC67FA14D8BCE20023D56E /* Heart.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DC67F914D8BCE20023D56E /* Heart.m */; };
+		C2DC67FD14D8BDEB0023D56E /* LifeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DC67FC14D8BDEB0023D56E /* LifeContainer.m */; };
+		C2DC67FF14D8C41A0023D56E /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DC67FE14D8C41A0023D56E /* Pause.png */; };
 		DE10E43814C16F410084F3A2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10E43714C16F410084F3A2 /* QuartzCore.framework */; };
 		DE10E43A14C16F410084F3A2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10E43914C16F410084F3A2 /* OpenGLES.framework */; };
 		DE10E43C14C16F410084F3A2 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE10E43B14C16F410084F3A2 /* OpenAL.framework */; };
@@ -188,6 +192,12 @@
 		C2DA8EB914D76BF10049CFAE /* Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Star.png; sourceTree = "<group>"; };
 		C2DA8EBC14D76C140049CFAE /* ComboStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComboStar.h; sourceTree = "<group>"; };
 		C2DA8EBD14D76C140049CFAE /* ComboStar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComboStar.m; sourceTree = "<group>"; };
+		C2DC67F514D8BC3B0023D56E /* HeartFlattened.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeartFlattened.png; sourceTree = "<group>"; };
+		C2DC67F814D8BCE20023D56E /* Heart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Heart.h; sourceTree = "<group>"; };
+		C2DC67F914D8BCE20023D56E /* Heart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Heart.m; sourceTree = "<group>"; };
+		C2DC67FB14D8BDEB0023D56E /* LifeContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifeContainer.h; sourceTree = "<group>"; };
+		C2DC67FC14D8BDEB0023D56E /* LifeContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifeContainer.m; sourceTree = "<group>"; };
+		C2DC67FE14D8C41A0023D56E /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
 		DE10E43314C16F410084F3A2 /* Bop-A-Mole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bop-A-Mole.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE10E43714C16F410084F3A2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DE10E43914C16F410084F3A2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -515,6 +525,10 @@
 				C2DA8EB014D732500049CFAE /* ScoreFloatyText.m */,
 				C2DA8EBC14D76C140049CFAE /* ComboStar.h */,
 				C2DA8EBD14D76C140049CFAE /* ComboStar.m */,
+				C2DC67F814D8BCE20023D56E /* Heart.h */,
+				C2DC67F914D8BCE20023D56E /* Heart.m */,
+				C2DC67FB14D8BDEB0023D56E /* LifeContainer.h */,
+				C2DC67FC14D8BDEB0023D56E /* LifeContainer.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -580,10 +594,12 @@
 		DE10E44814C16F410084F3A2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C2DC67FE14D8C41A0023D56E /* Pause.png */,
 				C2DA8EB914D76BF10049CFAE /* Star.png */,
 				C2DA8EB214D736B80049CFAE /* Nonstopitalic.ttf */,
 				C2DA8EAC14D731D40049CFAE /* CASPER.TTF */,
 				C27DDFC014D65D16009B2386 /* CRevell_Mole_Game.mp3 */,
+				C2DC67F514D8BC3B0023D56E /* HeartFlattened.png */,
 				DE128C3714C25E29005FE868 /* whackamoleBG.png */,
 				DE128C3E14C261D8005FE868 /* whackamoleBG-hd.png */,
 				DE128C2814C21A84005FE868 /* PauseButton-hd.png */,
@@ -1088,6 +1104,8 @@
 				C2DA8EAD14D731D40049CFAE /* CASPER.TTF in Resources */,
 				C2DA8EB314D736B80049CFAE /* Nonstopitalic.ttf in Resources */,
 				C2DA8EBA14D76BF10049CFAE /* Star.png in Resources */,
+				C2DC67F614D8BC3B0023D56E /* HeartFlattened.png in Resources */,
+				C2DC67FF14D8C41A0023D56E /* Pause.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1217,6 +1235,8 @@
 				C2795C1D14D5F831006D5422 /* MoleSpawn.m in Sources */,
 				C2DA8EB114D732500049CFAE /* ScoreFloatyText.m in Sources */,
 				C2DA8EBE14D76C140049CFAE /* ComboStar.m in Sources */,
+				C2DC67FA14D8BCE20023D56E /* Heart.m in Sources */,
+				C2DC67FD14D8BDEB0023D56E /* LifeContainer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

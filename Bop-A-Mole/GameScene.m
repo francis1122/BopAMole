@@ -18,6 +18,7 @@
 #import "ScoreFloatyText.h"
 #import "ComboStar.h"
 #import "MoleSpawner.h"
+#import "LifeContainer.h"
 
 static GameScene *sharedScene = nil;
 
@@ -53,7 +54,7 @@ static GameScene *sharedScene = nil;
         
         [self addChild:self.gameLayer];
         [self addChild:self.uiLayer];
-
+        
 		[self schedule: @selector(gameLoop:)];
     }
 	return self;
@@ -76,11 +77,11 @@ static GameScene *sharedScene = nil;
         
         self.timeOnCurrentLevel += dt;
         self.gameTime += dt;
-
+        
         if(self.gameLayer){
             [self.gameLayer gameLoop:dt];
         }
-
+        
     }
     if(self.isBetweenLevels){
         [self.levelTransitionLayer gameLoop:dt];
@@ -105,7 +106,7 @@ static GameScene *sharedScene = nil;
 
 -(void) setScore:(NSInteger)_score{
     if(self.uiLayer){
-         [self.uiLayer.scoreLabel setString:[NSString stringWithFormat:@"%d", _score]];
+        [self.uiLayer.scoreLabel setString:[NSString stringWithFormat:@"%d", _score]];
     }
     score = _score;
 }
@@ -114,15 +115,22 @@ static GameScene *sharedScene = nil;
     [self addToCombo:points];
     
     // draw star
-        ComboStar* comboStar = [[ComboStar alloc] initWithFile:@"Star.png"];
-        [comboStar setupComboStar];
-        comboStar.position = displayPt;
-        [self addChild:comboStar z:100];
+    ComboStar* comboStar = [[ComboStar alloc] initWithFile:@"Star.png"];
+    [comboStar setupComboStar];
+    comboStar.position = displayPt;
+    [self addChild:comboStar z:100];
+    
+    // setup second star going opposite direction
+    comboStar = [[ComboStar alloc] initWithFile:@"Star.png"];
+    [comboStar setupComboStar];
+    comboStar.velocity = CGPointMake(-comboStar.velocity.x, comboStar.velocity.y);
+    comboStar.position = displayPt;
+    [self addChild:comboStar z:100];
 }
 
 -(void) setCombo:(NSInteger)_combo{
     if(self.uiLayer){
-         [self.uiLayer.comboLabel setString:[NSString stringWithFormat:@"%dx", _combo]];
+        [self.uiLayer.comboLabel setString:[NSString stringWithFormat:@"%dx", _combo]];
     }
     combo = _combo;
 }
@@ -135,7 +143,7 @@ static GameScene *sharedScene = nil;
     [self addToScore:points];
     int totalPoints = points*combo;
     int fontSizeIncrease = 2*(totalPoints/500);
-
+    
     ccColor3B color = ccWHITE;
     
     if(totalPoints > 500) {
@@ -165,7 +173,7 @@ static GameScene *sharedScene = nil;
 -(void) playerGotHurt{
     self.playerLife--;
     if(self.uiLayer){
-        [self.uiLayer.lifeLabel setString:[NSString stringWithFormat:@"Lives:%d", self.playerLife]];
+        [self.uiLayer.life reduceHealthTo:self.playerLife];
     }
     self.combo = 1;
 }
@@ -192,9 +200,9 @@ static GameScene *sharedScene = nil;
     realLevel = levelToGrab;
     
     self.levelLength = [[[[[MoleSpawner sharedInstance] levelData] objectForKey:
-                     [NSString stringWithFormat:@"%d",realLevel]] 
-                    valueForKey:@"Length"] floatValue];
-
+                          [NSString stringWithFormat:@"%d",realLevel]] 
+                         valueForKey:@"Length"] floatValue];
+    
     self.gameLayer.level = [[NSMutableArray alloc] initWithArray:levelData];
 }
 

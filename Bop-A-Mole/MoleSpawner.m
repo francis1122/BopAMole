@@ -13,11 +13,11 @@
 #import "MoleSpawn.h"
 #import "MasterDataModelController.h"
 
-#define BOARD_X_PARTITIONS 15
-#define BOARD_Y_PARTITIONS 8
+#define BOARD_X_PARTITIONS 12
+#define BOARD_Y_PARTITIONS 4
 
 #define BOARD_X_SIZE 400
-#define BOARD_Y_SIZE 200
+#define BOARD_Y_SIZE 150
 
 @implementation MoleSpawner
 
@@ -169,9 +169,13 @@ static MoleSpawner *sharedInstance = nil;
 
 -(CGPoint)getPixelForParititionPosition:(CGPoint)position {
     CGSize partitionSize = [self partitionSize];
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
     
-    return CGPointMake(partitionSize.width*(int)position.x + partitionSize.width/2, 
-                       partitionSize.height*(int)position.y + partitionSize.height/2);
+    float xOffset = (winSize.width - BOARD_X_SIZE)/2;
+    float yOffset = 50;
+    
+    return CGPointMake(xOffset + partitionSize.width*(int)position.x + partitionSize.width/2, 
+                       yOffset + partitionSize.height*(int)position.y + partitionSize.height/2);
 }
 
 -(NSDictionary*)rollBetweenItems:(NSArray*)items {

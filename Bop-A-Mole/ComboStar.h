@@ -12,6 +12,9 @@
     CGPoint velocity;
     CGPoint gravity;
 }
+
+@property (nonatomic) CGPoint velocity;
+
 - (void)setupComboStar;
 
 @end
