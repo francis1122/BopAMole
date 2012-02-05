@@ -57,7 +57,7 @@
         [level release];
     }
     level = nil;
-    level = [[NSMutableArray alloc] initWithArray:[[MoleSpawner sharedInstance] generateLevel:@"1" withBPM:130]];
+    level = [[NSMutableArray alloc] initWithArray:[[MoleSpawner sharedInstance] generateLevel:@"1" withBPM:[[GameScene sharedScene] BPM]]];
 }
 
 
@@ -102,11 +102,16 @@
         MoleSpawn* spawn = [level objectAtIndex:0];
         float spawnTime = spawn.dt;
         if(spawnTime <= elapsedTime) {
-            CGPoint pixelPos = [[MoleSpawner sharedInstance] getPixelForParititionPosition:[spawn.mole position]];
-            [spawn.mole setPosition:CGPointMake(pixelPos.x, pixelPos.y)];
-            [self.moleArray addObject:spawn.mole];
-            [self addChild:spawn.mole];
-            [level removeObjectAtIndex:0];
+            if(spawn.mole){
+                CGPoint pixelPos = [[MoleSpawner sharedInstance] getPixelForParititionPosition:[spawn.mole position]];
+                [spawn.mole setPosition:CGPointMake(pixelPos.x, pixelPos.y)];
+                [self.moleArray addObject:spawn.mole];
+                [self addChild:spawn.mole];
+                [spawn.mole onSpawn];
+                [level removeObjectAtIndex:0];
+            }else{
+                NSLog(@"spawn object didn't create a mole");
+            }
         }
         else {
             objectsLeftToSpawnThisTick = NO;
@@ -119,7 +124,7 @@
             [self.deadMolesArray addObject:moleObject];
         }
         [self removeMoles];
-        [[GameScene sharedScene] moveToNextLevel];
+        [[GameScene sharedScene] transitionFromGamePlayStateToLevelTransitionState];
         
     }
 }
@@ -167,7 +172,7 @@
 #pragma touch
 
 -(void)checkTapCollision:(CGPoint) touch{
-    GameScene *gameScene = [GameScene sharedScene];
+
     for(MoleBaseClass* moleObject in self.moleArray){
         CGRect boundingBox = [moleObject boundingBox];
         if(CGRectContainsPoint( boundingBox, touch)){
@@ -179,7 +184,7 @@
 
 -(void)checkSlashCollision:(CGPoint) touch{
     
-    GameScene *gameScene = [GameScene sharedScene];
+
     [self.slashHandler addPoint:touch];
     if(self.slashHandler.touchArray.count < 2){
         return;

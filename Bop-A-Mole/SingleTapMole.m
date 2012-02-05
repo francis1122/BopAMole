@@ -15,10 +15,9 @@
 -(id) initSingleTapMole{
 
     if(self = [super initWithFile:@"mole.png"]){
-        self.lifeTime = 0.0;
-        self.lifeSpan = 1.0;
-        self.criticalTime = 0.25;
-        self.criticalSpan = 0.25;
+        self.lifeSpan = 1.2;
+        self.criticalTime = .4;
+        self.criticalSpan = 0.4;
         self.scale = 1.2;
     }
     return self;

@@ -17,13 +17,25 @@
 						<key>Chance</key>
 						<integer>5</integer>
 						<key>Mole Type</key>
-						<string>Single Mole</string>
+						<string>Single Jumper Mole</string>
 					</dict>
 					<dict>
 						<key>Chance</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>Mole Type</key>
-						<string>3x3 Sequence Mole</string>
+						<string>Slash Mole Vertical</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>1</integer>
+						<key>Mole Type</key>
+						<string>Slash Mole Diagonal</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>1</integer>
+						<key>Mole Type</key>
+						<string>Slash Mole Horizontal</string>
 					</dict>
 				</array>
 				<key>When</key>

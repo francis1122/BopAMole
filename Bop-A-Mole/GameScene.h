@@ -95,18 +95,15 @@ typedef enum {
 -(void) addToCombo:(NSInteger)points withDisplayPoint:(CGPoint)displayPt;
 
 //player was damaged by a mole and will lose 1 life and any combo they have going
--(void) playerGotHurt;
+-(void) playerGotHurt;   
 
-//begins transition to next level
--(void) nextLevel;    
 
--(void) moveToNextLevel;
-
--(void) startNextLevel;
-
+// sets score, gametime, level, ect... back to default
 -(void) cleanGameState;
 
 #pragma transitions
+-(void) transitionFromGamePlayStateToLevelTransitionState;
+-(void) transitionFromLevelTransitionStateToGamePlayState;
 -(void) transitionFromGamePlayStateToPauseState;
 -(void) transitionFromPauseStateToGamePlayState;
 -(void) transitionFromGamePlayStateToGameOverState;

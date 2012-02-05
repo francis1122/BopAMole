@@ -33,6 +33,9 @@
 }
 
 - (void)reduceHealthTo:(int)health {
+    if(health < 0){
+        return;
+    }
     for(int i = health+1; i <= MAX_HEALTH; ++i) {
         Heart* heart = (Heart*)[self getChildByTag:i];
         if(heart) {

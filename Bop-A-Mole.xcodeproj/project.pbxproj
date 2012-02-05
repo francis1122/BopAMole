@@ -154,6 +154,7 @@
 		DE1B051914D2898B004613AF /* TouchPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DE1B051814D2898B004613AF /* TouchPoint.m */; };
 		DE67C27114D48A7000493C92 /* SlashMole.m in Sources */ = {isa = PBXBuildFile; fileRef = DE67C27014D48A7000493C92 /* SlashMole.m */; };
 		DE74B1A914C515AC0037BFAD /* MultiTapMole.m in Sources */ = {isa = PBXBuildFile; fileRef = DE74B1A814C515AC0037BFAD /* MultiTapMole.m */; };
+		DE87456814DE5FEA00E4AE0E /* JumpingMole.m in Sources */ = {isa = PBXBuildFile; fileRef = DE87456714DE5FE900E4AE0E /* JumpingMole.m */; };
 		DE945E8514C67B7F00554678 /* GameOverLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DE945E8414C67B7F00554678 /* GameOverLayer.m */; };
 		DE945E8D14C6844500554678 /* PauseLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DE945E8C14C6844500554678 /* PauseLayer.m */; };
 		DE945E8F14C6858E00554678 /* ResumeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DE945E8E14C6858E00554678 /* ResumeButton.png */; };
@@ -462,6 +463,8 @@
 		DE67C27014D48A7000493C92 /* SlashMole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlashMole.m; sourceTree = "<group>"; };
 		DE74B1A714C515AC0037BFAD /* MultiTapMole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiTapMole.h; sourceTree = "<group>"; };
 		DE74B1A814C515AC0037BFAD /* MultiTapMole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiTapMole.m; sourceTree = "<group>"; };
+		DE87456614DE5FE800E4AE0E /* JumpingMole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpingMole.h; sourceTree = "<group>"; };
+		DE87456714DE5FE900E4AE0E /* JumpingMole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpingMole.m; sourceTree = "<group>"; };
 		DE945E8314C67B7F00554678 /* GameOverLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverLayer.h; sourceTree = "<group>"; };
 		DE945E8414C67B7F00554678 /* GameOverLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverLayer.m; sourceTree = "<group>"; };
 		DE945E8B14C6844500554678 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseLayer.h; sourceTree = "<group>"; };
@@ -615,6 +618,7 @@
 		DE10E44814C16F410084F3A2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DE87456414DE58ED00E4AE0E /* GameData */,
 				C2DC680014D8CB640023D56E /* HeartFlattened-hd.png */,
 				C2DC680114D8CB640023D56E /* Pause-hd.png */,
 				C2DC680214D8CB640023D56E /* Star-hd.png */,
@@ -649,8 +653,6 @@
 				DE10E45714C16F410084F3A2 /* Icon@2x.png */,
 				DE10E45914C16F410084F3A2 /* Info.plist */,
 				DE10E45A14C16F410084F3A2 /* iTunesArtwork */,
-				3E7DE3F914CCFA34006E159F /* Levels.plist */,
-				C20F318114CD220700433B57 /* Moles.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1000,8 +1002,19 @@
 				DE74B1A814C515AC0037BFAD /* MultiTapMole.m */,
 				DE67C26F14D48A7000493C92 /* SlashMole.h */,
 				DE67C27014D48A7000493C92 /* SlashMole.m */,
+				DE87456614DE5FE800E4AE0E /* JumpingMole.h */,
+				DE87456714DE5FE900E4AE0E /* JumpingMole.m */,
 			);
 			name = Moles;
+			sourceTree = "<group>";
+		};
+		DE87456414DE58ED00E4AE0E /* GameData */ = {
+			isa = PBXGroup;
+			children = (
+				3E7DE3F914CCFA34006E159F /* Levels.plist */,
+				C20F318114CD220700433B57 /* Moles.plist */,
+			);
+			name = GameData;
 			sourceTree = "<group>";
 		};
 		DEC75A6714C20D9700A9D451 /* Menu Layers */ = {
@@ -1275,6 +1288,7 @@
 				DEF6447214DDF9B20002835C /* CCSliderControl.m in Sources */,
 				DEF6447514DE1A680002835C /* SettingsMenuLayer.m in Sources */,
 				DEF6447814DE1DDE0002835C /* BackgroundLayer.m in Sources */,
+				DE87456814DE5FEA00E4AE0E /* JumpingMole.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

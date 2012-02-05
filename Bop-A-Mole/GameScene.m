@@ -62,8 +62,6 @@ static GameScene *sharedScene = nil;
   
         [self addChild:self.backgroundLayer z:-1];
         [self addChild:self.menuLayer];
-//        [self addChild:self.gameLayer];
-//        [self addChild:self.uiLayer];
         
 		[self schedule: @selector(gameLoop:)];
     }
@@ -116,7 +114,7 @@ static GameScene *sharedScene = nil;
 }
 
 - (float)BPM {
-    return 130.0;
+    return 130;
 }
 
 -(void) setScore:(NSInteger)_score{
@@ -197,33 +195,6 @@ static GameScene *sharedScene = nil;
     }
 }
 
--(void) moveToNextLevel{
-    self.isBetweenLevels = YES;
-    self.level++;
-    self.timeOnCurrentLevel = 0.0f;
-    [self.levelTransitionLayer.transitionLabel setString:[NSString stringWithFormat:@"level:%d", level]];
-    [self addChild: self.levelTransitionLayer];
-    NSArray* levelData = [[MoleSpawner sharedInstance] generateLevel:[NSString stringWithFormat:@"%d",level] withBPM:130];
-    int levelToGrab = self.level;
-    while(levelData == nil) {
-        levelData = [[MoleSpawner sharedInstance] generateLevel:[NSString stringWithFormat:@"%d",levelToGrab--] withBPM:130];
-    }
-    
-    realLevel = levelToGrab;
-    
-    self.levelLength = [[[[[MoleSpawner sharedInstance] levelData] objectForKey:
-                          [NSString stringWithFormat:@"%d",realLevel]] 
-                         valueForKey:@"Length"] floatValue];
-    
-    self.gameLayer.level = [[NSMutableArray alloc] initWithArray:levelData];
-}
-
--(void) startNextLevel{
-    self.isBetweenLevels = NO;
-    self.timeOnCurrentLevel = 0.0f;
-    [self removeChild:self.levelTransitionLayer cleanup:NO];    
-    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"CRevell_Mole_Game.mp3"];    
-}
 
 
 -(void) cleanGameState{
@@ -242,6 +213,39 @@ static GameScene *sharedScene = nil;
 }
 
 #pragma mark - Transitions
+
+-(void)transitionFromGamePlayStateToLevelTransitionState{
+    gameState = LevelTransitionState;
+    self.isBetweenLevels = YES;
+    self.level++;
+    self.timeOnCurrentLevel = 0.0f;
+    [self.levelTransitionLayer.transitionLabel setString:[NSString stringWithFormat:@"level:%d", level]];
+
+    NSArray* levelData = [[MoleSpawner sharedInstance] generateLevel:[NSString stringWithFormat:@"%d",level] withBPM:130];
+    int levelToGrab = self.level;
+    while(levelData == nil) {
+        levelData = [[MoleSpawner sharedInstance] generateLevel:[NSString stringWithFormat:@"%d",levelToGrab--] withBPM:130];
+    }
+    
+    realLevel = levelToGrab;
+    
+    self.levelLength = [[[[[MoleSpawner sharedInstance] levelData] objectForKey:
+                          [NSString stringWithFormat:@"%d",realLevel]] 
+                         valueForKey:@"Length"] floatValue];
+    
+    self.gameLayer.level = [[NSMutableArray alloc] initWithArray:levelData];
+    [self removeChild:self.gameLayer cleanup:NO];
+    [self addChild: self.levelTransitionLayer];
+}
+
+-(void)transitionFromLevelTransitionStateToGamePlayState{
+    gameState = GamePlayState;
+    self.isBetweenLevels = NO;
+    self.timeOnCurrentLevel = 0.0f;
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"CRevell_Mole_Game.mp3"];    
+    [self removeChild:self.levelTransitionLayer cleanup:NO];
+    [self addChild: self.gameLayer];
+}
 
 -(void) transitionFromGamePlayStateToPauseState{
     gameState = PauseState;
@@ -282,7 +286,7 @@ static GameScene *sharedScene = nil;
     [self.uiLayer cleanUILayer];
     [self removeChild:self.menuLayer cleanup:NO];
     [self addChild:self.gameLayer];
-    [self addChild:self.uiLayer];
+    [self addChild:self.uiLayer z:10];
 }
 
 -(void)transitionFromGameOverStateToGamePlayState{
@@ -292,7 +296,7 @@ static GameScene *sharedScene = nil;
     [self.uiLayer cleanUILayer];
     [self removeChild:self.gameOverLayer cleanup:NO];
     [self addChild:self.gameLayer];
-    [self addChild:self.uiLayer];
+    [self addChild:self.uiLayer z: 10];
 }
 
 -(void)transitionFromGameOverStateToMainMenuState{

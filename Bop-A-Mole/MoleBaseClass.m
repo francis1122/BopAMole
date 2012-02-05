@@ -19,9 +19,9 @@
 -(id) initWithFile:(NSString*)spriteName{
     if(self = [super initWithFile:spriteName]){
         self.lifeTime = 0.0;
-        self.lifeSpan = 2.0;
-        self.criticalTime = 1.1;
-        self.criticalSpan = 0.6;
+        self.lifeSpan = 1.2;
+        self.criticalTime = .4;
+        self.criticalSpan = 0.4;
         self.gotAway = NO;
         self.isCritical = NO;
         self.isDead = NO;
@@ -30,9 +30,12 @@
     return self;
 }
 
+-(void)onSpawn{
+    
+}
 
 -(void)gameLoop:(ccTime)dt{
-    self.lifeTime += dt * (60.0/[[GameScene sharedScene] BPM]);
+    self.lifeTime += dt;// * (60.0/[[GameScene sharedScene] BPM]);
     if(self.lifeTime > self.lifeSpan){
         self.gotAway = YES;
     }

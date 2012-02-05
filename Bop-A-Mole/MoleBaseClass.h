@@ -31,6 +31,8 @@
 @property (nonatomic) int relativeX;
 @property (nonatomic) int relativeY;
 
+-(void)onSpawn;
+
 -(void)gameLoop:(ccTime)dt;
 
 -(void)tapped;

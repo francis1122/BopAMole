@@ -280,6 +280,7 @@ static MoleSpawner *sharedInstance = nil;
                 
                 [moleObj setRelativeX:(int)position.x];    
                 [moleObj setRelativeY:(int)position.y];
+                
                 prevSpawn = spawn;
             }
             

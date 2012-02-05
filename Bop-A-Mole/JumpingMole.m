@@ -1,18 +1,18 @@
 //
-//  SlashMole.m
+//  JumpingMole.m
 //  Bop-A-Mole
 //
-//  Created by John Wilson on 1/28/12.
+//  Created by John Wilson on 2/4/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SlashMole.h"
+#import "JumpingMole.h"
 #import "GameScene.h"
 
 
-@implementation SlashMole
+@implementation JumpingMole
 
--(id) initSlashMole{
+-(id) initJumpingMole{
     if(self = [super initWithFile:@"mole.png"]){
         ccColor3B green = {0, 0, 255};
         self.color = green;
@@ -21,14 +21,24 @@
         self.criticalTime = .7;
         self.criticalSpan = 0.7;
         self.scale = 1.2;
-        
+
     }
     return self;
 }
 
+-(void)onSpawn{
+    [super onSpawn];
+    CCMoveTo* move = [CCMoveTo actionWithDuration:1.05 position:ccp(self.position.x, self.position.y + 120)];
+    CCMoveTo* moveRev = [CCMoveTo actionWithDuration:1.05 position:ccp(self.position.x, self.position.y)];
+    
+    
+    CCSequence* seq = [CCSequence actions:move, moveRev,
+                       nil];
+    [self runAction:seq];
+}
 
 -(void)gameLoop:(ccTime)dt{
-//    [super gameLoop:dt];
+    //    [super gameLoop:dt];
     self.lifeTime += dt;// * (60.0/[[GameScene sharedScene] BPM]);
     if(self.lifeTime > self.lifeSpan){
         self.gotAway = YES;
@@ -40,14 +50,14 @@
         self.color = yellow;
         self.isCritical = YES;
     }else{
-        self.color = ccBLUE;
+        self.color = ccGREEN;
         self.isCritical = NO;
     }
 }
 
 -(void)slashed{
     GameScene *gameScene = [GameScene sharedScene];
-
+    
     self.isDead = YES;
     //first add points
     [gameScene addToScore:100];
@@ -58,5 +68,4 @@
         [gameScene setCombo:1];
     }
 }
-
 @end

@@ -262,6 +262,122 @@
 			</dict>
 		</array>
 	</dict>
+    <key>Slash Mole Vertical</key>
+    <dict>
+		<key>Exclusive</key>
+		<true/>
+		<key>Moles</key>
+		<array>
+			<dict>
+				<key>Position</key>
+				<string>0,0</string>
+				<key>Time</key>
+				<integer>0</integer>
+				<key>Mole Type</key>
+				<string>Slash Mole</string>
+			</dict>
+			<dict>
+				<key>Position</key>
+				<string>0,1</string>
+				<key>Time</key>
+				<integer>0</integer>
+				<key>Mole Type</key>
+				<string>Slash Mole</string>
+			</dict>
+			<dict>
+				<key>Position</key>
+				<string>0,2</string>
+				<key>Time</key>
+				<integer>0</integer>
+				<key>Mole Type</key>
+				<string>Slash Mole</string>
+			</dict>
+            
+		</array>
+	</dict>
+    <key>Slash Mole Diagonal</key>
+    <dict>
+		<key>Exclusive</key>
+		<true/>
+		<key>Moles</key>
+		<array>
+			<dict>
+				<key>Position</key>
+				<string>0,0</string>
+				<key>Time</key>
+				<integer>0</integer>
+				<key>Mole Type</key>
+				<string>Slash Mole</string>
+			</dict>
+			<dict>
+				<key>Position</key>
+				<string>1,1</string>
+				<key>Time</key>
+				<integer>0</integer>
+				<key>Mole Type</key>
+				<string>Slash Mole</string>
+			</dict>
+			<dict>
+				<key>Position</key>
+				<string>2,2</string>
+				<key>Time</key>
+				<integer>0</integer>
+				<key>Mole Type</key>
+				<string>Slash Mole</string>
+			</dict>
+            
+		</array>
+	</dict>
+
+	<key>Slash Mole Horizontal</key>
+    <dict>
+		<key>Exclusive</key>
+		<true/>
+		<key>Moles</key>
+		<array>
+			<dict>
+				<key>Position</key>
+				<string>0,0</string>
+				<key>Time</key>
+				<integer>0</integer>
+				<key>Mole Type</key>
+				<string>Slash Mole</string>
+			</dict>
+			<dict>
+				<key>Position</key>
+				<string>1,0</string>
+				<key>Time</key>
+				<integer>0</integer>
+				<key>Mole Type</key>
+				<string>Slash Mole</string>
+			</dict>
+			<dict>
+				<key>Position</key>
+				<string>2,0</string>
+				<key>Time</key>
+				<integer>0</integer>
+				<key>Mole Type</key>
+				<string>Slash Mole</string>
+			</dict>
+
+		</array>
+	</dict>
+    <key>Single Jumper Mole</key>
+    <dict>
+		<key>Exclusive</key>
+		<true/>
+		<key>Moles</key>
+		<array>
+			<dict>
+				<key>Position</key>
+				<string>0,0</string>
+				<key>Time</key>
+				<integer>0</integer>
+				<key>Mole Type</key>
+				<string>Jumping Mole</string>
+			</dict>
+		</array>
+	</dict>    
 	<key>Skip</key>
 	<array/>
 </dict>
