@@ -170,6 +170,11 @@
 		DEC75A7914C212BA00A9D451 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC75A7814C212BA00A9D451 /* GameScene.m */; };
 		DEC75A7C14C215DC00A9D451 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC75A7B14C215DC00A9D451 /* GameLayer.m */; };
 		DEC75A7F14C215F700A9D451 /* UILayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC75A7E14C215F700A9D451 /* UILayer.m */; };
+		DEF6447214DDF9B20002835C /* CCSliderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6447114DDF9B20002835C /* CCSliderControl.m */; };
+		DEF6447514DE1A680002835C /* SettingsMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6447414DE1A680002835C /* SettingsMenuLayer.m */; };
+		DEF6447814DE1DDE0002835C /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6447714DE1DDD0002835C /* BackgroundLayer.m */; };
+		DEF6447B14DE28CB0002835C /* SliderBG-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF6447914DE28CB0002835C /* SliderBG-hd.png */; };
+		DEF6447C14DE28CB0002835C /* SliderBG.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF6447A14DE28CB0002835C /* SliderBG.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -482,6 +487,14 @@
 		DEC75A7B14C215DC00A9D451 /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
 		DEC75A7D14C215F700A9D451 /* UILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILayer.h; sourceTree = "<group>"; };
 		DEC75A7E14C215F700A9D451 /* UILayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UILayer.m; sourceTree = "<group>"; };
+		DEF6447014DDF9B10002835C /* CCSliderControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSliderControl.h; sourceTree = "<group>"; };
+		DEF6447114DDF9B20002835C /* CCSliderControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSliderControl.m; sourceTree = "<group>"; };
+		DEF6447314DE1A680002835C /* SettingsMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsMenuLayer.h; sourceTree = "<group>"; };
+		DEF6447414DE1A680002835C /* SettingsMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsMenuLayer.m; sourceTree = "<group>"; };
+		DEF6447614DE1DDC0002835C /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
+		DEF6447714DE1DDD0002835C /* BackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLayer.m; sourceTree = "<group>"; };
+		DEF6447914DE28CB0002835C /* SliderBG-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderBG-hd.png"; sourceTree = "<group>"; };
+		DEF6447A14DE28CB0002835C /* SliderBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderBG.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -535,6 +548,8 @@
 				C2DC67F914D8BCE20023D56E /* Heart.m */,
 				C2DC67FB14D8BDEB0023D56E /* LifeContainer.h */,
 				C2DC67FC14D8BDEB0023D56E /* LifeContainer.m */,
+				DEF6447014DDF9B10002835C /* CCSliderControl.h */,
+				DEF6447114DDF9B20002835C /* CCSliderControl.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -621,6 +636,8 @@
 				DEC75A7414C20FCC00A9D451 /* Amiga Forever.ttf */,
 				DE10E44914C16F410084F3A2 /* Default.png */,
 				DE10E44B14C16F410084F3A2 /* fps_images.png */,
+				DEF6447914DE28CB0002835C /* SliderBG-hd.png */,
+				DEF6447A14DE28CB0002835C /* SliderBG.png */,
 				DE10E44D14C16F410084F3A2 /* Icon-72.png */,
 				DE9BC1AD14C26C950034C615 /* mole-hd.png */,
 				DE9BC1B214C26CB00034C615 /* mole.png */,
@@ -994,6 +1011,8 @@
 				DEC75A7214C20F2000A9D451 /* MenuLayer.m */,
 				DE945E8314C67B7F00554678 /* GameOverLayer.h */,
 				DE945E8414C67B7F00554678 /* GameOverLayer.m */,
+				DEF6447314DE1A680002835C /* SettingsMenuLayer.h */,
+				DEF6447414DE1A680002835C /* SettingsMenuLayer.m */,
 			);
 			name = "Menu Layers";
 			sourceTree = "<group>";
@@ -1014,6 +1033,8 @@
 				DE945E8C14C6844500554678 /* PauseLayer.m */,
 				DE945E9514C68BD700554678 /* LevelTransitionLayer.h */,
 				DE945E9614C68BD700554678 /* LevelTransitionLayer.m */,
+				DEF6447614DE1DDC0002835C /* BackgroundLayer.h */,
+				DEF6447714DE1DDD0002835C /* BackgroundLayer.m */,
 			);
 			name = "Game Layers";
 			sourceTree = "<group>";
@@ -1118,6 +1139,8 @@
 				C2DC680314D8CB640023D56E /* HeartFlattened-hd.png in Resources */,
 				C2DC680414D8CB640023D56E /* Pause-hd.png in Resources */,
 				C2DC680514D8CB640023D56E /* Star-hd.png in Resources */,
+				DEF6447B14DE28CB0002835C /* SliderBG-hd.png in Resources */,
+				DEF6447C14DE28CB0002835C /* SliderBG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1249,6 +1272,9 @@
 				C2DA8EBE14D76C140049CFAE /* ComboStar.m in Sources */,
 				C2DC67FA14D8BCE20023D56E /* Heart.m in Sources */,
 				C2DC67FD14D8BDEB0023D56E /* LifeContainer.m in Sources */,
+				DEF6447214DDF9B20002835C /* CCSliderControl.m in Sources */,
+				DEF6447514DE1A680002835C /* SettingsMenuLayer.m in Sources */,
+				DEF6447814DE1DDE0002835C /* BackgroundLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

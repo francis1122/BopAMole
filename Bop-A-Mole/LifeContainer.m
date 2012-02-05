@@ -19,14 +19,17 @@
     self = [super init];
     if (self) {
         // Initialization code here.
-        for(int x = 1; x <= MAX_HEALTH; ++x) {
-            Heart* heart = [[Heart alloc] initWithFile:@"HeartFlattened.png"];
-            [self addChild:heart z:0 tag:x];
-            heart.position = CGPointMake(-(heart.contentSize.width)*(x-1), 0);
-         }
     }
     
     return self;
+}
+
+-(void) resetHealth{
+    for(int x = 1; x <= MAX_HEALTH; ++x) {
+        Heart* heart = [[Heart alloc] initWithFile:@"HeartFlattened.png"];
+        [self addChild:heart z:0 tag:x];
+        heart.position = CGPointMake(-(heart.contentSize.width)*(x-1), 0);
+    }
 }
 
 - (void)reduceHealthTo:(int)health {

@@ -10,6 +10,8 @@
 
 @interface LifeContainer : CCNode
 
+-(void) resetHealth;
+
 - (void)reduceHealthTo:(int)health;
 
 @end

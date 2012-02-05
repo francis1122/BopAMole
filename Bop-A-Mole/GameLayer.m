@@ -40,11 +40,24 @@
         self.slashHandler = [[[SlashHandler alloc] init] autorelease];
         self.moleArray = [[[NSMutableArray alloc] init] autorelease];
         self.deadMolesArray = [[[NSMutableArray alloc] init] autorelease];
-        level = [[NSMutableArray alloc] initWithArray:[[MoleSpawner sharedInstance] generateLevel:@"1" withBPM:130]];
+        level = nil;
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"CRevell_Mole_Game.mp3"];
         
     }
     return self;
+}
+
+-(void)cleanGameLayer{
+    for(MoleBaseClass* mole in self.moleArray){
+        [self removeChild:mole cleanup:YES];
+    }
+    [self.moleArray removeAllObjects];
+    [self.deadMolesArray removeAllObjects];
+    if(level){
+        [level release];
+    }
+    level = nil;
+    level = [[NSMutableArray alloc] initWithArray:[[MoleSpawner sharedInstance] generateLevel:@"1" withBPM:130]];
 }
 
 

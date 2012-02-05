@@ -13,6 +13,9 @@
 #import "GameOverLayer.h"
 #import "PauseLayer.h"
 #import "LevelTransitionLayer.h"
+#import "SettingsMenuLayer.h"
+#import "BackgroundLayer.h"
+
 #import "MasterDataModelController.h"
 #import "SimpleAudioEngine.h"
 #import "ScoreFloatyText.h"
@@ -24,7 +27,7 @@ static GameScene *sharedScene = nil;
 
 @implementation GameScene
 
-@synthesize uiLayer, gameLayer, combo, score, isGamePaused, gameTime, playerLife, isGameOver, pauseLayer, level, levelLength, isBetweenLevels, timeOnCurrentLevel, levelTransitionLayer;
+@synthesize uiLayer, gameLayer, combo, score, isGamePaused, gameTime, playerLife, isGameOver, pauseLayer, level, levelLength, isBetweenLevels, timeOnCurrentLevel, levelTransitionLayer, gameOverLayer, menuLayer, settingsMenuLayer, backgroundLayer;
 
 +(GameScene*) sharedScene{
     NSAssert(sharedScene != nil, @"sharedScene not available!");
@@ -35,6 +38,7 @@ static GameScene *sharedScene = nil;
 	
 	if( (self=[super init])) {
         sharedScene = self;
+        gameState = MainMenuState;
         self.score = 0;
         self.combo = 1;
         self.level = 1;
@@ -47,13 +51,19 @@ static GameScene *sharedScene = nil;
         self.isGameOver = NO;
         
         //setup layers of the game
+        self.menuLayer = [MenuLayer node];
+        self.gameOverLayer = [GameOverLayer node];
         self.gameLayer = [GameLayer node];
         self.uiLayer = [UILayer node];
         self.pauseLayer = [PauseLayer node];
         self.levelTransitionLayer = [LevelTransitionLayer node];
-        
-        [self addChild:self.gameLayer];
-        [self addChild:self.uiLayer];
+        self.settingsMenuLayer = [SettingsMenuLayer node];
+        self.backgroundLayer = [BackgroundLayer node];
+  
+        [self addChild:self.backgroundLayer z:-1];
+        [self addChild:self.menuLayer];
+//        [self addChild:self.gameLayer];
+//        [self addChild:self.uiLayer];
         
 		[self schedule: @selector(gameLoop:)];
     }
@@ -68,12 +78,13 @@ static GameScene *sharedScene = nil;
 
 
 -(void) gameLoop:(ccTime) dt{
-    if(isGameOver){
-        [self transitionToGameOverLayer];
-        [[MasterDataModelController sharedInstance] trackScore:score];
-        [[MasterDataModelController sharedInstance] submitScore:score];
-    }
-    if(!self.isGamePaused && !self.isBetweenLevels){
+    
+    //GamePlayState
+    if(!self.isGamePaused && !self.isBetweenLevels && gameState == GamePlayState){
+        
+        if(isGameOver){
+            [self transitionFromGamePlayStateToGameOverState];
+        }
         
         self.timeOnCurrentLevel += dt;
         self.gameTime += dt;
@@ -83,10 +94,14 @@ static GameScene *sharedScene = nil;
         }
         
     }
-    if(self.isBetweenLevels){
+    
+    //LevelTransitionState
+    if(self.isBetweenLevels && gameState == LevelTransitionState){
         [self.levelTransitionLayer gameLoop:dt];
     }
-    if(self.uiLayer){
+    
+    //update UI
+    if(self.uiLayer && (gameState == LevelTransitionState || gameState == GamePlayState || gameState == PauseState)){
         [self.uiLayer gameLoop:dt];
     }
 }
@@ -161,9 +176,6 @@ static GameScene *sharedScene = nil;
     [self addChild:label z:100];
     label.position = CGPointMake(displayPt.x, displayPt.y);
     [label startFloat];
-    
-    
-    
 }
 
 -(void) addToCombo:(NSInteger)points{
@@ -213,31 +225,94 @@ static GameScene *sharedScene = nil;
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"CRevell_Mole_Game.mp3"];    
 }
 
+
+-(void) cleanGameState{
+    self.isGamePaused = NO;
+    self.isGameOver = NO;
+    self.score = 0;
+    self.combo = 1;
+    self.level = 1;
+    realLevel = 1;
+    self.isBetweenLevels = NO;
+    self.timeOnCurrentLevel = 0.0f;
+    self.gameTime = 0.0f;
+    self.playerLife = 3;
+    self.levelLength = -1.0f;
+
+}
+
 #pragma mark - Transitions
 
--(void) transitionToGameOverLayer{
-    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[[GameOverLayer alloc] initWithScore:self.score] autorelease] ];
-}
-
--(void) transitionToMainMenu{
-    [[CCDirector sharedDirector] replaceScene:[MenuLayer node]];
-}
-
-
-#pragma mark - game state functions
--(void) pauseGame{
+-(void) transitionFromGamePlayStateToPauseState{
+    gameState = PauseState;
     self.isGamePaused = YES;
     self.gameLayer.isTouchEnabled = NO;
     [[SimpleAudioEngine sharedEngine] pauseBackgroundMusic];
-    [self addChild: self.pauseLayer];
+    [self addChild:self.pauseLayer];
 }
 
--(void) unPauseGame{
+-(void) transitionFromPauseStateToGamePlayState{
+    if(self.isBetweenLevels){
+        gameState = LevelTransitionState;
+    }else{
+        gameState = GamePlayState;
+    }
+
     self.isGamePaused = NO;
     self.gameLayer.isTouchEnabled = YES;
-    [[SimpleAudioEngine sharedEngine] resumeBackgroundMusic];
     
+    [[SimpleAudioEngine sharedEngine] resumeBackgroundMusic];
     [self removeChild:self.pauseLayer cleanup:NO];
 }
+
+-(void) transitionFromGamePlayStateToGameOverState{
+    gameState = GameOverState;
+    [self.gameOverLayer setScore:self.score];
+    [[MasterDataModelController sharedInstance] trackScore:score];
+    [[MasterDataModelController sharedInstance] submitScore:score];
+    [self removeChild:self.uiLayer cleanup:NO];
+    [self removeChild:self.gameLayer cleanup:NO];
+    [self addChild:self.gameOverLayer];
+}
+
+-(void)transitionFromMainMenuStateToGamePlayState{
+    gameState = GamePlayState;
+    [self cleanGameState];
+    [self.gameLayer cleanGameLayer];
+    [self.uiLayer cleanUILayer];
+    [self removeChild:self.menuLayer cleanup:NO];
+    [self addChild:self.gameLayer];
+    [self addChild:self.uiLayer];
+}
+
+-(void)transitionFromGameOverStateToGamePlayState{
+    gameState = GamePlayState;
+    [self cleanGameState];
+    [self.gameLayer cleanGameLayer];
+    [self.uiLayer cleanUILayer];
+    [self removeChild:self.gameOverLayer cleanup:NO];
+    [self addChild:self.gameLayer];
+    [self addChild:self.uiLayer];
+}
+
+-(void)transitionFromGameOverStateToMainMenuState{
+    gameState = MainMenuState;
+    [self removeChild:self.gameOverLayer cleanup:NO];
+    [self addChild:self.menuLayer];
+}
+
+-(void)transitionFromMainMenuStateToSettingsMenuState{
+    gameState = SettingsMenuState;
+    [self removeChild:self.menuLayer cleanup:NO];
+    [self addChild:self.settingsMenuLayer];
+}
+
+-(void) transitionFromSettingsMenuStateToMainMenuState{
+    gameState = MainMenuState;
+    [self removeChild:self.settingsMenuLayer cleanup:NO];
+    [self addChild:self.menuLayer];
+}
+
+
 
 @end

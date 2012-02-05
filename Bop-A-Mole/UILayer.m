@@ -67,14 +67,18 @@
     return self;
 }
 
+-(void)cleanUILayer{
+    [self.life resetHealth];
+}
 
 -(void)pauseButtonTouched:(CCMenuItem*)sender{
     GameScene *scene = [GameScene sharedScene];
     if(scene.isGamePaused){
         //shoudn't get called ever
-        [scene unPauseGame];
+        [scene transitionFromPauseStateToGamePlayState];
     }else{
-        [scene pauseGame];
+        [scene transitionFromGamePlayStateToPauseState];
+
     }
 }
 

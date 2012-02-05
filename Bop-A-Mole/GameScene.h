@@ -9,13 +9,32 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@class GameLayer, UILayer, PauseLayer, LevelTransitionLayer;
+
+typedef enum {
+    PauseState,
+    GamePlayState,
+    GameOverState,
+    MainMenuState,
+    LevelTransitionState,
+    SettingsMenuState
+} GameState;
+
+@class GameLayer, UILayer, PauseLayer, LevelTransitionLayer, MenuLayer, GameOverLayer, SettingsMenuLayer, BackgroundLayer;
 @interface GameScene : CCScene {
     
+    GameState gameState;
+    
+    
+    //Layers of the game
+    MenuLayer *menuLayer;
+    GameOverLayer *gameOverLayer;
     GameLayer *gameLayer;
     UILayer *uiLayer;
     PauseLayer *pauseLayer;
     LevelTransitionLayer *levelTransitionLayer;
+    SettingsMenuLayer *settingsMenuLayer;
+    BackgroundLayer *backgroundLayer;
+    
     
     NSInteger combo;
     NSInteger score;        
@@ -33,10 +52,14 @@
     BOOL isBetweenLevels;
 }
 
+@property (nonatomic, retain) MenuLayer *menuLayer;
+@property (nonatomic, retain) GameOverLayer *gameOverLayer;
 @property (nonatomic, retain) GameLayer *gameLayer;
 @property (nonatomic, retain) UILayer *uiLayer;
 @property (nonatomic, retain) PauseLayer *pauseLayer;
 @property (nonatomic, retain) LevelTransitionLayer *levelTransitionLayer; 
+@property (nonatomic, retain) SettingsMenuLayer *settingsMenuLayer;
+@property (nonatomic, retain) BackgroundLayer *backgroundLayer;
 @property (nonatomic) NSInteger combo;  //players current combo
 
 @property (nonatomic) NSInteger score;  //players current score
@@ -53,6 +76,8 @@
 
 
 +(GameScene*) sharedScene;
+
+
 
 -(void) gameLoop:(ccTime) dt;
 
@@ -75,17 +100,20 @@
 //begins transition to next level
 -(void) nextLevel;    
 
-//pauses the game
--(void) pauseGame;
-//unpauses the game
--(void) unPauseGame;
-
 -(void) moveToNextLevel;
 
 -(void) startNextLevel;
 
+-(void) cleanGameState;
 
--(void) transitionToGameOverLayer;
--(void) transitionToMainMenu;
+#pragma transitions
+-(void) transitionFromGamePlayStateToPauseState;
+-(void) transitionFromPauseStateToGamePlayState;
+-(void) transitionFromGamePlayStateToGameOverState;
+-(void) transitionFromMainMenuStateToGamePlayState;
+-(void) transitionFromGameOverStateToGamePlayState;
+-(void) transitionFromGameOverStateToMainMenuState;
+-(void) transitionFromMainMenuStateToSettingsMenuState;
+-(void) transitionFromSettingsMenuStateToMainMenuState;
 
 @end

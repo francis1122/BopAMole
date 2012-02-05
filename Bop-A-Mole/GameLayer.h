@@ -22,7 +22,8 @@
 @property (nonatomic, retain) NSMutableArray *moleArray, *deadMolesArray, *level;
 @property (nonatomic, retain) SlashHandler *slashHandler;
 
-
+-(void)cleanGameLayer;
+    
 -(void)gameLoop:(ccTime)dt;
 
 -(void)spawnMoles;

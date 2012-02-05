@@ -34,4 +34,6 @@
 
 -(void)gameLoop:(ccTime) dt;
 
+-(void)cleanUILayer;
+
 @end
