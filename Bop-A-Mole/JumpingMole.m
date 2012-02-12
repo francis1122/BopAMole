@@ -13,13 +13,10 @@
 @implementation JumpingMole
 
 -(id) initJumpingMole{
-    if(self = [super initWithFile:@"mole.png"]){
+    if(self = [super init]){
+        //initWithFile:@"mole.png"]
         ccColor3B green = {0, 0, 255};
-        self.color = green;
-        self.lifeTime = 0.0;
-        self.lifeSpan = 2.1;
-        self.criticalTime = .7;
-        self.criticalSpan = 0.7;
+        //self.color = green;
         self.scale = 1.2;
 
     }
@@ -28,34 +25,44 @@
 
 -(void)onSpawn{
     [super onSpawn];
-    CCMoveTo* move = [CCMoveTo actionWithDuration:1.05 position:ccp(self.position.x, self.position.y + 120)];
-    CCMoveTo* moveRev = [CCMoveTo actionWithDuration:1.05 position:ccp(self.position.x, self.position.y)];
-    
-    
-    CCSequence* seq = [CCSequence actions:move, moveRev,
-                       nil];
-    [self runAction:seq];
 }
 
 -(void)gameLoop:(ccTime)dt{
-    //    [super gameLoop:dt];
-    self.lifeTime += dt;// * (60.0/[[GameScene sharedScene] BPM]);
-    if(self.lifeTime > self.lifeSpan){
-        self.gotAway = YES;
-    }
-    
-    //use for changing cri
-    if(self.criticalTime < self.lifeTime && (self.criticalTime + self.criticalSpan) > self.lifeTime){
+    [super gameLoop:dt];
+
+}
+
+-(void) beatUpdate:(float)beatDt{
+    [super beatUpdate:beatDt];
+    if(self.criticalBeatTime < self.beatLifeTime && (self.criticalBeatTime + self.criticalBeatSpan) > self.beatLifeTime){
         ccColor3B yellow = {224, 225, 0};
-        self.color = yellow;
+        self.normalSprite.color = yellow;
         self.isCritical = YES;
     }else{
-        self.color = ccGREEN;
+        self.normalSprite.color = ccGREEN;
         self.isCritical = NO;
     }
 }
 
+-(void)manageMoleStates{
+    if(self.moleState == EnteringState && self.beatLifeTime > self.enteringBeatSpan){
+        self.moleState = AboveGroundState;
+        [self removeChild:self.unburrowingSprite cleanup:NO];
+        [self addChild:self.normalSprite];
+        CCMoveTo* move = [CCMoveTo actionWithDuration:1.05 position:ccp(self.position.x, self.position.y + 120)];
+        CCMoveTo* moveRev = [CCMoveTo actionWithDuration:1.05 position:ccp(self.position.x, self.position.y)];
+        
+        
+        CCSequence* seq = [CCSequence actions:move, moveRev,
+                           nil];
+        [self runAction:seq];
+    }
+}
+
 -(void)slashed{
+    if(self.moleState == EnteringState){
+        return;
+    }
     GameScene *gameScene = [GameScene sharedScene];
     
     self.isDead = YES;

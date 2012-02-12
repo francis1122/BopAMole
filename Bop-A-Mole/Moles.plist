@@ -262,8 +262,8 @@
 			</dict>
 		</array>
 	</dict>
-    <key>Slash Mole Vertical</key>
-    <dict>
+	<key>Slash Mole Vertical</key>
+	<dict>
 		<key>Exclusive</key>
 		<true/>
 		<key>Moles</key>
@@ -292,11 +292,10 @@
 				<key>Mole Type</key>
 				<string>Slash Mole</string>
 			</dict>
-            
 		</array>
 	</dict>
-    <key>Slash Mole Diagonal</key>
-    <dict>
+	<key>Slash Mole Diagonal</key>
+	<dict>
 		<key>Exclusive</key>
 		<true/>
 		<key>Moles</key>
@@ -325,12 +324,10 @@
 				<key>Mole Type</key>
 				<string>Slash Mole</string>
 			</dict>
-            
 		</array>
 	</dict>
-
 	<key>Slash Mole Horizontal</key>
-    <dict>
+	<dict>
 		<key>Exclusive</key>
 		<true/>
 		<key>Moles</key>
@@ -359,13 +356,12 @@
 				<key>Mole Type</key>
 				<string>Slash Mole</string>
 			</dict>
-
 		</array>
 	</dict>
-    <key>Single Jumper Mole</key>
-    <dict>
+	<key>Single Jumper Mole</key>
+	<dict>
 		<key>Exclusive</key>
-		<true/>
+		<false/>
 		<key>Moles</key>
 		<array>
 			<dict>
@@ -377,7 +373,7 @@
 				<string>Jumping Mole</string>
 			</dict>
 		</array>
-	</dict>    
+	</dict>
 	<key>Skip</key>
 	<array/>
 </dict>

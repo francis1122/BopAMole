@@ -268,7 +268,8 @@ static MoleSpawner *sharedInstance = nil;
                 MoleSpawn* spawn = [[MoleSpawn alloc] init];
                 spawn.mole = moleObj;
                 spawn.dt = time;
-                spawn.death_dt = time + (float)[moleObj lifeSpan];
+                //must convert beatLifeSpan back to seconds
+                spawn.death_dt = time + ((float)[moleObj beatLifeSpan] * beatInterval) ;
                 spawn.pattern = [chosenMolePattern valueForKey:@"Mole Type"];
                 
                 if(prevSpawn) {

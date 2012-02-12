@@ -45,7 +45,9 @@ typedef enum {
     float timeOnCurrentLevel;
     float levelLength;
     float BPM;
+    float beatTimeInterval;
     
+    float currentBeat;
     float gameTime;
     BOOL isGameOver;        
     BOOL isGamePaused; 
@@ -73,6 +75,9 @@ typedef enum {
 @property (nonatomic) float timeOnCurrentLevel; //how long the game has been on current level
 @property (nonatomic) float levelLength; //how long the level is
 @property (nonatomic) float BPM; //the level's BPM
+@property (nonatomic) float beatTimeInterval;
+@property (nonatomic) float currentBeat;
+
 
 
 +(GameScene*) sharedScene;
@@ -80,6 +85,8 @@ typedef enum {
 
 
 -(void) gameLoop:(ccTime) dt;
+
+-(void)beatUpdate:(ccTime) dt;
 
 //add points to current score
 -(void) addToScore:(NSInteger)points;
@@ -100,6 +107,9 @@ typedef enum {
 
 // sets score, gametime, level, ect... back to default
 -(void) cleanGameState;
+
+- (float)BPM;
+
 
 #pragma transitions
 -(void) transitionFromGamePlayStateToLevelTransitionState;

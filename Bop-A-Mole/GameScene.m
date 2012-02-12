@@ -27,7 +27,7 @@ static GameScene *sharedScene = nil;
 
 @implementation GameScene
 
-@synthesize uiLayer, gameLayer, combo, score, isGamePaused, gameTime, playerLife, isGameOver, pauseLayer, level, levelLength, isBetweenLevels, timeOnCurrentLevel, levelTransitionLayer, gameOverLayer, menuLayer, settingsMenuLayer, backgroundLayer;
+@synthesize uiLayer, gameLayer, combo, score, isGamePaused, gameTime, playerLife, isGameOver, pauseLayer, level, levelLength, isBetweenLevels, timeOnCurrentLevel, levelTransitionLayer, gameOverLayer, menuLayer, settingsMenuLayer, backgroundLayer, BPM, beatTimeInterval, currentBeat;
 
 +(GameScene*) sharedScene{
     NSAssert(sharedScene != nil, @"sharedScene not available!");
@@ -41,7 +41,11 @@ static GameScene *sharedScene = nil;
         gameState = MainMenuState;
         self.score = 0;
         self.combo = 1;
+        self.currentBeat = 0.0;
+        self.BPM = 130;
+        self.beatTimeInterval = 60.0/[self BPM];
         self.level = 1;
+        
         realLevel = 1;
         self.isBetweenLevels = NO;
         self.timeOnCurrentLevel = 0.0f;
@@ -88,6 +92,7 @@ static GameScene *sharedScene = nil;
         self.gameTime += dt;
         
         if(self.gameLayer){
+            [self beatUpdate:dt];
             [self.gameLayer gameLoop:dt];
         }
         
@@ -104,6 +109,16 @@ static GameScene *sharedScene = nil;
     }
 }
 
+
+-(void)beatUpdate:(ccTime) dt{
+    float beatTime = dt/self.beatTimeInterval;
+    self.currentBeat += beatTime;
+    NSLog(@"beats: %f", self.currentBeat);
+    [self.gameLayer beatUpdate:beatTime];
+//    self.currentBeat +=
+    
+}
+
 -(float)levelLength {
     if(levelLength == -1.0) { // Level length hasn't been set yet
         levelLength = [[[[[MoleSpawner sharedInstance] levelData] objectForKey:
@@ -114,7 +129,7 @@ static GameScene *sharedScene = nil;
 }
 
 - (float)BPM {
-    return 130;
+    return BPM;
 }
 
 -(void) setScore:(NSInteger)_score{
@@ -207,9 +222,9 @@ static GameScene *sharedScene = nil;
     self.isBetweenLevels = NO;
     self.timeOnCurrentLevel = 0.0f;
     self.gameTime = 0.0f;
+    self.currentBeat = 0.0f;
     self.playerLife = 3;
     self.levelLength = -1.0f;
-
 }
 
 #pragma mark - Transitions
@@ -221,10 +236,10 @@ static GameScene *sharedScene = nil;
     self.timeOnCurrentLevel = 0.0f;
     [self.levelTransitionLayer.transitionLabel setString:[NSString stringWithFormat:@"level:%d", level]];
 
-    NSArray* levelData = [[MoleSpawner sharedInstance] generateLevel:[NSString stringWithFormat:@"%d",level] withBPM:130];
+    NSArray* levelData = [[MoleSpawner sharedInstance] generateLevel:[NSString stringWithFormat:@"%d",level] withBPM:[self BPM]];
     int levelToGrab = self.level;
     while(levelData == nil) {
-        levelData = [[MoleSpawner sharedInstance] generateLevel:[NSString stringWithFormat:@"%d",levelToGrab--] withBPM:130];
+        levelData = [[MoleSpawner sharedInstance] generateLevel:[NSString stringWithFormat:@"%d",levelToGrab--] withBPM:[self BPM]];
     }
     
     realLevel = levelToGrab;

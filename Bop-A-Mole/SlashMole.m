@@ -13,13 +13,10 @@
 @implementation SlashMole
 
 -(id) initSlashMole{
-    if(self = [super initWithFile:@"mole.png"]){
+    if(self = [super init]){
+        //initWithFile:@"mole.png"]
         ccColor3B green = {0, 0, 255};
-        self.color = green;
-        self.lifeTime = 0.0;
-        self.lifeSpan = 2.1;
-        self.criticalTime = .7;
-        self.criticalSpan = 0.7;
+        //self.color = green;
         self.scale = 1.2;
         
     }
@@ -28,25 +25,29 @@
 
 
 -(void)gameLoop:(ccTime)dt{
-//    [super gameLoop:dt];
-    self.lifeTime += dt;// * (60.0/[[GameScene sharedScene] BPM]);
-    if(self.lifeTime > self.lifeSpan){
-        self.gotAway = YES;
-    }
+    [super gameLoop:dt];
     
     //use for changing cri
-    if(self.criticalTime < self.lifeTime && (self.criticalTime + self.criticalSpan) > self.lifeTime){
+
+}
+
+-(void) beatUpdate:(float)beatDt{
+    [super beatUpdate:beatDt];
+    if(self.criticalBeatTime < self.beatLifeTime && (self.criticalBeatTime + self.criticalBeatSpan) > self.beatLifeTime){
         ccColor3B yellow = {224, 225, 0};
-        self.color = yellow;
+        self.normalSprite.color = yellow;
         self.isCritical = YES;
     }else{
-        self.color = ccBLUE;
+        self.normalSprite.color = ccBLUE;
         self.isCritical = NO;
     }
 }
 
 -(void)slashed{
     GameScene *gameScene = [GameScene sharedScene];
+    if(self.moleState == EnteringState){
+        return;
+    }
 
     self.isDead = YES;
     //first add points

@@ -14,10 +14,8 @@
 
 -(id) initSingleTapMole{
 
-    if(self = [super initWithFile:@"mole.png"]){
-        self.lifeSpan = 1.2;
-        self.criticalTime = .4;
-        self.criticalSpan = 0.4;
+    if(self = [super init]){
+//        initWithFile:@"mole.png"]
         self.scale = 1.2;
     }
     return self;
@@ -28,7 +26,14 @@
     [super gameLoop:dt];
 }
 
+-(void) beatUpdate:(float)beatDt{
+    [super beatUpdate:beatDt];
+}
+
 -(void)tapped{
+    if(self.moleState == EnteringState){
+        return;
+    }
     GameScene *gameScene = [GameScene sharedScene];
     self.isDead = YES;
     

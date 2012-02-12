@@ -73,25 +73,23 @@
             [self.deadMolesArray addObject:moleObject];
         }
     }
-    
-    
-    
+
     [self spawnMoles];
-    
     [self removeMoles];
-    
-    //    if( [[GameScene sharedScene] timeOnCurrentLevel] > 15.0){
-    //        
-    //        //remove moles while level changes
-    //        for(MoleBaseClass* moleObject in self.moleArray){
-    //            [self.deadMolesArray addObject:moleObject];
-    //        }
-    //        [self removeMoles];
-    //        [[GameScene sharedScene] moveToNextLevel];
-    //    }
-    
 }
 
+-(void)beatUpdate:(float)beatDt{
+    for(MoleBaseClass* moleObject in self.moleArray){
+        [moleObject beatUpdate:beatDt];
+        if(moleObject.gotAway){
+            [self.deadMolesArray addObject:moleObject];
+            [[GameScene sharedScene] playerGotHurt];
+        }
+        if(moleObject.isDead){
+            [self.deadMolesArray addObject:moleObject];
+        }
+    }
+}
 
 -(void)spawnMoles{    
     float elapsedTime = [[GameScene sharedScene] timeOnCurrentLevel];

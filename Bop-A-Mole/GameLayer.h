@@ -26,6 +26,8 @@
     
 -(void)gameLoop:(ccTime)dt;
 
+-(void)beatUpdate:(float)beatDt;
+
 -(void)spawnMoles;
 
 -(void)removeMoles;

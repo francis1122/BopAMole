@@ -8,23 +8,37 @@
 
 #import "MoleBaseClass.h"
 #import "GameScene.h"
-
+#import "Constants.h"
 
 @implementation MoleBaseClass
 
-@synthesize lifeTime, lifeSpan, gotAway, criticalSpan, criticalTime, isCritical, isDead;
-@synthesize relativeX, relativeY;
+@synthesize gotAway, criticalBeatSpan, criticalBeatTime, isCritical, isDead, moleState, enteringBeatSpan;
+@synthesize relativeX, relativeY, beatLifeTime, beatLifeSpan, unburrowingSprite, normalSprite;
 
 
--(id) initWithFile:(NSString*)spriteName{
-    if(self = [super initWithFile:spriteName]){
-        self.lifeTime = 0.0;
-        self.lifeSpan = 1.2;
-        self.criticalTime = .4;
-        self.criticalSpan = 0.4;
+-(id) init{
+    if(self = [super init]){
+        
+        //set the hitbox for mole
+        self.contentSize = CGSizeMake(40, 40);
+        
+        self.moleState = EnteringState;
+        self.unburrowingSprite = [CCSprite spriteWithFile:@"Star.png"];
+        self.unburrowingSprite.position = CGPointMake(self.contentSize.width/2, self.contentSize.height/2);
+        self.normalSprite = [CCSprite spriteWithFile:@"mole.png"];
+        self.normalSprite.position = CGPointMake(self.contentSize.width/2, self.contentSize.height/2);        
+        
+        [self addChild:self.unburrowingSprite];
+        self.enteringBeatSpan = 2.0;
+        self.beatLifeSpan = 8.0;
+        self.beatLifeTime = 0.0;
+        self.criticalBeatTime = 4.0;
+        self.criticalBeatSpan = 2.0;
         self.gotAway = NO;
         self.isCritical = NO;
         self.isDead = NO;
+        
+
         
     }
     return self;
@@ -35,21 +49,53 @@
 }
 
 -(void)gameLoop:(ccTime)dt{
-    self.lifeTime += dt;// * (60.0/[[GameScene sharedScene] BPM]);
-    if(self.lifeTime > self.lifeSpan){
+    
+
+}
+
+-(void)beatUpdate:(float)beatDt{
+    
+    self.beatLifeTime += beatDt;
+    
+    [self manageMoleStates];
+    
+    if(self.beatLifeTime > self.beatLifeSpan){
         self.gotAway = YES;
     }
     
     //use for changing cri
-    if(self.criticalTime < self.lifeTime && (self.criticalTime + self.criticalSpan) > self.lifeTime){
+    if(self.criticalBeatTime < self.beatLifeTime && (self.criticalBeatTime + self.criticalBeatSpan) > self.beatLifeTime){
         ccColor3B yellow = {224, 225, 0};
-        self.color = yellow;
+        self.normalSprite.color = yellow;
         self.isCritical = YES;
     }else{
-        self.color = ccWHITE;
+        self.normalSprite.color = ccWHITE;
         self.isCritical = NO;
     }
 }
+
+-(void)manageMoleStates{
+    if(self.moleState == EnteringState && self.beatLifeTime > self.enteringBeatSpan){
+        self.moleState = AboveGroundState;
+        [self removeChild:self.unburrowingSprite cleanup:NO];
+        [self addChild:self.normalSprite];
+    }
+}
+
+-(void) draw{
+    [super draw];
+    if(DEBUGMODE){
+        CGPoint array[4];
+        array[0] = CGPointMake(0, 0);
+        array[1] = CGPointMake(self.contentSize.width, 0);
+        array[2] = CGPointMake(self.contentSize.width, self.contentSize.height);
+        array[3] = CGPointMake(0, self.contentSize.height);
+        
+        ccDrawPoly(array, 4, YES);
+    }
+}
+    
+    
 
 -(void)tapped{
     
@@ -61,8 +107,6 @@
 
 -(void)setPosition:(CGPoint)position {
     [super setPosition:position];
-    
-
 }
 
 @end
