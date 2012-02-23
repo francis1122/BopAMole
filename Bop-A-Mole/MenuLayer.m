@@ -29,32 +29,34 @@
         //create button that takes you to the game
         CCSprite *sprite = [CCSprite spriteWithFile:@"PlayButton.png"];
         CCSprite *sprite2 = [CCSprite spriteWithFile:@"PlayButton.png"];
-        CCSprite *sprite3 = [CCSprite spriteWithFile:@"PlayButton.png"];
+
         
         CCSprite *sprite4 = [CCSprite spriteWithFile:@"Icon-72.png"];
-        CCSprite *sprite5 = [CCSprite spriteWithFile:@"Icon-72.png"];
-        CCSprite *sprite6 = [CCSprite spriteWithFile:@"Icon-72.png"];
         
-        CCMenuItemSprite *spriteTimeTrailButton = [CCMenuItemSprite itemFromNormalSprite:sprite selectedSprite:sprite2 disabledSprite:sprite3 target:self selector:@selector(playButtonTouched:)];
+        CCMenuItemSprite *spriteTimeTrailButton = [CCMenuItemSprite itemFromNormalSprite:sprite selectedSprite:nil disabledSprite:nil target:self selector:@selector(playButtonTouched:)];
         spriteTimeTrailButton.position = ccp(220, 140);
         
-        CCMenuItemSprite *leaderboardButton = [CCMenuItemSprite itemFromNormalSprite:sprite4 selectedSprite:sprite5 disabledSprite:sprite6 target:self selector:@selector(leaderboardButtonTouched:)];
-        leaderboardButton.position = ccp(220, 200);
+        CCMenuItemSprite *spriteSettingsButton = [CCMenuItemSprite itemFromNormalSprite:sprite2 selectedSprite:nil target:self selector:@selector(settingsButtonTouched:)];
+        spriteSettingsButton.position = ccp(220, 70);
         
-        CCMenu *menu = [CCMenu menuWithItems:spriteTimeTrailButton, leaderboardButton, nil];
+        CCMenuItemSprite *leaderboardButton = [CCMenuItemSprite itemFromNormalSprite:sprite4 selectedSprite:nil disabledSprite:nil target:self selector:@selector(leaderboardButtonTouched:)];
+        leaderboardButton.position = ccp(40, 40);
+        
+        CCMenu *menu = [CCMenu menuWithItems:spriteTimeTrailButton, spriteSettingsButton, leaderboardButton, nil];
         menu.position = CGPointZero;
         [self addChild:menu];
-        
-        
-        
-        
-        
+  
     }
     return self;
 }
 
 -(void)playButtonTouched:(CCMenuItem*)sender{
-    [[CCDirector sharedDirector] replaceScene:[GameScene node]];
+    [[GameScene sharedScene] transitionFromMainMenuStateToGamePlayState];
+//    [[CCDirector sharedDirector] replaceScene:[GameScene node]];
+}
+
+-(void)settingsButtonTouched:(CCMenuItem*)sender{
+    [[GameScene sharedScene] transitionFromMainMenuStateToSettingsMenuState];
 }
 
 -(void)leaderboardButtonTouched:(CCMenuItem*)sender{

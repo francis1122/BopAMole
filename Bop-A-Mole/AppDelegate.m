@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "GameConfig.h"
 #import "MenuLayer.h"
+#import "GameScene.h"
 #import "RootViewController.h"
 #import "MasterDataModelController.h"
 
@@ -97,7 +98,7 @@
 #endif
 	
 	[director setAnimationInterval:1.0/60];
-	[director setDisplayFPS:YES];
+	[director setDisplayFPS:NO];
 	
     
 	
@@ -120,7 +121,7 @@
 	[self removeStartupFlicker];
 	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [MenuLayer node]];
+	[[CCDirector sharedDirector] runWithScene: [GameScene node]];
 }
 
 

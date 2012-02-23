@@ -37,7 +37,7 @@
 
     if(transitionTime > kLevelTransitionTime){
         transitionTime = 0.0f;
-        [[GameScene sharedScene] startNextLevel];
+        [[GameScene sharedScene] transitionFromLevelTransitionStateToGamePlayState];
     }
 }
 

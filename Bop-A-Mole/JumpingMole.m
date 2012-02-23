@@ -1,33 +1,34 @@
 //
-//  SlashMole.m
+//  JumpingMole.m
 //  Bop-A-Mole
 //
-//  Created by John Wilson on 1/28/12.
+//  Created by John Wilson on 2/4/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SlashMole.h"
+#import "JumpingMole.h"
 #import "GameScene.h"
 
 
-@implementation SlashMole
+@implementation JumpingMole
 
--(id) initSlashMole{
+-(id) initJumpingMole{
     if(self = [super init]){
         //initWithFile:@"mole.png"]
         ccColor3B green = {0, 0, 255};
         //self.color = green;
         self.scale = 1.2;
-        
+
     }
     return self;
 }
 
+-(void)onSpawn{
+    [super onSpawn];
+}
 
 -(void)gameLoop:(ccTime)dt{
     [super gameLoop:dt];
-    
-    //use for changing cri
 
 }
 
@@ -38,17 +39,32 @@
         self.normalSprite.color = yellow;
         self.isCritical = YES;
     }else{
-        self.normalSprite.color = ccBLUE;
+        self.normalSprite.color = ccGREEN;
         self.isCritical = NO;
     }
 }
 
+-(void)manageMoleStates{
+    if(self.moleState == EnteringState && self.beatLifeTime > self.enteringBeatSpan){
+        self.moleState = AboveGroundState;
+        [self removeChild:self.unburrowingSprite cleanup:NO];
+        [self addChild:self.normalSprite];
+        CCMoveTo* move = [CCMoveTo actionWithDuration:1.05 position:ccp(self.position.x, self.position.y + 120)];
+        CCMoveTo* moveRev = [CCMoveTo actionWithDuration:1.05 position:ccp(self.position.x, self.position.y)];
+        
+        
+        CCSequence* seq = [CCSequence actions:move, moveRev,
+                           nil];
+        [self runAction:seq];
+    }
+}
+
 -(void)slashed{
-    GameScene *gameScene = [GameScene sharedScene];
     if(self.moleState == EnteringState){
         return;
     }
-
+    GameScene *gameScene = [GameScene sharedScene];
+    
     self.isDead = YES;
     //first add points
     [gameScene addToScore:100];
@@ -59,5 +75,4 @@
         [gameScene setCombo:1];
     }
 }
-
 @end

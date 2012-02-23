@@ -9,4 +9,5 @@
 #import "SingleTapMole.h"
 #import "MultiTapMole.h"
 #import "SlashMole.h"
+#import "JumpingMole.h"
 

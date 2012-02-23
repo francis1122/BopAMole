@@ -18,6 +18,7 @@
 -(id)init;
 
 -(void)playButtonTouched:(CCMenuItem*)sender;
+-(void)settingsButtonTouched:(CCMenuItem*)sender;
 -(void)leaderboardButtonTouched:(CCMenuItem*)sender;
 
 @end

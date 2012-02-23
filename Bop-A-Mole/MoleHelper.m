@@ -21,7 +21,9 @@
     else if([type isEqualToString:@"Slash Mole"]) {
         return [[SlashMole alloc] initSlashMole];
     }
-    else {
+    else if([type isEqualToString:@"Jumping Mole"]) {
+        return [[JumpingMole alloc] initJumpingMole];
+    }else{
         return nil;
     }
 }

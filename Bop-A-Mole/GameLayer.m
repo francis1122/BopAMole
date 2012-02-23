@@ -40,11 +40,24 @@
         self.slashHandler = [[[SlashHandler alloc] init] autorelease];
         self.moleArray = [[[NSMutableArray alloc] init] autorelease];
         self.deadMolesArray = [[[NSMutableArray alloc] init] autorelease];
-        level = [[NSMutableArray alloc] initWithArray:[[MoleSpawner sharedInstance] generateLevel:@"1" withBPM:130]];
+        level = nil;
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"CRevell_Mole_Game.mp3"];
         
     }
     return self;
+}
+
+-(void)cleanGameLayer{
+    for(MoleBaseClass* mole in self.moleArray){
+        [self removeChild:mole cleanup:YES];
+    }
+    [self.moleArray removeAllObjects];
+    [self.deadMolesArray removeAllObjects];
+    if(level){
+        [level release];
+    }
+    level = nil;
+    level = [[NSMutableArray alloc] initWithArray:[[MoleSpawner sharedInstance] generateLevel:@"1" withBPM:[[GameScene sharedScene] BPM]]];
 }
 
 
@@ -60,25 +73,23 @@
             [self.deadMolesArray addObject:moleObject];
         }
     }
-    
-    
-    
+
     [self spawnMoles];
-    
     [self removeMoles];
-    
-    //    if( [[GameScene sharedScene] timeOnCurrentLevel] > 15.0){
-    //        
-    //        //remove moles while level changes
-    //        for(MoleBaseClass* moleObject in self.moleArray){
-    //            [self.deadMolesArray addObject:moleObject];
-    //        }
-    //        [self removeMoles];
-    //        [[GameScene sharedScene] moveToNextLevel];
-    //    }
-    
 }
 
+-(void)beatUpdate:(float)beatDt{
+    for(MoleBaseClass* moleObject in self.moleArray){
+        [moleObject beatUpdate:beatDt];
+        if(moleObject.gotAway){
+            [self.deadMolesArray addObject:moleObject];
+            [[GameScene sharedScene] playerGotHurt];
+        }
+        if(moleObject.isDead){
+            [self.deadMolesArray addObject:moleObject];
+        }
+    }
+}
 
 -(void)spawnMoles{    
     float elapsedTime = [[GameScene sharedScene] timeOnCurrentLevel];
@@ -89,11 +100,16 @@
         MoleSpawn* spawn = [level objectAtIndex:0];
         float spawnTime = spawn.dt;
         if(spawnTime <= elapsedTime) {
-            CGPoint pixelPos = [[MoleSpawner sharedInstance] getPixelForParititionPosition:[spawn.mole position]];
-            [spawn.mole setPosition:CGPointMake(pixelPos.x, pixelPos.y)];
-            [self.moleArray addObject:spawn.mole];
-            [self addChild:spawn.mole];
-            [level removeObjectAtIndex:0];
+            if(spawn.mole){
+                CGPoint pixelPos = [[MoleSpawner sharedInstance] getPixelForParititionPosition:[spawn.mole position]];
+                [spawn.mole setPosition:CGPointMake(pixelPos.x, pixelPos.y)];
+                [self.moleArray addObject:spawn.mole];
+                [self addChild:spawn.mole];
+                [spawn.mole onSpawn];
+                [level removeObjectAtIndex:0];
+            }else{
+                NSLog(@"spawn object didn't create a mole");
+            }
         }
         else {
             objectsLeftToSpawnThisTick = NO;
@@ -106,7 +122,7 @@
             [self.deadMolesArray addObject:moleObject];
         }
         [self removeMoles];
-        [[GameScene sharedScene] moveToNextLevel];
+        [[GameScene sharedScene] transitionFromGamePlayStateToLevelTransitionState];
         
     }
 }
@@ -154,7 +170,7 @@
 #pragma touch
 
 -(void)checkTapCollision:(CGPoint) touch{
-    GameScene *gameScene = [GameScene sharedScene];
+
     for(MoleBaseClass* moleObject in self.moleArray){
         CGRect boundingBox = [moleObject boundingBox];
         if(CGRectContainsPoint( boundingBox, touch)){
@@ -166,7 +182,7 @@
 
 -(void)checkSlashCollision:(CGPoint) touch{
     
-    GameScene *gameScene = [GameScene sharedScene];
+
     [self.slashHandler addPoint:touch];
     if(self.slashHandler.touchArray.count < 2){
         return;

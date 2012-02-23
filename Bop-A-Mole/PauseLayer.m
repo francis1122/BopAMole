@@ -38,7 +38,7 @@
 }
 
 -(void)resumeButtonTouched:(CCMenuItem*)sender{
-    [[GameScene sharedScene] unPauseGame];
+    [[GameScene sharedScene] transitionFromPauseStateToGamePlayState];
 }
 
 @end

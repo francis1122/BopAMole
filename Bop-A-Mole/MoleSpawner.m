@@ -11,12 +11,13 @@
 #import "Moles.h"
 
 #import "MoleSpawn.h"
+#import "MasterDataModelController.h"
 
-#define BOARD_X_PARTITIONS 15
-#define BOARD_Y_PARTITIONS 8
+#define BOARD_X_PARTITIONS 12
+#define BOARD_Y_PARTITIONS 4
 
 #define BOARD_X_SIZE 400
-#define BOARD_Y_SIZE 200
+#define BOARD_Y_SIZE 150
 
 @implementation MoleSpawner
 
@@ -71,12 +72,12 @@ static MoleSpawner *sharedInstance = nil;
     
     NSMutableArray* remainingSpots = [[NSMutableArray alloc] initWithArray:spotCheck];
     
-    CGPoint directionalModifiers = CGPointMake(arc4random() % 100 < 50 ? 1 : -1, arc4random() % 100 < 50 ? 1 : -1);
+    CGPoint directionalModifiers = CGPointMake(rand() % 100 < 50 ? 1 : -1, rand() % 100 < 50 ? 1 : -1);
     
     
     // TODO: Handle impossible situation
     while(!success && [remainingSpots count] > 0) {
-        int randomSpot = arc4random() % [remainingSpots count];
+        int randomSpot = rand() % [remainingSpots count];
         NSString* key = [remainingSpots objectAtIndex:randomSpot];
         
         NSArray* locComponents = [key componentsSeparatedByString:@","];
@@ -168,13 +169,17 @@ static MoleSpawner *sharedInstance = nil;
 
 -(CGPoint)getPixelForParititionPosition:(CGPoint)position {
     CGSize partitionSize = [self partitionSize];
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
     
-    return CGPointMake(partitionSize.width*(int)position.x + partitionSize.width/2, 
-                       partitionSize.height*(int)position.y + partitionSize.height/2);
+    float xOffset = (winSize.width - BOARD_X_SIZE)/2;
+    float yOffset = 50;
+    
+    return CGPointMake(xOffset + partitionSize.width*(int)position.x + partitionSize.width/2, 
+                       yOffset + partitionSize.height*(int)position.y + partitionSize.height/2);
 }
 
 -(NSDictionary*)rollBetweenItems:(NSArray*)items {
-    int roll = arc4random() % 100;
+    int roll = rand() % 100;
     int totalProbability = 0;
     
     for(NSDictionary* item in items) {
@@ -198,6 +203,15 @@ static MoleSpawner *sharedInstance = nil;
 
 -(NSArray*)generateLevel:(NSString*)levelNum withBPM:(int)BPM {
     NSDictionary* level = [levelData objectForKey:levelNum];
+    
+    // Get player's current seed
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    int seed = [userDefaults integerForKey:@"randSeed"];
+    srand(seed);
+    
+    // Change the stored seed
+    [[MasterDataModelController sharedInstance] trackRandomSeed:seed+1];
+
     if(level) {
         // Reset state
         boardState = [NSMutableDictionary new];
@@ -230,16 +244,20 @@ static MoleSpawner *sharedInstance = nil;
             if(beat == 0) {
                 NSLog(@"Zero beat!");
             }
-            elapsedTime += beatInterval * beat;
             
             // Choose mole pattern to spawn
             NSArray* molePatterns = [currentStage objectForKey:@"What"]; 
             NSDictionary* chosenMolePattern = [self rollBetweenItems:molePatterns];
-            NSArray* molePattern = [moleData objectForKey:[chosenMolePattern valueForKey:@"Mole Type"]];
+            NSArray* molePattern = [[moleData objectForKey:[chosenMolePattern valueForKey:@"Mole Type"]] objectForKey:@"Moles"];
+            
+            bool exclusive = [[moleData objectForKey:[chosenMolePattern valueForKey:@"Mole Type"]] valueForKey:@"Exclusive"];
             
             // Setup and add mole
             MoleSpawn* prevSpawn = nil;
             
+            // Increment elapsed time
+            elapsedTime += beatInterval * beat;                
+                        
             for(int i = 0; i < [molePattern count]; ++i) {
                 NSDictionary* mole = [molePattern objectAtIndex:i];
                 NSArray* positionArray = [[mole valueForKey:@"Position"] componentsSeparatedByString:@","];
@@ -250,7 +268,8 @@ static MoleSpawner *sharedInstance = nil;
                 MoleSpawn* spawn = [[MoleSpawn alloc] init];
                 spawn.mole = moleObj;
                 spawn.dt = time;
-                spawn.death_dt = time + (float)[moleObj lifeSpan];
+                //must convert beatLifeSpan back to seconds
+                spawn.death_dt = time + ((float)[moleObj beatLifeSpan] * beatInterval) ;
                 spawn.pattern = [chosenMolePattern valueForKey:@"Mole Type"];
                 
                 if(prevSpawn) {
@@ -262,7 +281,14 @@ static MoleSpawner *sharedInstance = nil;
                 
                 [moleObj setRelativeX:(int)position.x];    
                 [moleObj setRelativeY:(int)position.y];
+                
                 prevSpawn = spawn;
+            }
+            
+            // This pattern was exclusive, don't allow other patterns to spawn
+            // till this one is done
+            if(exclusive) {
+                elapsedTime += beatInterval * [[[molePattern lastObject] valueForKey:@"Time"] floatValue];
             }
             
         } while(elapsedTime < levelLength);
@@ -286,7 +312,14 @@ static MoleSpawner *sharedInstance = nil;
             
         }    
         
-        return finalizedMoles;
+        NSArray *sortedMoles;
+        sortedMoles = [finalizedMoles sortedArrayUsingComparator:^(id a, id b) {
+            NSNumber* dt1 = [NSNumber numberWithFloat:[(MoleSpawn*)a dt]];
+            NSNumber* dt2 = [NSNumber numberWithFloat:[(MoleSpawn*)b dt]];
+            return [dt1 compare:dt2];
+        }];
+        
+        return sortedMoles;
     }
     return nil;
 }

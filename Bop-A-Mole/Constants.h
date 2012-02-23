@@ -8,8 +8,9 @@
 
 //Josh: Test comment
 
-#import <Foundation/Foundation.h>
 
+
+extern BOOL const DEBUGMODE;
 extern NSString *const kFont1;
 
 //level transition time

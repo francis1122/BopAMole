@@ -16,7 +16,9 @@
 
 }
 
--(id) initWithScore:(NSInteger) score;
+-(id) init;
+
+-(void) setScore:(NSInteger) score;
 
 -(void)retryButtonTouched:(CCMenuItem*)sender;
 
