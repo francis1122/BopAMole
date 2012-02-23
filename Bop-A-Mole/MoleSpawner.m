@@ -98,6 +98,18 @@ static MoleSpawner *sharedInstance = nil;
         while(nextSpawn && success) {            
             int relativeX = [nextSpawn.mole relativeX];
             int relativeY = [nextSpawn.mole relativeY];
+            if(relativeX == -666){
+                relativeX = rand()%25 - 12;
+                if(relativeX == 0){
+                    relativeX = 100;
+                }
+            }
+            if(relativeY == -666){
+                relativeY = rand()%9 - 4;
+                if(relativeY == 0){
+                    relativeY = 100;
+                }
+            }
             
             relativeX *= directionalModifiers.x;
             relativeY *= directionalModifiers.y;

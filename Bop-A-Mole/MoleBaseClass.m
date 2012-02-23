@@ -26,14 +26,14 @@
         self.unburrowingSprite = [CCSprite spriteWithFile:@"Star.png"];
         self.unburrowingSprite.position = CGPointMake(self.contentSize.width/2, self.contentSize.height/2);
         self.normalSprite = [CCSprite spriteWithFile:@"mole.png"];
-        self.normalSprite.position = CGPointMake(self.contentSize.width/2, self.contentSize.height/2);        
+        self.normalSprite.position = CGPointMake(self.contentSize.width/2, self.contentSize.height/2);
         
         [self addChild:self.unburrowingSprite];
-        self.enteringBeatSpan = 2.0;
-        self.beatLifeSpan = 8.0;
+        self.enteringBeatSpan = 1.0;
+        self.beatLifeSpan = 3.0;
         self.beatLifeTime = 0.0;
-        self.criticalBeatTime = 4.0;
-        self.criticalBeatSpan = 2.0;
+        self.criticalBeatTime = 2.0;
+        self.criticalBeatSpan = 1.0;
         self.gotAway = NO;
         self.isCritical = NO;
         self.isDead = NO;
@@ -45,7 +45,9 @@
 }
 
 -(void)onSpawn{
-    
+    //CCScaleTo *shit = [CCScaleTo actionWithDuration:Game scale:1.5];
+    //CCSequence* seq = [CCSequence actions:move, moveRev, nil];
+   // [self runAction:seq];
 }
 
 -(void)gameLoop:(ccTime)dt{
@@ -63,15 +65,26 @@
         self.gotAway = YES;
     }
     
+    float time = (float)floorf(self.beatLifeTime);
+    float change = self.beatLifeTime - time;
+    
+    if(self.beatLifeTime < 2.15 && self.beatLifeTime > 1.85){
+        self.normalSprite.scale = 1.3;
+        self.isCritical = YES;
+    }else{
+        self.normalSprite.scale = 1.0;
+        self.isCritical = NO;
+    }
+    
     //use for changing cri
-    if(self.criticalBeatTime < self.beatLifeTime && (self.criticalBeatTime + self.criticalBeatSpan) > self.beatLifeTime){
+    /*if(self.criticalBeatTime < self.beatLifeTime && (self.criticalBeatTime + self.criticalBeatSpan) > self.beatLifeTime){
         ccColor3B yellow = {224, 225, 0};
         self.normalSprite.color = yellow;
         self.isCritical = YES;
     }else{
         self.normalSprite.color = ccWHITE;
         self.isCritical = NO;
-    }
+    }*/
 }
 
 -(void)manageMoleStates{

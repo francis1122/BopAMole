@@ -17,7 +17,7 @@
 						<key>Chance</key>
 						<integer>5</integer>
 						<key>Mole Type</key>
-						<string>Single Jumper Mole</string>
+						<string>Two Tap Mole</string>
 					</dict>
 					<dict>
 						<key>Chance</key>
@@ -44,7 +44,7 @@
 						<key>Beat</key>
 						<integer>2</integer>
 						<key>Chance</key>
-						<string>10</string>
+						<string>90</string>
 					</dict>
 				</array>
 			</dict>
@@ -57,6 +57,8 @@
 		<key>Stages</key>
 		<array>
 			<dict>
+				<key>Beat</key>
+				<string>2</string>
 				<key>Percent</key>
 				<integer>100</integer>
 				<key>What</key>
@@ -65,7 +67,7 @@
 						<key>Chance</key>
 						<integer>5</integer>
 						<key>Mole Type</key>
-						<string>Square Mole</string>
+						<string>Single Mole</string>
 					</dict>
 				</array>
 				<key>When</key>
@@ -75,18 +77,6 @@
 						<integer>4</integer>
 						<key>Chance</key>
 						<string>5</string>
-					</dict>
-					<dict>
-						<key>Beat</key>
-						<integer>0</integer>
-						<key>Chance</key>
-						<string>1</string>
-					</dict>
-					<dict>
-						<key>Beat</key>
-						<integer>8</integer>
-						<key>Chance</key>
-						<string>10</string>
 					</dict>
 				</array>
 			</dict>

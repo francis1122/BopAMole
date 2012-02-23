@@ -182,6 +182,30 @@
 			</dict>
 		</array>
 	</dict>
+	<key>Two Tap Mole</key>
+	<dict>
+		<key>Exclusive</key>
+		<true/>
+		<key>Moles</key>
+		<array>
+			<dict>
+				<key>Position</key>
+				<string>0,0</string>
+				<key>Time</key>
+				<integer>0</integer>
+				<key>Mole Type</key>
+				<string>Tap Mole</string>
+			</dict>
+			<dict>
+				<key>Position</key>
+				<string>-666,-666</string>
+				<key>Time</key>
+				<integer>2</integer>
+				<key>Mole Type</key>
+				<string>Tap Mole</string>
+			</dict>
+		</array>
+	</dict>
 	<key>3x3 Sequence Mole</key>
 	<dict>
 		<key>Exclusive</key>

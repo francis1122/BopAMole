@@ -33,14 +33,14 @@
 
 -(void) beatUpdate:(float)beatDt{
     [super beatUpdate:beatDt];
-    if(self.criticalBeatTime < self.beatLifeTime && (self.criticalBeatTime + self.criticalBeatSpan) > self.beatLifeTime){
+  /*  if(self.criticalBeatTime < self.beatLifeTime && (self.criticalBeatTime + self.criticalBeatSpan) > self.beatLifeTime){
         ccColor3B yellow = {224, 225, 0};
         self.normalSprite.color = yellow;
         self.isCritical = YES;
     }else{
         self.normalSprite.color = ccBLUE;
         self.isCritical = NO;
-    }
+    }*/
 }
 
 -(void)slashed{
