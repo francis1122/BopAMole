@@ -12,7 +12,7 @@
 
 @implementation MoleBaseClass
 
-@synthesize gotAway, criticalBeatSpan, criticalBeatTime, isCritical, isDead, moleState, enteringBeatSpan;
+@synthesize gotAway, criticalBeatSpan, criticalBeatTime, isCritical, isDead, moleState, enteringBeatSpan, isTutorial;
 @synthesize relativeX, relativeY, beatLifeTime, beatLifeSpan, unburrowingSprite, normalSprite;
 
 
@@ -37,6 +37,7 @@
         self.gotAway = NO;
         self.isCritical = NO;
         self.isDead = NO;
+        self.isTutorial = NO;
         
 
         
@@ -59,7 +60,7 @@
     
     [self manageMoleStates];
     
-    if(self.beatLifeTime > self.beatLifeSpan){
+    if(self.beatLifeTime > self.beatLifeSpan && !self.isTutorial){
         self.gotAway = YES;
     }
     

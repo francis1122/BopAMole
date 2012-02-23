@@ -17,5 +17,6 @@
 @property (nonatomic, retain) CCLabelTTF *transitionLabel;
 
 -(void)gameLoop:(ccTime)dt;
+-(void)createTutorialMole:(NSInteger)level;
 
 @end
