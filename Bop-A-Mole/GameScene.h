@@ -52,6 +52,7 @@ typedef enum {
     BOOL isGameOver;        
     BOOL isGamePaused; 
     BOOL isBetweenLevels;
+    BOOL isTutorialMode;
 }
 
 @property (nonatomic, retain) MenuLayer *menuLayer;
@@ -68,6 +69,7 @@ typedef enum {
 @property (nonatomic) NSInteger playerLife;   //how many times the player can get hit before they lose the game
 @property (nonatomic) BOOL isGamePaused;  //has the player lost yet?
 @property (nonatomic) BOOL isGameOver;  //is the game paused?
+@property (nonatomic) BOOL isTutorialMode;  //is the game paused?
 @property (nonatomic) float gameTime; //how long the game has been going for
 
 @property (nonatomic) BOOL isBetweenLevels; //is the gamestate between levels

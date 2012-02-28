@@ -90,7 +90,19 @@
         if(moleObject.isDead){
             [self.deadMolesArray addObject:moleObject];
         }
+    }else{
+        for(MoleBaseClass* moleObject in self.moleArray){
+            [moleObject beatUpdate:beatDt];
+            if(moleObject.gotAway){
+                [self.deadMolesArray addObject:moleObject];
+                [[GameScene sharedScene] playerGotHurt];
+            }
+            if(moleObject.isDead){
+                [self.deadMolesArray addObject:moleObject];
+            }
+        } 
     }
+
 }
 
 -(void)spawnMoles{    
@@ -137,6 +149,9 @@
 }
 
 -(void)removeMoleObject:(MoleBaseClass*) deadMole{
+    if(deadMole.isTutorial){
+        [[GameScene sharedScene] setIsTutorialMode:NO];
+    }
     [self.deadMolesArray addObject:deadMole];
 }
 

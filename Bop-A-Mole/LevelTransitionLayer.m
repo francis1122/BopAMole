@@ -9,6 +9,7 @@
 #import "LevelTransitionLayer.h"
 #import "Constants.h"
 #import "GameScene.h"
+#import "Moles.h"
 
 
 @implementation LevelTransitionLayer
@@ -34,11 +35,25 @@
 
 -(void)gameLoop:(ccTime)dt{
     transitionTime += dt;
-
-    if(transitionTime > 5.5){
+    [self createTutorialMole:[[GameScene sharedScene] level]];
+    if(transitionTime > kLevelTransitionTime){
         transitionTime = 0.0f;
-        [[GameScene sharedScene] transitionFromLevelTransitionStateToGamePlayState];
+       [[GameScene sharedScene] transitionFromLevelTransitionStateToGamePlayState];
     }
+}
+
+-(void)createTutorialMole:(NSInteger)level{
+    if (level == 2) {
+        [[GameScene sharedScene] setIsTutorialMode:YES];
+        SingleTapMole* singleTapMole = [[SingleTapMole alloc] initSingleTapMole];
+        singleTapMole.isTutorial = YES;
+        singleTapMole.enteringBeatSpan = 0.0;
+        [singleTapMole setPosition:CGPointMake(480/2, 320/2)];
+        [[[[GameScene sharedScene] gameLayer] moleArray] addObject:singleTapMole];
+        [[GameScene sharedScene] addChild:singleTapMole];
+        [singleTapMole onSpawn];
+    }
+
 }
 
 @end

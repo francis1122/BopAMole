@@ -29,6 +29,7 @@ typedef enum {
     
     BOOL gotAway; // did the mole escape
     BOOL isDead; //has the mole been destroyed
+    BOOL isTutorial; //is the mole a tutrial mole
     
     float criticalBeatTime; //when the critical time starts
     float criticalBeatSpan; //how long the critical time lasts for
@@ -40,7 +41,7 @@ typedef enum {
 
 @property (nonatomic) MoleState moleState;
 @property (nonatomic) float  criticalBeatTime, criticalBeatSpan, beatLifeTime, beatLifeSpan, enteringBeatSpan;
-@property (nonatomic) BOOL gotAway, isCritical, isDead;
+@property (nonatomic) BOOL gotAway, isCritical, isDead, isTutorial;
 @property (nonatomic, retain) CCSprite *unburrowingSprite, *normalSprite;
 @property (nonatomic) int relativeX;
 @property (nonatomic) int relativeY;

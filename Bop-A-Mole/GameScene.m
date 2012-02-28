@@ -27,7 +27,7 @@ static GameScene *sharedScene = nil;
 
 @implementation GameScene
 
-@synthesize uiLayer, gameLayer, combo, score, isGamePaused, gameTime, playerLife, isGameOver, pauseLayer, level, levelLength, isBetweenLevels, timeOnCurrentLevel, levelTransitionLayer, gameOverLayer, menuLayer, settingsMenuLayer, backgroundLayer, BPM, beatTimeInterval, currentBeat;
+@synthesize uiLayer, gameLayer, combo, score, isGamePaused, gameTime, playerLife, isGameOver, pauseLayer, level, levelLength, isBetweenLevels, timeOnCurrentLevel, levelTransitionLayer, gameOverLayer, menuLayer, settingsMenuLayer, backgroundLayer, BPM, beatTimeInterval, currentBeat, isTutorialMode;
 
 +(GameScene*) sharedScene{
     NSAssert(sharedScene != nil, @"sharedScene not available!");
@@ -48,6 +48,7 @@ static GameScene *sharedScene = nil;
         
         realLevel = 1;
         self.isBetweenLevels = NO;
+        self.isTutorialMode = NO;
         self.timeOnCurrentLevel = 0.0f;
         self.gameTime = 0.0f;
         self.playerLife = 3;
@@ -230,6 +231,7 @@ static GameScene *sharedScene = nil;
 #pragma mark - Transitions
 
 -(void)transitionFromGamePlayStateToLevelTransitionState{
+    [[SimpleAudioEngine sharedEngine] pauseBackgroundMusic];
     gameState = LevelTransitionState;
     self.isBetweenLevels = YES;
     self.level++;
@@ -256,8 +258,7 @@ static GameScene *sharedScene = nil;
 -(void)transitionFromLevelTransitionStateToGamePlayState{
     gameState = GamePlayState;
     self.isBetweenLevels = NO;
-    self.timeOnCurrentLevel = 0.0f;
-    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"CRevell_Mole_Game.mp3"];    
+    self.timeOnCurrentLevel = 0.0f;   
     [self removeChild:self.levelTransitionLayer cleanup:NO];
     [self addChild: self.gameLayer];
 }
