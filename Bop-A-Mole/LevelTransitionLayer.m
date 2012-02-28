@@ -35,7 +35,6 @@
 
 -(void)gameLoop:(ccTime)dt{
     transitionTime += dt;
-    [self createTutorialMole:[[GameScene sharedScene] level]];
     if(transitionTime > kLevelTransitionTime){
         transitionTime = 0.0f;
        [[GameScene sharedScene] transitionFromLevelTransitionStateToGamePlayState];
