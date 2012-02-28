@@ -13,4 +13,5 @@
 #import "QuickTapMole.h"
 #import "QuickSlashMole.h"
 #import "SkipMole.h"
+#import "BombMole.h"
 

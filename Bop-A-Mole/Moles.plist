@@ -2,172 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Triple Mole Diagonal</key>
-	<dict>
-		<key>Exclusive</key>
-		<true/>
-		<key>Moles</key>
-		<array>
-			<dict>
-				<key>Position</key>
-				<string>0,0</string>
-				<key>Time</key>
-				<integer>0</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>3,3</string>
-				<key>Time</key>
-				<real>0.5</real>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>6,6</string>
-				<key>Time</key>
-				<real>1</real>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-		</array>
-	</dict>
-	<key>Triple Mole Horizontal</key>
-	<dict>
-		<key>Exclusive</key>
-		<true/>
-		<key>Moles</key>
-		<array>
-			<dict>
-				<key>Position</key>
-				<string>0,0</string>
-				<key>Time</key>
-				<integer>0</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>3,0</string>
-				<key>Time</key>
-				<real>0.5</real>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>6,0</string>
-				<key>Time</key>
-				<integer>1</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-		</array>
-	</dict>
-	<key>Triple Mole Vertical</key>
-	<dict>
-		<key>Exclusive</key>
-		<true/>
-		<key>Moles</key>
-		<array>
-			<dict>
-				<key>Position</key>
-				<string>0,0</string>
-				<key>Time</key>
-				<integer>0</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>0,3</string>
-				<key>Time</key>
-				<real>0.5</real>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>0,6</string>
-				<key>Time</key>
-				<integer>1</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-		</array>
-	</dict>
-	<key>Triangle Mole</key>
-	<dict>
-		<key>Moles</key>
-		<array>
-			<dict>
-				<key>Position</key>
-				<string>0,0</string>
-				<key>Time</key>
-				<integer>0</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>2,4</string>
-				<key>Time</key>
-				<integer>0</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>4,0</string>
-				<key>Time</key>
-				<integer>0</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-		</array>
-	</dict>
-	<key>Square Mole</key>
-	<dict>
-		<key>Exclusive</key>
-		<true/>
-		<key>Moles</key>
-		<array>
-			<dict>
-				<key>Position</key>
-				<string>0,0</string>
-				<key>Time</key>
-				<integer>0</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>4,4</string>
-				<key>Time</key>
-				<real>1</real>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>0,4</string>
-				<key>Time</key>
-				<real>2</real>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>4,0</string>
-				<key>Time</key>
-				<real>3</real>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-		</array>
-	</dict>
 	<key>Tap Mole</key>
 	<dict>
 		<key>Moles</key>
@@ -179,6 +13,20 @@
 				<integer>0</integer>
 				<key>Mole Type</key>
 				<string>Tap Mole</string>
+			</dict>
+		</array>
+	</dict>
+	<key>Bomb Mole</key>
+	<dict>
+		<key>Moles</key>
+		<array>
+			<dict>
+				<key>Position</key>
+				<string>0,0</string>
+				<key>Time</key>
+				<integer>0</integer>
+				<key>Mole Type</key>
+				<string>Bomb Mole</string>
 			</dict>
 		</array>
 	</dict>
@@ -215,86 +63,6 @@
 				<string>-666,-666</string>
 				<key>Time</key>
 				<integer>2</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-		</array>
-	</dict>
-	<key>3x3 Sequence Mole</key>
-	<dict>
-		<key>Exclusive</key>
-		<true/>
-		<key>Moles</key>
-		<array>
-			<dict>
-				<key>Position</key>
-				<string>0,0</string>
-				<key>Time</key>
-				<integer>0</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>1,0</string>
-				<key>Time</key>
-				<integer>1</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>2,0</string>
-				<key>Time</key>
-				<integer>2</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>2,1</string>
-				<key>Time</key>
-				<integer>3</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>1,1</string>
-				<key>Time</key>
-				<integer>4</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>0,1</string>
-				<key>Time</key>
-				<integer>5</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>0,2</string>
-				<key>Time</key>
-				<integer>6</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>1,2</string>
-				<key>Time</key>
-				<integer>7</integer>
-				<key>Mole Type</key>
-				<string>Tap Mole</string>
-			</dict>
-			<dict>
-				<key>Position</key>
-				<string>2,2</string>
-				<key>Time</key>
-				<integer>8</integer>
 				<key>Mole Type</key>
 				<string>Tap Mole</string>
 			</dict>

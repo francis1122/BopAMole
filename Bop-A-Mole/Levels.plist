@@ -5,7 +5,7 @@
 	<key>1</key>
 	<dict>
 		<key>Length</key>
-		<integer>20</integer>
+		<integer>30</integer>
 		<key>Stages</key>
 		<array>
 			<dict>
@@ -27,9 +27,9 @@
 					</dict>
 					<dict>
 						<key>Chance</key>
-						<integer>0</integer>
+						<integer>2</integer>
 						<key>Mole Type</key>
-						<string>Quick Slash Mole</string>
+						<string>Bomb Mole</string>
 					</dict>
 					<dict>
 						<key>Chance</key>

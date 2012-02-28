@@ -42,7 +42,7 @@ static GameScene *sharedScene = nil;
         self.score = 0;
         self.combo = 1;
         self.currentBeat = 0.0;
-        self.BPM = 130;
+        self.BPM = 100;
         self.beatTimeInterval = 60.0/[self BPM];
         self.level = 1;
         

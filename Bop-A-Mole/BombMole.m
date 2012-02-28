@@ -1,24 +1,23 @@
 //
-//  QuickTapMole.m
+//  BombMole.m
 //  Bop-A-Mole
 //
-//  Created by John Wilson on 2/25/12.
+//  Created by John Wilson on 2/27/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "QuickTapMole.h"
+#import "BombMole.h"
 #import "GameScene.h"
 #import "Constants.h"
 
+@implementation BombMole
 
-@implementation QuickTapMole
 
--(id) initWithQuickTapMole{
-    
+-(id) initWithBombMole{
     if(self = [super init]){
-        //        initWithFile:@"mole.png"]
         self.beatLifeSpan = 3.0 + BEAT_WINDOW;
-        ccColor3B yellow = {0, 255, 0};
+        
+        ccColor3B yellow = {255, 0, 0};
         self.normalSprite.color = yellow;
         self.unburrowingSprite.color = yellow;
     }
@@ -26,13 +25,18 @@
 }
 
 
+
 -(void)gameLoop:(ccTime)dt{
     [super gameLoop:dt];
+    
+    //use for changing cri
+    
 }
 
 -(void) beatUpdate:(float)beatDt{
     [super beatUpdate:beatDt];
 }
+
 
 -(void)tapped{
     if(self.moleState == EnteringState){
@@ -40,20 +44,20 @@
     }
     GameScene *gameScene = [GameScene sharedScene];
     self.isDead = YES;
-
-
     
-    //first update combo score
-    if(self.isCritical){
-        [gameScene addToCombo:1 withDisplayPoint:self.position];
-    }else{
-        [gameScene setCombo:1];
+    [gameScene playerGotHurt];
+
+}
+
+-(void)slashed{
+    GameScene *gameScene = [GameScene sharedScene];
+    if(self.moleState == EnteringState){
+        return;
     }
-    //second update score
-    [gameScene addToScore:200 withDisplayPoint:self.position];
     
+    self.isDead = YES;
+    [gameScene playerGotHurt];
+
 }
 
 @end
-
-

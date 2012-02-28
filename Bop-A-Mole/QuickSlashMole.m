@@ -15,8 +15,10 @@
 -(id) initWithQuickSlashMole{
     if(self = [super init]){
         self.beatLifeSpan = 3.0 + BEAT_WINDOW;
+        
         ccColor3B yellow = {0, 225, 255};
         self.normalSprite.color = yellow;
+        self.unburrowingSprite.color = yellow;
     }
     return self;
 }

@@ -30,6 +30,9 @@
     else if([type isEqualToString:@"Quick Slash Mole"]) {
         return [[QuickSlashMole alloc] initWithQuickSlashMole];
     }
+    else if([type isEqualToString:@"Bomb Mole"]) {
+        return [[BombMole alloc] initWithBombMole];
+    }
     else if([type isEqualToString:@"Skip"]) {
         return [[SkipMole alloc] initWithSkipMole];
     }else{

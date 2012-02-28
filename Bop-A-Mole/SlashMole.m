@@ -17,7 +17,7 @@
         //initWithFile:@"mole.png"]
         ccColor3B green = {0, 0, 255};
         self.normalSprite.color = green;
-        self.scale = 1.2;
+        self.unburrowingSprite.color = green;
         
     }
     return self;

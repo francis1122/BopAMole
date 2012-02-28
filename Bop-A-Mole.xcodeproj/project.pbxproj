@@ -167,6 +167,7 @@
 		DE9FA22914F98F0D00F9E585 /* QuickTapMole.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA22814F98F0D00F9E585 /* QuickTapMole.m */; };
 		DE9FA22D14F98F1B00F9E585 /* QuickSlashMole.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA22C14F98F1B00F9E585 /* QuickSlashMole.m */; };
 		DE9FA23014F99C1600F9E585 /* SkipMole.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA22F14F99C1600F9E585 /* SkipMole.m */; };
+		DE9FA23714FCAB4E00F9E585 /* BombMole.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA23614FCAB4D00F9E585 /* BombMole.m */; };
 		DEC75A6514C20D8800A9D451 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC75A6414C20D8800A9D451 /* Constants.m */; };
 		DEC75A6E14C20DF800A9D451 /* MasterDataModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC75A6D14C20DF800A9D451 /* MasterDataModelController.m */; };
 		DEC75A7314C20F2000A9D451 /* MenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC75A7214C20F2000A9D451 /* MenuLayer.m */; };
@@ -486,6 +487,8 @@
 		DE9FA22C14F98F1B00F9E585 /* QuickSlashMole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickSlashMole.m; sourceTree = "<group>"; };
 		DE9FA22E14F99C1500F9E585 /* SkipMole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkipMole.h; sourceTree = "<group>"; };
 		DE9FA22F14F99C1600F9E585 /* SkipMole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkipMole.m; sourceTree = "<group>"; };
+		DE9FA23514FCAB4D00F9E585 /* BombMole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BombMole.h; sourceTree = "<group>"; };
+		DE9FA23614FCAB4D00F9E585 /* BombMole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BombMole.m; sourceTree = "<group>"; };
 		DEC75A6314C20D8800A9D451 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		DEC75A6414C20D8800A9D451 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		DEC75A6C14C20DF800A9D451 /* MasterDataModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterDataModelController.h; sourceTree = "<group>"; };
@@ -1019,6 +1022,8 @@
 				DE9FA22C14F98F1B00F9E585 /* QuickSlashMole.m */,
 				DE9FA22E14F99C1500F9E585 /* SkipMole.h */,
 				DE9FA22F14F99C1600F9E585 /* SkipMole.m */,
+				DE9FA23514FCAB4D00F9E585 /* BombMole.h */,
+				DE9FA23614FCAB4D00F9E585 /* BombMole.m */,
 			);
 			name = Moles;
 			sourceTree = "<group>";
@@ -1307,6 +1312,7 @@
 				DE9FA22914F98F0D00F9E585 /* QuickTapMole.m in Sources */,
 				DE9FA22D14F98F1B00F9E585 /* QuickSlashMole.m in Sources */,
 				DE9FA23014F99C1600F9E585 /* SkipMole.m in Sources */,
+				DE9FA23714FCAB4E00F9E585 /* BombMole.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

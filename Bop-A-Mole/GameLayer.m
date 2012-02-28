@@ -81,7 +81,7 @@
         [moleObject beatUpdate:beatDt];
         if(moleObject.gotAway){
             [self.deadMolesArray addObject:moleObject];
-            if([moleObject isKindOfClass:[SkipMole class]]){
+            if([moleObject isKindOfClass:[SkipMole class]] || [moleObject isKindOfClass:[BombMole class]]){
                 
             }else{
                 [[GameScene sharedScene] playerGotHurt];
