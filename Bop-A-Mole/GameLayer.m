@@ -87,9 +87,6 @@
                 [[GameScene sharedScene] playerGotHurt];
             }
         }
-        if(moleObject.isDead){
-            [self.deadMolesArray addObject:moleObject];
-        }
     }else{
         for(MoleBaseClass* moleObject in self.moleArray){
             [moleObject beatUpdate:beatDt];
