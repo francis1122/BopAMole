@@ -164,6 +164,9 @@
 		DE945EA714C78D8B00554678 /* PlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DE945EA514C78D8B00554678 /* PlayButton.png */; };
 		DE9BC1AF14C26C950034C615 /* mole-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DE9BC1AD14C26C950034C615 /* mole-hd.png */; };
 		DE9BC1B314C26CB00034C615 /* mole.png in Resources */ = {isa = PBXBuildFile; fileRef = DE9BC1B214C26CB00034C615 /* mole.png */; };
+		DE9FA22914F98F0D00F9E585 /* QuickTapMole.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA22814F98F0D00F9E585 /* QuickTapMole.m */; };
+		DE9FA22D14F98F1B00F9E585 /* QuickSlashMole.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA22C14F98F1B00F9E585 /* QuickSlashMole.m */; };
+		DE9FA23014F99C1600F9E585 /* SkipMole.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9FA22F14F99C1600F9E585 /* SkipMole.m */; };
 		DEC75A6514C20D8800A9D451 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC75A6414C20D8800A9D451 /* Constants.m */; };
 		DEC75A6E14C20DF800A9D451 /* MasterDataModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC75A6D14C20DF800A9D451 /* MasterDataModelController.m */; };
 		DEC75A7314C20F2000A9D451 /* MenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC75A7214C20F2000A9D451 /* MenuLayer.m */; };
@@ -477,6 +480,12 @@
 		DE945EA514C78D8B00554678 /* PlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayButton.png; sourceTree = "<group>"; };
 		DE9BC1AD14C26C950034C615 /* mole-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mole-hd.png"; sourceTree = "<group>"; };
 		DE9BC1B214C26CB00034C615 /* mole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mole.png; sourceTree = "<group>"; };
+		DE9FA22714F98F0C00F9E585 /* QuickTapMole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickTapMole.h; sourceTree = "<group>"; };
+		DE9FA22814F98F0D00F9E585 /* QuickTapMole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickTapMole.m; sourceTree = "<group>"; };
+		DE9FA22B14F98F1B00F9E585 /* QuickSlashMole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickSlashMole.h; sourceTree = "<group>"; };
+		DE9FA22C14F98F1B00F9E585 /* QuickSlashMole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickSlashMole.m; sourceTree = "<group>"; };
+		DE9FA22E14F99C1500F9E585 /* SkipMole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkipMole.h; sourceTree = "<group>"; };
+		DE9FA22F14F99C1600F9E585 /* SkipMole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkipMole.m; sourceTree = "<group>"; };
 		DEC75A6314C20D8800A9D451 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		DEC75A6414C20D8800A9D451 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		DEC75A6C14C20DF800A9D451 /* MasterDataModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterDataModelController.h; sourceTree = "<group>"; };
@@ -1004,6 +1013,12 @@
 				DE67C27014D48A7000493C92 /* SlashMole.m */,
 				DE87456614DE5FE800E4AE0E /* JumpingMole.h */,
 				DE87456714DE5FE900E4AE0E /* JumpingMole.m */,
+				DE9FA22714F98F0C00F9E585 /* QuickTapMole.h */,
+				DE9FA22814F98F0D00F9E585 /* QuickTapMole.m */,
+				DE9FA22B14F98F1B00F9E585 /* QuickSlashMole.h */,
+				DE9FA22C14F98F1B00F9E585 /* QuickSlashMole.m */,
+				DE9FA22E14F99C1500F9E585 /* SkipMole.h */,
+				DE9FA22F14F99C1600F9E585 /* SkipMole.m */,
 			);
 			name = Moles;
 			sourceTree = "<group>";
@@ -1289,6 +1304,9 @@
 				DEF6447514DE1A680002835C /* SettingsMenuLayer.m in Sources */,
 				DEF6447814DE1DDE0002835C /* BackgroundLayer.m in Sources */,
 				DE87456814DE5FEA00E4AE0E /* JumpingMole.m in Sources */,
+				DE9FA22914F98F0D00F9E585 /* QuickTapMole.m in Sources */,
+				DE9FA22D14F98F1B00F9E585 /* QuickSlashMole.m in Sources */,
+				DE9FA23014F99C1600F9E585 /* SkipMole.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

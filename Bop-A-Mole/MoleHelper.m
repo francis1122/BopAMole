@@ -23,6 +23,15 @@
     }
     else if([type isEqualToString:@"Jumping Mole"]) {
         return [[JumpingMole alloc] initJumpingMole];
+    }
+    else if([type isEqualToString:@"Quick Tap Mole"]) {
+        return [[QuickTapMole alloc] initWithQuickTapMole];
+    }
+    else if([type isEqualToString:@"Quick Slash Mole"]) {
+        return [[QuickSlashMole alloc] initWithQuickSlashMole];
+    }
+    else if([type isEqualToString:@"Skip"]) {
+        return [[SkipMole alloc] initWithSkipMole];
     }else{
         return nil;
     }

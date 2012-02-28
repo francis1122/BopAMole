@@ -1,23 +1,25 @@
 //
-//  SingleTapMole.m
+//  QuickTapMole.m
 //  Bop-A-Mole
 //
-//  Created by John Wilson on 1/14/12.
+//  Created by John Wilson on 2/25/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SingleTapMole.h"
+#import "QuickTapMole.h"
 #import "GameScene.h"
 #import "Constants.h"
 
-@implementation SingleTapMole
 
+@implementation QuickTapMole
 
--(id) initSingleTapMole{
-
+-(id) initWithQuickTapMole{
+    
     if(self = [super init]){
-//        initWithFile:@"mole.png"]
-        self.scale = 1.2;
+        //        initWithFile:@"mole.png"]
+        self.beatLifeSpan = 3.0 + BEAT_WINDOW;
+        ccColor3B yellow = {224, 0, 0};
+        self.normalSprite.color = yellow;
     }
     return self;
 }
@@ -37,6 +39,8 @@
     }
     GameScene *gameScene = [GameScene sharedScene];
     self.isDead = YES;
+
+
     
     //first update combo score
     if(self.isCritical){
@@ -45,8 +49,10 @@
         [gameScene setCombo:1];
     }
     //second update score
-    [gameScene addToScore:100 withDisplayPoint:self.position];
-
+    [gameScene addToScore:200 withDisplayPoint:self.position];
+    
 }
 
 @end
+
+

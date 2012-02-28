@@ -16,7 +16,7 @@
     if(self = [super init]){
         //initWithFile:@"mole.png"]
         ccColor3B green = {0, 0, 255};
-        //self.color = green;
+        self.normalSprite.color = green;
         self.scale = 1.2;
         
     }
@@ -50,14 +50,16 @@
     }
 
     self.isDead = YES;
-    //first add points
-    [gameScene addToScore:100];
+
     //second update combo score
     if(self.isCritical){
         [gameScene addToCombo:1];
     }else{
         [gameScene setCombo:1];
     }
+    
+    //first add points
+    [gameScene addToScore:100 withDisplayPoint:self.position];
 }
 
 @end

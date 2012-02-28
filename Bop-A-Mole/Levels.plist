@@ -5,7 +5,7 @@
 	<key>1</key>
 	<dict>
 		<key>Length</key>
-		<integer>60</integer>
+		<integer>20</integer>
 		<key>Stages</key>
 		<array>
 			<dict>
@@ -15,34 +15,34 @@
 				<array>
 					<dict>
 						<key>Chance</key>
-						<integer>5</integer>
+						<integer>2</integer>
 						<key>Mole Type</key>
-						<string>Two Tap Mole</string>
+						<string>Tap Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>2</integer>
+						<key>Mole Type</key>
+						<string>Slash Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>0</integer>
+						<key>Mole Type</key>
+						<string>Quick Slash Mole</string>
 					</dict>
 					<dict>
 						<key>Chance</key>
 						<integer>1</integer>
 						<key>Mole Type</key>
-						<string>Slash Mole Vertical</string>
-					</dict>
-					<dict>
-						<key>Chance</key>
-						<integer>1</integer>
-						<key>Mole Type</key>
-						<string>Slash Mole Diagonal</string>
-					</dict>
-					<dict>
-						<key>Chance</key>
-						<integer>1</integer>
-						<key>Mole Type</key>
-						<string>Slash Mole Horizontal</string>
+						<string>Quick Tap Mole</string>
 					</dict>
 				</array>
 				<key>When</key>
 				<array>
 					<dict>
 						<key>Beat</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>Chance</key>
 						<string>90</string>
 					</dict>
@@ -57,26 +57,138 @@
 		<key>Stages</key>
 		<array>
 			<dict>
-				<key>Beat</key>
-				<string>2</string>
 				<key>Percent</key>
 				<integer>100</integer>
 				<key>What</key>
 				<array>
 					<dict>
 						<key>Chance</key>
-						<integer>5</integer>
+						<integer>2</integer>
 						<key>Mole Type</key>
-						<string>Single Mole</string>
+						<string>Tap Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>2</integer>
+						<key>Mole Type</key>
+						<string>Slash Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>1</integer>
+						<key>Mole Type</key>
+						<string>Quick Slash Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>1</integer>
+						<key>Mole Type</key>
+						<string>Quick Tap Mole</string>
 					</dict>
 				</array>
 				<key>When</key>
 				<array>
 					<dict>
 						<key>Beat</key>
-						<integer>4</integer>
+						<integer>1</integer>
 						<key>Chance</key>
-						<string>5</string>
+						<string>90</string>
+					</dict>
+				</array>
+			</dict>
+		</array>
+	</dict>
+	<key>3</key>
+	<dict>
+		<key>Length</key>
+		<integer>30</integer>
+		<key>Stages</key>
+		<array>
+			<dict>
+				<key>Percent</key>
+				<integer>100</integer>
+				<key>What</key>
+				<array>
+					<dict>
+						<key>Chance</key>
+						<integer>1</integer>
+						<key>Mole Type</key>
+						<string>Tap Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>1</integer>
+						<key>Mole Type</key>
+						<string>Slash Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>2</integer>
+						<key>Mole Type</key>
+						<string>Quick Slash Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>2</integer>
+						<key>Mole Type</key>
+						<string>Quick Tap Mole</string>
+					</dict>
+				</array>
+				<key>When</key>
+				<array>
+					<dict>
+						<key>Beat</key>
+						<integer>1</integer>
+						<key>Chance</key>
+						<string>90</string>
+					</dict>
+				</array>
+			</dict>
+		</array>
+	</dict>
+	<key>4</key>
+	<dict>
+		<key>Length</key>
+		<integer>30</integer>
+		<key>Stages</key>
+		<array>
+			<dict>
+				<key>Percent</key>
+				<integer>100</integer>
+				<key>What</key>
+				<array>
+					<dict>
+						<key>Chance</key>
+						<integer>0</integer>
+						<key>Mole Type</key>
+						<string>Tap Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>0</integer>
+						<key>Mole Type</key>
+						<string>Slash Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>1</integer>
+						<key>Mole Type</key>
+						<string>Quick Slash Mole</string>
+					</dict>
+					<dict>
+						<key>Chance</key>
+						<integer>1</integer>
+						<key>Mole Type</key>
+						<string>Quick Tap Mole</string>
+					</dict>
+				</array>
+				<key>When</key>
+				<array>
+					<dict>
+						<key>Beat</key>
+						<integer>1</integer>
+						<key>Chance</key>
+						<string>90</string>
 					</dict>
 				</array>
 			</dict>

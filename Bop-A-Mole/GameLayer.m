@@ -10,11 +10,9 @@
 #import "GameScene.h"
 
 #import "MoleBaseClass.h"
-#import "SingleTapMole.h"
-#import "MultiTapMole.h"
-#import "SlashHandler.h"
-#import "SlashMole.h"
+#import "Moles.h"
 #import "TouchPoint.h"
+#import "SlashHandler.h"
 #import "MathLib.h"
 #import "MoleSpawner.h"
 #import "MoleSpawn.h"
@@ -83,7 +81,11 @@
         [moleObject beatUpdate:beatDt];
         if(moleObject.gotAway){
             [self.deadMolesArray addObject:moleObject];
-            [[GameScene sharedScene] playerGotHurt];
+            if([moleObject isKindOfClass:[SkipMole class]]){
+                
+            }else{
+                [[GameScene sharedScene] playerGotHurt];
+            }
         }
         if(moleObject.isDead){
             [self.deadMolesArray addObject:moleObject];

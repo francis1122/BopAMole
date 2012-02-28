@@ -10,5 +10,6 @@
 
 
 
+#define BEAT_WINDOW 0.2
 extern BOOL const DEBUGMODE;
 extern NSString *const kFont1;

@@ -29,8 +29,8 @@
         self.normalSprite.position = CGPointMake(self.contentSize.width/2, self.contentSize.height/2);
         
         [self addChild:self.unburrowingSprite];
-        self.enteringBeatSpan = 1.0;
-        self.beatLifeSpan = 3.0;
+        self.enteringBeatSpan = 1.0 - BEAT_WINDOW;
+        self.beatLifeSpan = 6.0 + BEAT_WINDOW;
         self.beatLifeTime = 0.0;
         self.criticalBeatTime = 2.0;
         self.criticalBeatSpan = 1.0;
@@ -68,7 +68,7 @@
     float time = (float)floorf(self.beatLifeTime);
     float change = self.beatLifeTime - time;
     
-    if(self.beatLifeTime < 2.15 && self.beatLifeTime > 1.85){
+    if(change < BEAT_WINDOW || change > (1.00-BEAT_WINDOW)){
         self.normalSprite.scale = 1.3;
         self.isCritical = YES;
     }else{

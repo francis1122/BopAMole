@@ -10,4 +10,7 @@
 #import "MultiTapMole.h"
 #import "SlashMole.h"
 #import "JumpingMole.h"
+#import "QuickTapMole.h"
+#import "QuickSlashMole.h"
+#import "SkipMole.h"
 

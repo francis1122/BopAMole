@@ -168,7 +168,7 @@
 			</dict>
 		</array>
 	</dict>
-	<key>Single Mole</key>
+	<key>Tap Mole</key>
 	<dict>
 		<key>Moles</key>
 		<array>
@@ -179,6 +179,20 @@
 				<integer>0</integer>
 				<key>Mole Type</key>
 				<string>Tap Mole</string>
+			</dict>
+		</array>
+	</dict>
+	<key>Quick Tap Mole</key>
+	<dict>
+		<key>Moles</key>
+		<array>
+			<dict>
+				<key>Position</key>
+				<string>0,0</string>
+				<key>Time</key>
+				<integer>0</integer>
+				<key>Mole Type</key>
+				<string>Quick Tap Mole</string>
 			</dict>
 		</array>
 	</dict>
@@ -318,6 +332,34 @@
 			</dict>
 		</array>
 	</dict>
+	<key>Slash Mole</key>
+	<dict>
+		<key>Moles</key>
+		<array>
+			<dict>
+				<key>Position</key>
+				<string>0,0</string>
+				<key>Time</key>
+				<integer>0</integer>
+				<key>Mole Type</key>
+				<string>Slash Mole</string>
+			</dict>
+		</array>
+	</dict>
+	<key>Quick Slash Mole</key>
+	<dict>
+		<key>Moles</key>
+		<array>
+			<dict>
+				<key>Position</key>
+				<string>0,0</string>
+				<key>Time</key>
+				<integer>0</integer>
+				<key>Mole Type</key>
+				<string>Quick Slash Mole</string>
+			</dict>
+		</array>
+	</dict>
 	<key>Slash Mole Diagonal</key>
 	<dict>
 		<key>Exclusive</key>
@@ -379,22 +421,6 @@
 				<integer>0</integer>
 				<key>Mole Type</key>
 				<string>Slash Mole</string>
-			</dict>
-		</array>
-	</dict>
-	<key>Single Jumper Mole</key>
-	<dict>
-		<key>Exclusive</key>
-		<false/>
-		<key>Moles</key>
-		<array>
-			<dict>
-				<key>Position</key>
-				<string>0,0</string>
-				<key>Time</key>
-				<integer>0</integer>
-				<key>Mole Type</key>
-				<string>Jumping Mole</string>
 			</dict>
 		</array>
 	</dict>
